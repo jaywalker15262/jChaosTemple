@@ -182,7 +182,7 @@ class Suicide(script: Script) : Leaf<Script>(script, "Suiciding") {
 
                 if (chaosFanatic.valid()) {
                     chaosFanatic.bounds(-16, 16, -16, -16, -16, 16)
-                    if (chaosFanatic.interact("Attack"))
+                    if (chaosFanatic.click())
                         Condition.wait({ chaosFanatic.healthBarVisible() }, 50, 90)
                 }
 
