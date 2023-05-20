@@ -71,8 +71,10 @@ class TravelToAltar(script: Script) : Leaf<Script>(script, "Traveling To Altar")
             }
 
             Condition.sleep(Random.nextGaussian(170, 250, 200, 20.0))
-            if (!Chat.chatting())
+            if (!Chat.chatting()) {
+                LoggingService.info("Failed to find chat options after attempting to rub the amulet.")
                 return
+            }
 
             /* Will need to have a working reimplementation of this in the future.
             if (!Input.send("3")) {

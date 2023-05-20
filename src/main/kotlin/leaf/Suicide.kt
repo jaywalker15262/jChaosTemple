@@ -98,7 +98,7 @@ class Suicide(script: Script) : Leaf<Script>(script, "Suiciding") {
             else if (Constants.suicideTileMatrix.valid()) {
                 for (n in 1..10) {
                     if (Skills.level(Skill.Hitpoints) == 0 || Constants.AREA_LUMBY.contains(Players.local())
-                        || Players.local().distanceTo(Constants.suicideTile) < 7)
+                        || Players.local().distanceTo(Constants.suicideTile) < 6)
                         break
                     else if (!Players.local().inMotion()) {
                         if (!Constants.suicideTileMatrix.inViewport() || Constants.suicideTileMatrix.interact("Walk here")
@@ -112,13 +112,13 @@ class Suicide(script: Script) : Leaf<Script>(script, "Suiciding") {
             }
 
             if (Skills.level(Skill.Hitpoints) != 0 && !Constants.AREA_LUMBY.contains(Players.local())
-                && !Players.local().inCombat() && Players.local().distanceTo(Constants.suicideTile) > 6) {
+                && !Players.local().inCombat() && Players.local().distanceTo(Constants.suicideTile) > 5) {
                 LoggingService.severe("Failed to get to the suicide tile.")
                 ScriptManager.stop()
                 return
             }
         }
-        else if (Players.local().distanceTo(Constants.suicideTile) > 6) {
+        else if (Players.local().distanceTo(Constants.suicideTile) > 5) {
             val generatePath = DaxWalker.getPath(Constants.suicideTile)
             if (generatePath.isNullOrEmpty())
                 return
@@ -134,7 +134,7 @@ class Suicide(script: Script) : Leaf<Script>(script, "Suiciding") {
             if (Constants.suicideTileMatrix.valid()) {
                 for (n in 1..10) {
                     if (Skills.level(Skill.Hitpoints) == 0 || Constants.AREA_LUMBY.contains(Players.local())
-                        || Players.local().distanceTo(Constants.suicideTile) < 7)
+                        || Players.local().distanceTo(Constants.suicideTile) < 6)
                         break
                     else if (!Players.local().inMotion()) {
                         if (!Constants.suicideTileMatrix.inViewport() || Constants.suicideTileMatrix.interact("Walk here")
@@ -148,7 +148,7 @@ class Suicide(script: Script) : Leaf<Script>(script, "Suiciding") {
             }
 
             if (Skills.level(Skill.Hitpoints) != 0 && !Constants.AREA_LUMBY.contains(Players.local())
-                && !Players.local().inCombat() && Players.local().distanceTo(Constants.suicideTile) > 6) {
+                && !Players.local().inCombat() && Players.local().distanceTo(Constants.suicideTile) > 5) {
                 LoggingService.severe("Failed to get to the suicide tile 2.")
                 ScriptManager.stop()
                 return
