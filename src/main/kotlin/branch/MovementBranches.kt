@@ -2,7 +2,6 @@ package com.jay.chaostemple.branch
 
 import com.jay.chaostemple.Constants
 import com.jay.chaostemple.Script
-import com.jay.chaostemple.leaf.OfferBones
 import com.jay.chaostemple.leaf.Suicide
 import com.jay.chaostemple.leaf.TravelToAltar
 import org.powbot.api.rt4.*
@@ -14,7 +13,7 @@ class AtAltar(script: Script) : Branch<Script>(script, "At the altar?") {
     override val failedComponent: TreeComponent<Script> = SuicideCheckTwo(script)
 
     override fun validate(): Boolean {
-        return Constants.AREA_ALTAR.contains(Players.local())
+        return Constants.AREA_ALTAR.contains(Players.local()) && Inventory.emptySlotCount() != Constants.emptySlotCountCheck
     }
 }
 

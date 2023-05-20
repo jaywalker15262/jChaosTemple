@@ -157,8 +157,45 @@ class Suicide(script: Script) : Leaf<Script>(script, "Suiciding") {
             }
         }
 
+        /* Chaos Fanatic might not always be alive and is sometimes killed or in combat with other players/bots.
+        So as counter measure to make sure we die, make sure we wait for him to spawn and to attack him instead of
+        waiting for us to timeout and the script ending*/
+        var chaosFanatic = Npcs.stream().within(23).name("Chaos fanatic").filtered {
+            it.distanceTo(Players.local()).toInt() <= 11 && !it.healthBarVisible() && it.inViewport() }.first()
         // Some users might use accounts with high stats that are really tanky, and so we should wait at least a full minute.
-        if (!Condition.wait({ Constants.AREA_LUMBY.contains(Players.local()) }, 50 ,1200)) {
+        for (n in 1..1200) {
+            if (Constants.AREA_LUMBY.contains(Players.local()))
+                return
+            // Let's afk until Chaos Fanatic is there, so that we do not time out.
+            while (Game.loggedIn() && !Constants.AREA_LUMBY.contains(Players.local())
+                && Skills.level(Skill.Hitpoints) > 0 && !Players.local().healthBarVisible() &&
+                (!chaosFanatic.valid() || Players.local().interacting() != chaosFanatic)) {
+                for (i in 1..20) {
+                    if (chaosFanatic.valid() && !chaosFanatic.healthBarVisible())
+                        break
+
+                    // The stream below is expensive but very robust, so lets sleep for at least 100ms each iteration.
+                    Condition.sleep(100)
+                    chaosFanatic = Npcs.stream().within(13).name("Chaos Fanatic").filtered {
+                        it.distanceTo(Players.local()).toInt() <= 11 && !it.healthBarVisible() && it.inViewport() }.first()
+                }
+
+                if (chaosFanatic.valid()) {
+                    chaosFanatic.bounds(-16, 16, -16, -16, -16, 16)
+                    if (chaosFanatic.interact("Attack"))
+                        Condition.wait({ chaosFanatic.healthBarVisible() }, 50, 90)
+                }
+
+                Condition.sleep(50)
+            }
+            if (!Game.loggedIn())
+                return
+
+            Condition.sleep(50)
+        }
+
+        // Some users might use accounts with high stats that are really tanky, and so we should wait at least a full minute.
+        if (!Constants.AREA_LUMBY.contains(Players.local())) {
             LoggingService.severe("Failed to suicide.")
             ScriptManager.stop()
         }
