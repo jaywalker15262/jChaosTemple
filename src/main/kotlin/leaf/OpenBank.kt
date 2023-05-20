@@ -43,12 +43,12 @@ class OpenBank(script: Script) : Leaf<Script>(script, "Opening Bank") {
                 }
 
                 if (!stairCase.valid()) {
-                    LoggingService.info("Failed to find the staircase in lumby castle")
+                    LoggingService.info("Failed to find the staircase in lumby castle.")
                     return
                 }
                 else if (!Condition.wait({ Players.local().distanceTo(stairCase).toInt() < 6
-                        || (stairCase.inViewport() && !Players.local().inMotion()) }, 50, 300)) {
-                    LoggingService.info("Failed to walk to the lumby castle stairs")
+                        || !Players.local().inMotion() }, 50, 300)) {
+                    LoggingService.info("Failed to walk to the lumby castle stairs.")
                     return
                 }
 
@@ -64,6 +64,11 @@ class OpenBank(script: Script) : Leaf<Script>(script, "Opening Bank") {
                     Condition.sleep(Random.nextGaussian(170, 250, 200, 20.0))
                 }
 
+                if (Players.local().floor() != 1) {
+                    LoggingService.info("Failed to walk up the stairs on the bottom floor.")
+                    return
+                }
+
                 var secondStairCase = Objects.stream().within(6).id(16672).first()
                 for (n in 1..30) {
                     if (secondStairCase.valid())
@@ -74,7 +79,7 @@ class OpenBank(script: Script) : Leaf<Script>(script, "Opening Bank") {
                 }
 
                 if (!secondStairCase.valid()) {
-                    LoggingService.info("Failed to find the staircase on the second floor of the lumby castle")
+                    LoggingService.info("Failed to find the staircase on the first floor of the lumby castle.")
                     return
                 }
                 else for (n in 1..10) {
@@ -86,6 +91,11 @@ class OpenBank(script: Script) : Leaf<Script>(script, "Opening Bank") {
                     }
 
                     Condition.sleep(Random.nextGaussian(170, 250, 200, 20.0))
+                }
+
+                if (Players.local().floor() != 2) {
+                    LoggingService.info("Failed to walk up the stairs on the first floor.")
+                    return
                 }
 
                 while (!ScriptManager.isStopping() && (lumbyBankTopFloorPath.traverse()
