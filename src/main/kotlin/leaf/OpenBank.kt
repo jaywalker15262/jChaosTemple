@@ -97,8 +97,7 @@ class OpenBank(script: Script) : Leaf<Script>(script, "Opening Bank") {
                     LoggingService.info("Failed to walk up the stairs on the first floor.")
                     return
                 }
-
-                while (!ScriptManager.isStopping() && (lumbyBankTopFloorPath.traverse()
+                else while (!ScriptManager.isStopping() && (lumbyBankTopFloorPath.traverse()
                             || lumbyBankTopFloorPath.next() != lumbyBankTopFloorPath.end()))
                     Condition.sleep(50)
 
