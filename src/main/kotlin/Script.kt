@@ -46,7 +46,7 @@ import java.util.logging.Logger
 )
 
 class Script : TreeScript() {
-    private val lootingBagFullMessage = "You don't have space in your looting bag for that."
+    private val logoutInCombatErrorMessage = "You can't log out until 10 seconds after the end of combat."
     private val logger = Logger.getLogger(this.javaClass.name)
 
     @ValueChanged("stopAtLvl")
@@ -111,7 +111,7 @@ class Script : TreeScript() {
         // Ensure it's a game message not a player trying to mess it up
         if (messageEvent.sender.isNotEmpty())
             return
-        else if (messageEvent.message == lootingBagFullMessage)
+        else if (messageEvent.message == logoutInCombatErrorMessage)
             Constants.timeUntilNextLogOut = ScriptManager.getRuntime(true) + 10000
     }
 }
