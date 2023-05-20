@@ -10,6 +10,7 @@ import org.powbot.api.Random
 import org.powbot.api.rt4.*
 import org.powbot.api.rt4.walking.model.Skill
 import org.powbot.api.script.tree.Leaf
+import org.powbot.mobile.script.ScriptManager
 
 class TravelToAltar(script: Script) : Leaf<Script>(script, "Traveling To Altar") {
     override fun execute() {
@@ -154,7 +155,8 @@ class TravelToAltar(script: Script) : Leaf<Script>(script, "Traveling To Altar")
             LoggingService.severe("We were unable to open up the logout tab after starting to travel towards the altar.")
         else if (Constants.escapePker)
             return
-        else while (!Script.antiPkingCheck() && Skills.level(Skill.Hitpoints) != 0 && !Constants.AREA_LUMBY.contains(Players.local())
+        else while (!ScriptManager.isStopping() && !Script.antiPkingCheck() && Skills.level(Skill.Hitpoints) != 0
+            && !Constants.AREA_LUMBY.contains(Players.local())
             && (chaosAltarPath.traverse() || chaosAltarPath.next() != chaosAltarPath.end()))
             Condition.sleep(50)
 

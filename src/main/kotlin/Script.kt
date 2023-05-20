@@ -5,6 +5,7 @@ import com.jay.chaostemple.branch.IsInWildy
 import com.jay.chaostemple.branch.IsLoggedIn
 import org.powbot.api.Color
 import org.powbot.api.event.MessageEvent
+import org.powbot.api.rt4.Equipment
 import org.powbot.api.rt4.Inventory
 import org.powbot.api.rt4.Players
 import org.powbot.api.rt4.Skills
@@ -79,6 +80,8 @@ class Script : TreeScript() {
         addPaint(p)
 
         Constants.lastKnownPrayerXp = Skills.experience(Skill.Prayer)
+        if (Equipment.stream().isNotEmpty())
+            Constants.depositEquipment = true
     }
 
     companion object {

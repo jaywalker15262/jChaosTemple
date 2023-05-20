@@ -12,6 +12,7 @@ object Constants {
     var timeSinceLastXpDrop: Long = 0
     var lastKnownPrayerXp = 0
     var protectItem = true
+    var depositEquipment = false
     var boneType = "Dragon Bones"
     val BONE_TYPES = arrayOf("Dragon bones","Lava dragon bones","Dagannoth bones","Wyvern bones",
         "Superior dragon bones","Bones","Hydra bones","Babydragon bones")
@@ -65,6 +66,21 @@ object Constants {
         Tile(2978, 3842, 0), Tile(2979, 3843, 0), Tile(2980, 3844, 0),
         Tile(2981, 3845, 0), Tile(2982, 3846, 0), Tile(2982, 3847, 0),
         Tile(2982, 3848, 0)))
+    val lumbyBankBottomFloorPath = TilePath(arrayOf(Tile(3226, 3219, 0), Tile(3225, 3219, 0),
+        Tile(3224, 3219, 0), Tile(3223, 3219, 0), Tile(3222, 3219, 0),
+        Tile(3221, 3219, 0), Tile(3220, 3219, 0), Tile(3219, 3219, 0),
+        Tile(3218, 3219, 0), Tile(3217, 3219, 0), Tile(3216, 3219, 0),
+        Tile(3215, 3219, 0), Tile(3215, 3220, 0), Tile(3215, 3221, 0),
+        Tile(3215, 3222, 0), Tile(3215, 3223, 0), Tile(3215, 3224, 0),
+        Tile(3215, 3225, 0), Tile(3215, 3226, 0), Tile(3214, 3227, 0),
+        Tile(3213, 3228, 0), Tile(3212, 3228, 0), Tile(3211, 3228, 0),
+        Tile(3210, 3228, 0), Tile(3209, 3228, 0), Tile(3208, 3228, 0),
+        Tile(3207, 3228, 0), Tile(3206, 3228, 0)))
+    val lumbyBankTopFloorPath = TilePath(arrayOf(Tile(3206, 3229, 2), Tile(3206, 3228, 2),
+        Tile(3206, 3227, 2), Tile(3206, 3226, 2), Tile(3206, 3225, 2),
+        Tile(3206, 3224, 2), Tile(3206, 3223, 2), Tile(3206, 3222, 2),
+        Tile(3206, 3221, 2), Tile(3206, 3220, 2), Tile(3206, 3219, 2),
+        Tile(3207, 3219, 2), Tile(3208, 3219, 2), Tile(3208, 3220, 2)))
 
     // antipk stuff
     var worldId = 0

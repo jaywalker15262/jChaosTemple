@@ -50,7 +50,8 @@ class Suicide(script: Script) : Leaf<Script>(script, "Suiciding") {
                     return
             }
 
-            while (Skills.level(Skill.Hitpoints) != 0 && !Constants.AREA_LUMBY.contains(Players.local())
+            while (!ScriptManager.isStopping() && Skills.level(Skill.Hitpoints) != 0
+                && !Constants.AREA_LUMBY.contains(Players.local())
                 && (suicidePath.traverse() || suicidePath.next() != suicidePath.end())) {
                 if (Constants.AREA_ALTAR.contains(Players.local())) {
                     altarDoor = Objects.stream().within(20).id(1524, 1525).first()
@@ -126,7 +127,8 @@ class Suicide(script: Script) : Leaf<Script>(script, "Suiciding") {
             val escapePath = TilePath(generatePath.toTypedArray())
             if (!escapePath.valid())
                 return
-            else while (Skills.level(Skill.Hitpoints) != 0 && !Constants.AREA_LUMBY.contains(Players.local())
+            else while (!ScriptManager.isStopping() && Skills.level(Skill.Hitpoints) != 0
+                && !Constants.AREA_LUMBY.contains(Players.local())
                 && (escapePath.traverse() || escapePath.next() != escapePath.end()))
                 Condition.sleep(50)
 

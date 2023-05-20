@@ -17,7 +17,7 @@ class HaveInventory(script: Script) : Branch<Script>(script, "Have proper invent
 
     override fun validate(): Boolean {
         Constants.escapePker = false
-        return Inventory.stream().name(Constants.boneType).count().toInt() == 27 &&
+        return !Constants.depositEquipment && Inventory.stream().name(Constants.boneType).count().toInt() == 27 &&
                 Inventory.stream().name(*Constants.BURNING_AMULETS).count().toInt() == 1
     }
 }

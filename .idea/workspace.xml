@@ -4,10 +4,16 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="fed035d4-b86d-4be4-b658-43119d004291" name="Changes" comment="Improvements towards handling teleporting to the lava maze.">
+    <list default="true" id="fed035d4-b86d-4be4-b658-43119d004291" name="Changes" comment="We will no longer stop what we are doing if we are already in combat or cannot logout.">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/Constants.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/Constants.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/kotlin/Script.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/Script.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/branch/BankOpenBranches.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/branch/BankOpenBranches.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/leaf/OfferBones.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/leaf/OfferBones.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/kotlin/leaf/OpenBank.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/leaf/OpenBank.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/leaf/antipk/LogOut.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/leaf/antipk/LogOut.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/leaf/Suicide.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/leaf/Suicide.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/leaf/TravelToAltar.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/leaf/TravelToAltar.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/leaf/bankopened/DepositInventory.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/leaf/bankopened/DepositInventory.kt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -28,6 +34,19 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
+  "lastFilter": {
+    "state": "OPEN"
+  }
+}]]></component>
+  <component name="GithubPullRequestsUISettings">
+    <option name="selectedUrlAndAccountId">
+      <UrlAndAccount>
+        <option name="accountId" value="8bda3128-fe05-430d-9ff5-a95519cde14e" />
+        <option name="url" value="https://github.com/jaywalker15262/jChaosTemple.git" />
+      </UrlAndAccount>
+    </option>
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -104,7 +123,13 @@
       <option name="presentableId" value="LOCAL−00006" />
       <updated>1684592164908</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL−00007" summary="We will no longer stop what we are doing if we are already in combat or cannot logout.">
+      <created>1684592984892</created>
+      <option name="number" value="LOCAL−00007" />
+      <option name="presentableId" value="LOCAL−00007" />
+      <updated>1684592984892</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -125,6 +150,7 @@
     <MESSAGE value="Cleanup and improvement of the commit which added support for Big bones." />
     <MESSAGE value="Improvements towards handling traveling and suiciding." />
     <MESSAGE value="Improvements towards handling teleporting to the lava maze." />
-    <option name="LAST_COMMIT_MESSAGE" value="Improvements towards handling teleporting to the lava maze." />
+    <MESSAGE value="We will no longer stop what we are doing if we are already in combat or cannot logout." />
+    <option name="LAST_COMMIT_MESSAGE" value="We will no longer stop what we are doing if we are already in combat or cannot logout." />
   </component>
 </project>

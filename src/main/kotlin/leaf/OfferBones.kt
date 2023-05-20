@@ -78,6 +78,8 @@ class OfferBones(script: Script) : Leaf<Script>(script, "Offering Bones") {
         for (n in 1..5) {
             if (Script.antiPkingCheck())
                 return
+            else if (!altar.inViewport())
+                Camera.turnTo(altar)
             else if (prayerXp != Skills.experience(Skill.Prayer) || (altar.interact("Use")
                         && Condition.wait({ prayerXp != Skills.experience(Skill.Prayer) || Script.antiPkingCheck() }, 50, 60))) {
                 Constants.timeSinceLastXpDrop = ScriptManager.getRuntime(true) + 3000
