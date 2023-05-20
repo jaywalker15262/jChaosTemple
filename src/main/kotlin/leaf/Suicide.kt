@@ -160,7 +160,7 @@ class Suicide(script: Script) : Leaf<Script>(script, "Suiciding") {
         /* Chaos Fanatic might not always be alive and is sometimes killed or in combat with other players/bots.
         So as counter measure to make sure we die, make sure we wait for him to spawn and to attack him instead of
         waiting for us to timeout and the script ending*/
-        var chaosFanatic = Npcs.stream().within(23).name("Chaos fanatic").filtered {
+        var chaosFanatic = Npcs.stream().within(13).name("Chaos fanatic").filtered {
             it.distanceTo(Players.local()).toInt() <= 11 && !it.healthBarVisible() && it.inViewport() }.first()
         // Some users might use accounts with high stats that are really tanky, and so we should wait at least a full minute.
         for (n in 1..1200) {
