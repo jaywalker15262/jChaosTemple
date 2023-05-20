@@ -15,7 +15,7 @@ object Constants {
     var depositEquipment = false
     var boneType = "Dragon Bones"
     val BONE_TYPES = arrayOf("Dragon bones","Lava dragon bones","Dagannoth bones","Wyvern bones",
-        "Superior dragon bones","Bones","Hydra bones","Babydragon bones")
+        "Big bones", "Superior dragon bones","Bones","Hydra bones","Babydragon bones")
     val BURNING_AMULETS = arrayOf("Burning amulet(5)", "Burning amulet(4)", "Burning amulet(3)",
         "Burning amulet(2)", "Burning amulet(1)")
 
