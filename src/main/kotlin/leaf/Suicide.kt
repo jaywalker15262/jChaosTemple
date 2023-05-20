@@ -167,7 +167,7 @@ class Suicide(script: Script) : Leaf<Script>(script, "Suiciding") {
             if (Constants.AREA_LUMBY.contains(Players.local()))
                 return
             // Let's afk until Chaos Fanatic is there, so that we do not time out.
-            while (Game.loggedIn() && !Constants.AREA_LUMBY.contains(Players.local())
+            else while (Game.loggedIn() && !Constants.AREA_LUMBY.contains(Players.local())
                 && Skills.level(Skill.Hitpoints) > 0 && !Players.local().healthBarVisible() &&
                 (!chaosFanatic.valid() || Players.local().interacting() != chaosFanatic)) {
                 for (i in 1..20) {
