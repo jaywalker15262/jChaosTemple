@@ -63,35 +63,59 @@ class TravelToAltar(script: Script) : Leaf<Script>(script, "Traveling To Altar")
                 Constants.emptySlotCountCheck = 28
             else Constants.emptySlotCountCheck = 27
 
+            var lavaMazeChatOption = Chat.stream().text("Lava Maze").first()
             for (n in 1..10) {
-                if (Chat.chatting() || (burningAmulet.interact("Rub") && Condition.wait({ Chat.chatting() }, 50, 50)))
+                if (lavaMazeChatOption.valid())
+                    break
+                else if (burningAmulet.interact("Rub")) {
+                    for (i in 1..80) {
+                        lavaMazeChatOption = Chat.stream().text("Lava Maze").first()
+                        if (lavaMazeChatOption.valid())
+                            break
+
+                        Condition.sleep(50)
+                    }
+                }
+
+                Condition.sleep(Random.nextGaussian(170, 250, 200, 20.0))
+            }
+
+            if (!lavaMazeChatOption.valid()) {
+                LoggingService.info("Failed to find chat options after attempting to rub the amulet.")
+                return
+            }
+
+            var wildernessChatOption = Chat.stream().text("Okay, teleport to level 41 Wilderness.").first()
+            for (n in 1..5) {
+                Input.send("3")
+                for (i in 1..80) {
+                    wildernessChatOption = Chat.stream().text("Okay, teleport to level 41 Wilderness.").first()
+                    if (wildernessChatOption.valid()) {
+                        Condition.sleep(Random.nextGaussian(270, 450, 300, 30.0))
+                        break
+                    }
+
+                    Condition.sleep(50)
+                }
+                if (wildernessChatOption.valid())
                     break
 
                 Condition.sleep(Random.nextGaussian(170, 250, 200, 20.0))
             }
 
-            Condition.sleep(Random.nextGaussian(170, 250, 200, 20.0))
-            if (!Chat.chatting()) {
-                LoggingService.info("Failed to find chat options after attempting to rub the amulet.")
+            if (!wildernessChatOption.valid()) {
+                LoggingService.info("Failed to find the next chat option.")
                 return
             }
-
-            /* Will need to have a working reimplementation of this in the future.
-            if (!Input.send("3")) {
-                if (!Condition.wait({ !Chat.chatting() }, 50 ,80)
-                    || !Input.send("3") || !Condition.wait({ !Chat.chatting() }, 50 ,80))
-                    return
+            else for (n in 1..5) {
+                Input.send("1")
+                if (Condition.wait({ Players.local().distanceTo(Constants.lavaMazeTile).toInt() < 10 }, 50, 140))
+                    break
             }
-            else if (!Condition.wait({ !Chat.chatting() }, 50 ,80))
-                return*/
-            if (!Input.send("3"))
+            if (Players.local().distanceTo(Constants.lavaMazeTile).toInt() > 9) {
+                LoggingService.info("Failed to find that teleported to the Lava Maze.")
                 return
-
-            Condition.sleep(Random.nextGaussian(370, 550, 400, 30.0))
-            if (!Input.send("1"))
-                return
-            else if (!Condition.wait({ Players.local().distanceTo(Constants.lavaMazeTile).toInt() < 10 }, 50, 140))
-                return
+            }
         }
 
         // Protect item support

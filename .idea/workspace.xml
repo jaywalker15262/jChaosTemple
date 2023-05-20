@@ -4,10 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="fed035d4-b86d-4be4-b658-43119d004291" name="Changes" comment="Cleanup and improvement of the commit which added support for Big bones.">
+    <list default="true" id="fed035d4-b86d-4be4-b658-43119d004291" name="Changes" comment="Improvements towards handling traveling and suiciding.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/Constants.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/Constants.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/leaf/Suicide.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/leaf/Suicide.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/kotlin/leaf/TravelToAltar.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/leaf/TravelToAltar.kt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -93,7 +91,13 @@
       <option name="presentableId" value="LOCAL−00004" />
       <updated>1684576098093</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL−00005" summary="Improvements towards handling traveling and suiciding.">
+      <created>1684579290338</created>
+      <option name="number" value="LOCAL−00005" />
+      <option name="presentableId" value="LOCAL−00005" />
+      <updated>1684579290338</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -112,6 +116,7 @@
     <MESSAGE value="Support for Big bones added." />
     <MESSAGE value="Cleanup and improvement of commit which added support for Big bones." />
     <MESSAGE value="Cleanup and improvement of the commit which added support for Big bones." />
-    <option name="LAST_COMMIT_MESSAGE" value="Cleanup and improvement of the commit which added support for Big bones." />
+    <MESSAGE value="Improvements towards handling traveling and suiciding." />
+    <option name="LAST_COMMIT_MESSAGE" value="Improvements towards handling traveling and suiciding." />
   </component>
 </project>
