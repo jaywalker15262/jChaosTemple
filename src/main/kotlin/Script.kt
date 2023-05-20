@@ -35,7 +35,7 @@ import java.util.logging.Logger
             "bone", "Bones to offer:",
             optionType = OptionType.STRING, defaultValue = "Dragon bones",
             allowedValues = arrayOf("Dragon bones","Lava dragon bones","Dagannoth bones","Wyvern bones",
-                "Superior dragon bones","Bones","Hydra bones","Babydragon bones")
+                "Big bones", "Superior dragon bones","Bones","Hydra bones","Babydragon bones")
         )
     ]
 )
