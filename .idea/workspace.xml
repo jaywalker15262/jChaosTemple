@@ -4,8 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="fed035d4-b86d-4be4-b658-43119d004291" name="Changes" comment="For the sake of consistency with coding style.">
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/leaf/OpenBank.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/leaf/OpenBank.kt" afterDir="false" />
+    <list default="true" id="fed035d4-b86d-4be4-b658-43119d004291" name="Changes" comment="Fixed bug for Big bones not being supported.">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/leaf/Suicide.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/leaf/Suicide.kt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -145,7 +146,25 @@
       <option name="presentableId" value="LOCAL−00011" />
       <updated>1684611533512</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL−00012" summary="Unnecessary, to have .inViewport() here, we are already handling that in the code below and having it here can cause unwanted downtime and idling.">
+      <created>1684612252305</created>
+      <option name="number" value="LOCAL−00012" />
+      <option name="presentableId" value="LOCAL−00012" />
+      <updated>1684612252305</updated>
+    </task>
+    <task id="LOCAL−00013" summary="For sake of consistency.">
+      <created>1684612334320</created>
+      <option name="number" value="LOCAL−00013" />
+      <option name="presentableId" value="LOCAL−00013" />
+      <updated>1684612334320</updated>
+    </task>
+    <task id="LOCAL−00014" summary="Fixed bug for Big bones not being supported.">
+      <created>1684612463334</created>
+      <option name="number" value="LOCAL−00014" />
+      <option name="presentableId" value="LOCAL−00014" />
+      <updated>1684612463334</updated>
+    </task>
+    <option name="localTasksCounter" value="15" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -170,6 +189,9 @@
     <MESSAGE value="Fixed some bugs &amp; inefficiencies with the lumby banking." />
     <MESSAGE value="Improved suiciding checking for empty inventory and added more logic and more failsafes when suiciding with Chaos Fantic." />
     <MESSAGE value="For the sake of consistency with coding style." />
-    <option name="LAST_COMMIT_MESSAGE" value="For the sake of consistency with coding style." />
+    <MESSAGE value="Unnecessary, to have .inViewport() here, we are already handling that in the code below and having it here can cause unwanted downtime and idling." />
+    <MESSAGE value="For sake of consistency." />
+    <MESSAGE value="Fixed bug for Big bones not being supported." />
+    <option name="LAST_COMMIT_MESSAGE" value="Fixed bug for Big bones not being supported." />
   </component>
 </project>
