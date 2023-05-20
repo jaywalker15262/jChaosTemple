@@ -6,14 +6,7 @@
   <component name="ChangeListManager">
     <list default="true" id="fed035d4-b86d-4be4-b658-43119d004291" name="Changes" comment="We will no longer stop what we are doing if we are already in combat or cannot logout.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/Constants.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/Constants.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/Script.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/Script.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/branch/BankOpenBranches.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/branch/BankOpenBranches.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/leaf/OfferBones.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/leaf/OfferBones.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/kotlin/leaf/OpenBank.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/leaf/OpenBank.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/leaf/Suicide.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/leaf/Suicide.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/leaf/TravelToAltar.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/leaf/TravelToAltar.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/leaf/bankopened/DepositInventory.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/leaf/bankopened/DepositInventory.kt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

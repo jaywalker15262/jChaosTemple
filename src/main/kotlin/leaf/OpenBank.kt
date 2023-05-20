@@ -46,14 +46,16 @@ class OpenBank(script: Script) : Leaf<Script>(script, "Opening Bank") {
                     LoggingService.info("Failed to find the staircase in lumby castle")
                     return
                 }
-                else if (Condition.wait({ stairCase.inViewport() && (Players.local().distanceTo(stairCase).toInt() < 6
-                        || !Players.local().inMotion()) }, 50, 120)) {
+                else if (!Condition.wait({ Players.local().distanceTo(stairCase).toInt() < 6
+                        || (stairCase.inViewport() && !Players.local().inMotion()) }, 50, 300)) {
                     LoggingService.info("Failed to walk to the lumby castle stairs")
                     return
                 }
 
                 for (n in 1..10) {
-                    if (Players.local().floor() == 1
+                    if (!stairCase.inViewport())
+                        Camera.turnTo(stairCase)
+                    else if (Players.local().floor() == 1
                         || (stairCase.interact("Climb-up") && Condition.wait({ Players.local().floor() == 1 }, 50, 90))) {
                         Condition.sleep(Random.nextGaussian(170, 250, 200, 20.0))
                         break
@@ -62,13 +64,13 @@ class OpenBank(script: Script) : Leaf<Script>(script, "Opening Bank") {
                     Condition.sleep(Random.nextGaussian(170, 250, 200, 20.0))
                 }
 
-                var secondStairCase = Objects.stream().within(4).id(16672).first()
+                var secondStairCase = Objects.stream().within(6).id(16672).first()
                 for (n in 1..30) {
                     if (secondStairCase.valid())
                         break
 
                     Condition.sleep(100)
-                    secondStairCase = Objects.stream().within(4).id(16672).first()
+                    secondStairCase = Objects.stream().within(6).id(16672).first()
                 }
 
                 if (!secondStairCase.valid()) {
