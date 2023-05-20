@@ -4,9 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="fed035d4-b86d-4be4-b658-43119d004291" name="Changes" comment="We will no longer stop what we are doing if we are already in combat or cannot logout.">
+    <list default="true" id="fed035d4-b86d-4be4-b658-43119d004291" name="Changes" comment="Fixed some bugs &amp; inefficiencies with the lumby banking.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/leaf/OpenBank.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/leaf/OpenBank.kt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -122,7 +121,13 @@
       <option name="presentableId" value="LOCAL−00007" />
       <updated>1684592984892</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL−00008" summary="Fixed some bugs &amp; inefficiencies with the lumby banking.">
+      <created>1684601983551</created>
+      <option name="number" value="LOCAL−00008" />
+      <option name="presentableId" value="LOCAL−00008" />
+      <updated>1684601983551</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -144,6 +149,7 @@
     <MESSAGE value="Improvements towards handling traveling and suiciding." />
     <MESSAGE value="Improvements towards handling teleporting to the lava maze." />
     <MESSAGE value="We will no longer stop what we are doing if we are already in combat or cannot logout." />
-    <option name="LAST_COMMIT_MESSAGE" value="We will no longer stop what we are doing if we are already in combat or cannot logout." />
+    <MESSAGE value="Fixed some bugs &amp; inefficiencies with the lumby banking." />
+    <option name="LAST_COMMIT_MESSAGE" value="Fixed some bugs &amp; inefficiencies with the lumby banking." />
   </component>
 </project>
