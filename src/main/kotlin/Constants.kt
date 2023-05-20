@@ -11,6 +11,7 @@ object Constants {
     var emptySlotCountCheck = 27
     var timeSinceLastXpDrop: Long = 0
     var lastKnownPrayerXp = 0
+    var protectItem = true
     var boneType = "Dragon Bones"
     val BONE_TYPES = arrayOf("Dragon bones","Lava dragon bones","Dagannoth bones","Wyvern bones",
         "Superior dragon bones","Bones","Hydra bones","Babydragon bones")

@@ -36,6 +36,10 @@ import java.util.logging.Logger
             optionType = OptionType.STRING, defaultValue = "Dragon bones",
             allowedValues = arrayOf("Dragon bones","Lava dragon bones","Dagannoth bones","Wyvern bones",
                 "Big bones", "Superior dragon bones","Bones","Hydra bones","Babydragon bones")
+        ),
+        ScriptConfiguration(
+            "protectItem", "Use Protect Item?",
+            optionType = OptionType.BOOLEAN, defaultValue = "true"
         )
     ]
 )
@@ -54,6 +58,11 @@ class Script : TreeScript() {
     fun boneTypeChanged(newValue: String) {
         if (Constants.BONE_TYPES.contains(newValue))
             Constants.boneType = newValue
+    }
+
+    @ValueChanged("protectItem")
+    fun protectItemChanged(newValue: Boolean) {
+        Constants.protectItem = newValue
     }
 
     override val rootComponent: TreeComponent<*> by lazy {

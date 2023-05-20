@@ -4,8 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="fed035d4-b86d-4be4-b658-43119d004291" name="Changes" comment="Support for Protect Item.">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    <list default="true" id="fed035d4-b86d-4be4-b658-43119d004291" name="Changes" comment="Cleanup and improvement of the commit which added support for Big bones.">
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/Constants.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/Constants.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/Script.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/Script.kt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -72,7 +73,25 @@
       <option name="presentableId" value="LOCAL−00001" />
       <updated>1684573274773</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL−00002" summary="Support for Big bones added.">
+      <created>1684574603162</created>
+      <option name="number" value="LOCAL−00002" />
+      <option name="presentableId" value="LOCAL−00002" />
+      <updated>1684574603162</updated>
+    </task>
+    <task id="LOCAL−00003" summary="Cleanup and improvement of commit which added support for Big bones.">
+      <created>1684576056527</created>
+      <option name="number" value="LOCAL−00003" />
+      <option name="presentableId" value="LOCAL−00003" />
+      <updated>1684576056527</updated>
+    </task>
+    <task id="LOCAL−00004" summary="Cleanup and improvement of the commit which added support for Big bones.">
+      <created>1684576098093</created>
+      <option name="number" value="LOCAL−00004" />
+      <option name="presentableId" value="LOCAL−00004" />
+      <updated>1684576098093</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -88,6 +107,9 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Support for Protect Item." />
-    <option name="LAST_COMMIT_MESSAGE" value="Support for Protect Item." />
+    <MESSAGE value="Support for Big bones added." />
+    <MESSAGE value="Cleanup and improvement of commit which added support for Big bones." />
+    <MESSAGE value="Cleanup and improvement of the commit which added support for Big bones." />
+    <option name="LAST_COMMIT_MESSAGE" value="Cleanup and improvement of the commit which added support for Big bones." />
   </component>
 </project>

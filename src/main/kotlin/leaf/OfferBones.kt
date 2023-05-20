@@ -37,9 +37,30 @@ class OfferBones(script: Script) : Leaf<Script>(script, "Offering Bones") {
             altar = Objects.stream().within(20).name("Chaos altar").first()
         }
 
-        if (!altar.valid())
+        if (!altar.valid()) {
+            LoggingService.info("Failed to find the Chaos Temple altar.")
             return
-        else for (n in 1..10) {
+        }
+        // Protect item support
+        else if (Constants.protectItem && Skills.realLevel(Skill.Prayer) >= 25 && Skills.level(Skill.Prayer) > 5
+            && !Prayer.prayerActive(Prayer.Effect.PROTECT_ITEM)) {
+            for (n in 1..10) {
+                if (Script.antiPkingCheck())
+                    return
+                else if (Prayer.prayerActive(Prayer.Effect.PROTECT_ITEM)
+                    || (Prayer.prayer(Prayer.Effect.PROTECT_ITEM, true)
+                            && Condition.wait({ Prayer.prayerActive(Prayer.Effect.PROTECT_ITEM)
+                            || Script.antiPkingCheck() }, 50, 50)))
+                    break
+
+                Condition.sleep(Random.nextGaussian(170, 250, 200, 20.0))
+            }
+
+            if (!Prayer.prayerActive(Prayer.Effect.PROTECT_ITEM))
+                LoggingService.info("Failed to turn on Protect Item.")
+        }
+
+        for (n in 1..10) {
             if (Script.antiPkingCheck())
                 return
             if (bone.interact("Use")) {
@@ -64,27 +85,6 @@ class OfferBones(script: Script) : Leaf<Script>(script, "Offering Bones") {
             }
 
             Condition.sleep(Random.nextGaussian(170, 250, 200, 20.0))
-        }
-
-        if (Constants.escapePker)
-            return
-        // Protect item support
-        else if (Skills.realLevel(Skill.Prayer) >= 25 && Skills.level(Skills.level(Skill.Prayer)) > 5
-            && !Prayer.prayerActive(Prayer.Effect.PROTECT_ITEM)) {
-            for (n in 1..10) {
-                if (Script.antiPkingCheck())
-                    return
-                else if (Prayer.prayerActive(Prayer.Effect.PROTECT_ITEM)
-                    || (Prayer.prayer(Prayer.Effect.PROTECT_ITEM, true)
-                            && Condition.wait({ Prayer.prayerActive(Prayer.Effect.PROTECT_ITEM)
-                            || Script.antiPkingCheck() }, 50, 50)))
-                    break
-
-                Condition.sleep(Random.nextGaussian(170, 250, 200, 20.0))
-            }
-
-            if (!Prayer.prayerActive(Prayer.Effect.PROTECT_ITEM))
-                LoggingService.info("Failed to turn on Protect Item.")
         }
 
         if (Constants.escapePker)

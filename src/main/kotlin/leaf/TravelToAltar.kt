@@ -33,7 +33,7 @@ class TravelToAltar(script: Script) : Leaf<Script>(script, "Traveling To Altar")
 
         if (wildyLevel == 1) {
             // Protect item support
-            if (Skills.realLevel(Skill.Prayer) >= 25 && Skills.level(Skills.level(Skill.Prayer)) > 5
+            if (Constants.protectItem && Skills.realLevel(Skill.Prayer) >= 25 && Skills.level(Skill.Prayer) > 5
                 && !Prayer.prayerActive(Prayer.Effect.PROTECT_ITEM)) {
                 for (n in 1..10) {
                     if (Prayer.prayerActive(Prayer.Effect.PROTECT_ITEM)
@@ -90,6 +90,29 @@ class TravelToAltar(script: Script) : Leaf<Script>(script, "Traveling To Altar")
                 return
             else if (!Condition.wait({ Players.local().distanceTo(Constants.lavaMazeTile).toInt() < 10 }, 50, 140))
                 return
+        }
+
+        // Protect item support
+        if (Constants.protectItem && Skills.realLevel(Skill.Prayer) >= 25 && Skills.level(Skill.Prayer) > 5
+            && !Prayer.prayerActive(Prayer.Effect.PROTECT_ITEM)) {
+            for (n in 1..10) {
+                if (Script.antiPkingCheck())
+                    return
+                else if (Prayer.prayerActive(Prayer.Effect.PROTECT_ITEM)) {
+                    break
+                }
+                else if (Prayer.prayer(Prayer.Effect.PROTECT_ITEM, true)
+                            && Condition.wait({ Prayer.prayerActive(Prayer.Effect.PROTECT_ITEM)
+                            || Script.antiPkingCheck() }, 50, 50)) {
+                    Condition.sleep(Random.nextGaussian(170, 250, 200, 20.0))
+                    break
+                }
+
+                Condition.sleep(Random.nextGaussian(170, 250, 200, 20.0))
+            }
+
+            if (!Prayer.prayerActive(Prayer.Effect.PROTECT_ITEM))
+                LoggingService.info("Failed to turn on Protect Item.")
         }
 
         for (n in 1..3) {
