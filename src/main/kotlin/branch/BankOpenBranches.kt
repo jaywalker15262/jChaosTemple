@@ -4,6 +4,7 @@ import com.jay.chaostemple.Constants
 import com.jay.chaostemple.Script
 import com.jay.chaostemple.leaf.OpenBank
 import com.jay.chaostemple.leaf.TravelToAltar
+import com.jay.chaostemple.leaf.bankopened.CloseBank
 import com.jay.chaostemple.leaf.bankopened.DepositInventory
 import com.jay.chaostemple.leaf.bankopened.SetupInventory
 import org.powbot.api.rt4.Bank
@@ -13,7 +14,18 @@ import org.powbot.api.script.tree.TreeComponent
 
 class HaveInventory(script: Script) : Branch<Script>(script, "Have proper inventory?") {
     override val successComponent: TreeComponent<Script> = TravelToAltar(script)
-    override val failedComponent: TreeComponent<Script> = IsBankOpened(script)
+    override val failedComponent: TreeComponent<Script> = OpenBank(script)
+
+    override fun validate(): Boolean {
+        Constants.escapePker = false
+        return !Constants.depositEquipment && Inventory.stream().name(Constants.boneType).count().toInt() == 27 &&
+                Inventory.stream().name(*Constants.BURNING_AMULETS).count().toInt() == 1
+    }
+}
+
+class HaveInventoryTwo(script: Script) : Branch<Script>(script, "Have proper inventory?") {
+    override val successComponent: TreeComponent<Script> = CloseBank(script)
+    override val failedComponent: TreeComponent<Script> = IsInventoryEmpty(script)
 
     override fun validate(): Boolean {
         Constants.escapePker = false
@@ -23,8 +35,8 @@ class HaveInventory(script: Script) : Branch<Script>(script, "Have proper invent
 }
 
 class IsBankOpened(script: Script) : Branch<Script>(script, "Bank open?") {
-    override val successComponent: TreeComponent<Script> = IsInventoryEmpty(script)
-    override val failedComponent: TreeComponent<Script> = OpenBank(script)
+    override val successComponent: TreeComponent<Script> = HaveInventoryTwo(script)
+    override val failedComponent: TreeComponent<Script> = HaveInventory(script)
 
     override fun validate(): Boolean {
         return Bank.opened()

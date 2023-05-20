@@ -1,15 +1,12 @@
 package com.jay.chaostemple.branch
 
-import com.jay.chaostemple.Constants
 import com.jay.chaostemple.Script
 import com.jay.chaostemple.leaf.antipk.LogIn
 import com.jay.chaostemple.leaf.antipk.LogOut
 import org.powbot.api.rt4.Game
-import org.powbot.api.rt4.Inventory
 import org.powbot.api.rt4.Players
 import org.powbot.api.script.tree.Branch
 import org.powbot.api.script.tree.TreeComponent
-import java.awt.geom.NoninvertibleTransformException
 
 /**
  *  The root node which is executed by the script
@@ -25,7 +22,7 @@ class IsLoggedIn(script: Script) : Branch<Script>(script, "Logged In?") {
 
 class IsInWildy(script: Script) : Branch<Script>(script, "In Wildy?") {
     override val successComponent: TreeComponent<Script> = AntiPking(script)
-    override val failedComponent: TreeComponent<Script> = HaveInventory(script)
+    override val failedComponent: TreeComponent<Script> = IsBankOpened(script)
     companion object {
         var wildyLevel: Int = 0
         var yCoord = 0

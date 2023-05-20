@@ -14,19 +14,6 @@ import org.powbot.mobile.script.ScriptManager
 
 class TravelToAltar(script: Script) : Leaf<Script>(script, "Traveling To Altar") {
     override fun execute() {
-        for (n in 1..10) {
-            if (!Bank.opened())
-                break
-            else if (Bank.close()) {
-                if (Condition.wait({ !Bank.opened() }, 50, 50)) {
-                    Condition.sleep(Random.nextGaussian(170, 250, 200, 20.0))
-                    break
-                }
-            }
-
-            Condition.sleep(Random.nextGaussian(170, 250, 200, 20.0))
-        }
-
         var wildyLevel = 1
         val yCoord = Players.local().y()
         if (yCoord > 3527)

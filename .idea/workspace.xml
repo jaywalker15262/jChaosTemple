@@ -4,8 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="fed035d4-b86d-4be4-b658-43119d004291" name="Changes" comment="Fixes a bug that causes us to not immediately offer bones upon arriving at the altar.">
+    <list default="true" id="fed035d4-b86d-4be4-b658-43119d004291" name="Changes" comment="Grouping and seperating some constants for readability and navigation">
+      <change afterPath="$PROJECT_DIR$/src/main/kotlin/leaf/bankopened/CloseBank.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/branch/BankOpenBranches.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/branch/BankOpenBranches.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/branch/RootBranch.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/branch/RootBranch.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/leaf/TravelToAltar.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/leaf/TravelToAltar.kt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -175,7 +179,19 @@
       <option name="presentableId" value="LOCAL−00016" />
       <updated>1684614055988</updated>
     </task>
-    <option name="localTasksCounter" value="17" />
+    <task id="LOCAL−00017" summary="Oops, copied over the wrong one.">
+      <created>1684619323759</created>
+      <option name="number" value="LOCAL−00017" />
+      <option name="presentableId" value="LOCAL−00017" />
+      <updated>1684619323759</updated>
+    </task>
+    <task id="LOCAL−00018" summary="Grouping and seperating some constants for readability and navigation">
+      <created>1684619693608</created>
+      <option name="number" value="LOCAL−00018" />
+      <option name="presentableId" value="LOCAL−00018" />
+      <updated>1684619693608</updated>
+    </task>
+    <option name="localTasksCounter" value="19" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -205,6 +221,8 @@
     <MESSAGE value="Fixed bug for Big bones not being supported." />
     <MESSAGE value="This is a better check." />
     <MESSAGE value="Fixes a bug that causes us to not immediately offer bones upon arriving at the altar." />
-    <option name="LAST_COMMIT_MESSAGE" value="Fixes a bug that causes us to not immediately offer bones upon arriving at the altar." />
+    <MESSAGE value="Oops, copied over the wrong one." />
+    <MESSAGE value="Grouping and seperating some constants for readability and navigation" />
+    <option name="LAST_COMMIT_MESSAGE" value="Grouping and seperating some constants for readability and navigation" />
   </component>
 </project>
