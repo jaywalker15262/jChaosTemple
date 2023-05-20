@@ -32,6 +32,22 @@ class TravelToAltar(script: Script) : Leaf<Script>(script, "Traveling To Altar")
             wildyLevel = ((yCoord - 3528) / 8) + 2
 
         if (wildyLevel == 1) {
+            // Protect item support
+            if (Skills.realLevel(Skill.Prayer) >= 25 && Skills.level(Skills.level(Skill.Prayer)) > 5
+                && !Prayer.prayerActive(Prayer.Effect.PROTECT_ITEM)) {
+                for (n in 1..10) {
+                    if (Prayer.prayerActive(Prayer.Effect.PROTECT_ITEM)
+                        || (Prayer.prayer(Prayer.Effect.PROTECT_ITEM, true)
+                        && Condition.wait({ Prayer.prayerActive(Prayer.Effect.PROTECT_ITEM) }, 50, 50)))
+                        break
+
+                    Condition.sleep(Random.nextGaussian(170, 250, 200, 20.0))
+                }
+
+                if (!Prayer.prayerActive(Prayer.Effect.PROTECT_ITEM))
+                    LoggingService.info("Failed to turn on Protect Item.")
+            }
+
             var burningAmulet = Inventory.stream().name(*Constants.BURNING_AMULETS).first()
             for (n in 1..10) {
                 if (burningAmulet.valid())

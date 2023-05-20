@@ -5,10 +5,7 @@ import com.jay.chaostemple.LoggingService
 import com.jay.chaostemple.Script
 import org.powbot.api.Condition
 import org.powbot.api.Random
-import org.powbot.api.rt4.Game
-import org.powbot.api.rt4.Inventory
-import org.powbot.api.rt4.Objects
-import org.powbot.api.rt4.Skills
+import org.powbot.api.rt4.*
 import org.powbot.api.rt4.walking.model.Skill
 import org.powbot.api.script.tree.Leaf
 import org.powbot.mobile.script.ScriptManager
@@ -71,8 +68,28 @@ class OfferBones(script: Script) : Leaf<Script>(script, "Offering Bones") {
 
         if (Constants.escapePker)
             return
+        // Protect item support
+        else if (Skills.realLevel(Skill.Prayer) >= 25 && Skills.level(Skills.level(Skill.Prayer)) > 5
+            && !Prayer.prayerActive(Prayer.Effect.PROTECT_ITEM)) {
+            for (n in 1..10) {
+                if (Script.antiPkingCheck())
+                    return
+                else if (Prayer.prayerActive(Prayer.Effect.PROTECT_ITEM)
+                    || (Prayer.prayer(Prayer.Effect.PROTECT_ITEM, true)
+                            && Condition.wait({ Prayer.prayerActive(Prayer.Effect.PROTECT_ITEM)
+                            || Script.antiPkingCheck() }, 50, 50)))
+                    break
 
-        for (n in 1..3) {
+                Condition.sleep(Random.nextGaussian(170, 250, 200, 20.0))
+            }
+
+            if (!Prayer.prayerActive(Prayer.Effect.PROTECT_ITEM))
+                LoggingService.info("Failed to turn on Protect Item.")
+        }
+
+        if (Constants.escapePker)
+            return
+        else for (n in 1..3) {
             if (Script.antiPkingCheck())
                 return
             else if (Game.tab(Game.Tab.LOGOUT))
