@@ -8,7 +8,6 @@ import org.powbot.api.rt4.World
 
 object Constants {
     var stopAtLvl = 99
-    var emptySlotCountCheck = 27
     var lastKnownPrayerXp = 0
     var timeSinceLastXpDrop: Long = 0
 

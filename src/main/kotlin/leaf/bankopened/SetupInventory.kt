@@ -86,8 +86,5 @@ class SetupInventory(script: Script) : Leaf<Script>(script, "Setting Up Inventor
             ScriptManager.stop()
             return
         }
-
-        // Fixes a bug that causes us to not immediately offer bones upon arriving at the altar.
-        Constants.lastKnownPrayerXp = Skills.experience(Skill.Prayer)
     }
 }

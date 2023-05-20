@@ -47,9 +47,6 @@ class TravelToAltar(script: Script) : Leaf<Script>(script, "Traveling To Altar")
 
             if (!burningAmulet.valid())
                 return
-            else if (burningAmulet.name() == "Burning amulet(1)")
-                Constants.emptySlotCountCheck = 28
-            else Constants.emptySlotCountCheck = 27
 
             var lavaMazeChatOption = Chat.stream().text("Lava Maze").first()
             for (n in 1..10) {

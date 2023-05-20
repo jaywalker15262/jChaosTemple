@@ -47,7 +47,6 @@ import java.util.logging.Logger
 
 class Script : TreeScript() {
     private val logoutInCombatErrorMessage = "You can't log out until 10 seconds after the end of combat."
-    private val logger = Logger.getLogger(this.javaClass.name)
 
     @ValueChanged("stopAtLvl")
     fun stopAtLevelChanged(newValue: Int) {

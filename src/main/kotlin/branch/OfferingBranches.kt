@@ -22,7 +22,7 @@ class OfferingCheck(script: Script) : Branch<Script>(script, "Already offering?"
             Constants.timeSinceLastXpDrop = ScriptManager.getRuntime(true) + 3000
         }
 
-        return Inventory.emptySlotCount() != Constants.emptySlotCountCheck && Constants.timeSinceLastXpDrop > ScriptManager.getRuntime(true)
+        return Inventory.stream().name(Constants.boneType).isNotEmpty() && Constants.timeSinceLastXpDrop > ScriptManager.getRuntime(true)
     }
 }
 
@@ -31,6 +31,6 @@ class SuicideCheck(script: Script) : Branch<Script>(script, "Time to suicide?") 
     override val failedComponent: TreeComponent<Script> = OfferBones(script)
 
     override fun validate(): Boolean {
-        return Inventory.emptySlotCount() == Constants.emptySlotCountCheck
+        return Inventory.stream().name(Constants.boneType).isEmpty()
     }
 }

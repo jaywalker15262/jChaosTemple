@@ -13,7 +13,7 @@ class AtAltar(script: Script) : Branch<Script>(script, "At the altar?") {
     override val failedComponent: TreeComponent<Script> = SuicideCheckTwo(script)
 
     override fun validate(): Boolean {
-        return Constants.AREA_ALTAR.contains(Players.local()) && Inventory.emptySlotCount() != Constants.emptySlotCountCheck
+        return Constants.AREA_ALTAR.contains(Players.local()) && Inventory.stream().name(Constants.boneType).isNotEmpty()
     }
 }
 
@@ -22,6 +22,6 @@ class SuicideCheckTwo(script: Script) : Branch<Script>(script, "Time to suicide?
     override val failedComponent: TreeComponent<Script> = TravelToAltar(script)
 
     override fun validate(): Boolean {
-        return Inventory.emptySlotCount() == Constants.emptySlotCountCheck
+        return Inventory.stream().name(Constants.boneType).isEmpty()
     }
 }
