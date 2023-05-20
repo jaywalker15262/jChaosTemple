@@ -15,8 +15,10 @@ import org.powbot.mobile.script.ScriptManager
 class LogOut(script: Script) : Leaf<Script>(script, "Logging Out") {
     override fun execute() {
         // We are in combat so we cannot log out.
-        if (Players.local().inCombat() || Constants.timeUntilNextLogOut > ScriptManager.getRuntime(true))
+        if (Players.local().inCombat() || Constants.timeUntilNextLogOut > ScriptManager.getRuntime(true)) {
+            Condition.sleep(50)
             return
+        }
 
         // We are not in combat so let's attempt to log out instantly.
         SettingsManager.set(ToggleId.AutoLogin, false)

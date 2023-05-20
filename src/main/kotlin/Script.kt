@@ -83,7 +83,9 @@ class Script : TreeScript() {
 
     companion object {
         fun antiPkingCheck(): Boolean {
-            if (Inventory.stream().name(Constants.boneType).count() < 3)
+            // Do not stop what we are doing if we are in combat, we cannot log out anyway.
+            if (Inventory.stream().name(Constants.boneType).count() < 3
+                || Players.local().inCombat() || Constants.timeUntilNextLogOut > ScriptManager.getRuntime(true))
                 return false
 
             val playerCombatLevel = Players.local().combatLevel
