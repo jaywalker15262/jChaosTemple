@@ -6,13 +6,9 @@
   <component name="ChangeListManager">
     <list default="true" id="fed035d4-b86d-4be4-b658-43119d004291" name="Changes" comment="Minor logic improvements.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/Constants.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/Constants.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/Script.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/Script.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/branch/MovementBranches.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/branch/MovementBranches.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/branch/OfferingBranches.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/branch/OfferingBranches.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/leaf/TravelToAltar.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/leaf/TravelToAltar.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/leaf/bankopened/CloseBank.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/leaf/bankopened/CloseBank.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/leaf/bankopened/SetupInventory.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/leaf/bankopened/SetupInventory.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/leaf/OpenBank.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/leaf/OpenBank.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/leaf/antipk/LogIn.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/leaf/antipk/LogIn.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/leaf/antipk/LogOut.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/leaf/antipk/LogOut.kt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -200,7 +196,13 @@
       <option name="presentableId" value="LOCAL−00019" />
       <updated>1684623779226</updated>
     </task>
-    <option name="localTasksCounter" value="20" />
+    <task id="LOCAL−00020" summary="Minor logic improvements.">
+      <created>1684624144241</created>
+      <option name="number" value="LOCAL−00020" />
+      <option name="presentableId" value="LOCAL−00020" />
+      <updated>1684624144241</updated>
+    </task>
+    <option name="localTasksCounter" value="21" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">

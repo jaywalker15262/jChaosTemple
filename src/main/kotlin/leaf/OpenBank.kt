@@ -46,17 +46,21 @@ class OpenBank(script: Script) : Leaf<Script>(script, "Opening Bank") {
                     LoggingService.info("Failed to find the staircase in lumby castle.")
                     return
                 }
-                else if (!Condition.wait({ Players.local().distanceTo(stairCase).toInt() < 6
+                else if (!Condition.wait({ stairCase.distanceTo(Players.local()).toInt() < 5
                         || !Players.local().inMotion() }, 50, 300)) {
                     LoggingService.info("Failed to walk to the lumby castle stairs.")
                     return
                 }
 
+                stairCase.bounds(-26, 26, -76, 24, -26, 26)
                 for (n in 1..10) {
-                    if (!stairCase.inViewport())
+                    if (!stairCase.inViewport()) {
+                        LoggingService.info("Stairs are not in view.")
                         Camera.turnTo(stairCase)
-                    else if (Players.local().floor() == 1
-                        || (stairCase.interact("Climb-up") && Condition.wait({ Players.local().floor() == 1 }, 50, 90))) {
+                        Condition.wait({ stairCase.inViewport() }, 50, 50)
+                    }
+                    if (Players.local().floor() == 1
+                        || (stairCase.interact("Climb-up") && Condition.wait({ Game.floor() == 1 }, 50, 90))) {
                         Condition.sleep(Random.nextGaussian(170, 250, 200, 20.0))
                         break
                     }
@@ -82,7 +86,9 @@ class OpenBank(script: Script) : Leaf<Script>(script, "Opening Bank") {
                     LoggingService.info("Failed to find the staircase on the first floor of the lumby castle.")
                     return
                 }
-                else for (n in 1..10) {
+
+                secondStairCase.bounds(-26, 26, -76, 24, -26, 26)
+                for (n in 1..10) {
                     if (Players.local().floor() == 2
                         || (secondStairCase.interact("Climb-up", true)
                                 && Condition.wait({ Players.local().floor() == 2 }, 50, 90))) {
