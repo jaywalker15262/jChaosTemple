@@ -1,9 +1,7 @@
 package com.jay.chaostemple.leaf.antipk
 
-import com.jay.chaostemple.Constants
+import com.jay.chaostemple.Variables
 import com.jay.chaostemple.jChaosTemple
-import org.powbot.api.Condition
-import org.powbot.api.rt4.Game
 import org.powbot.api.rt4.Skills
 import org.powbot.api.rt4.walking.model.Skill
 import org.powbot.api.script.tree.Leaf
@@ -12,9 +10,9 @@ import org.powbot.mobile.ToggleId
 
 class LogIn(script: jChaosTemple) : Leaf<jChaosTemple>(script, "Logging In") {
     override fun execute() {
-        SettingsManager.set(ToggleId.AutoLogin, true)
-        while (!Game.loggedIn())
-            Condition.sleep(50)
-        Constants.LAST_KNOWN_PRAYER_XP = Skills.experience(Skill.Prayer)
+        if (!SettingsManager.enabled(ToggleId.AutoLogin)) {
+            SettingsManager.set(ToggleId.AutoLogin, true)
+            Variables.lastKnownPrayerXp = Skills.experience(Skill.Prayer)
+        }
     }
 }

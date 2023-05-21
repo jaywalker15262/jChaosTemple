@@ -1,6 +1,6 @@
 package com.jay.chaostemple.leaf
 
-import com.jay.chaostemple.Constants
+import com.jay.chaostemple.Variables
 import com.jay.chaostemple.jChaosTemple
 import org.powbot.api.Condition
 import org.powbot.api.Random
@@ -11,7 +11,7 @@ import org.powbot.mobile.script.ScriptManager
 
 class OfferBones(script: jChaosTemple) : Leaf<jChaosTemple>(script, "Offering Bones") {
     override fun execute() {
-        val bone = Inventory.stream().name(Constants.BONE_TYPE).first()
+        val bone = Inventory.stream().name(Variables.boneType).first()
         if (!bone.valid())
             return
 
@@ -21,7 +21,7 @@ class OfferBones(script: jChaosTemple) : Leaf<jChaosTemple>(script, "Offering Bo
             return
         }
         // Protect item support
-        else if (Constants.PROTECT_ITEM && Skills.realLevel(Skill.Prayer) >= 25 && Skills.level(Skill.Prayer) > 5
+        else if (Variables.protectItem && Skills.realLevel(Skill.Prayer) >= 25 && Skills.level(Skill.Prayer) > 5
             && !Prayer.prayerActive(Prayer.Effect.PROTECT_ITEM)) {
             for (n in 1..10) {
                 if (jChaosTemple.antiPkingCheck())
@@ -62,14 +62,14 @@ class OfferBones(script: jChaosTemple) : Leaf<jChaosTemple>(script, "Offering Bo
                 Camera.turnTo(altar)
             else if (prayerXp != Skills.experience(Skill.Prayer) || (altar.interact("Use")
                         && Condition.wait({ prayerXp != Skills.experience(Skill.Prayer) || jChaosTemple.antiPkingCheck() }, 50, 60))) {
-                Constants.TIME_SINCE_LAST_XP_DROP = ScriptManager.getRuntime(true) + 3000
+                Variables.timeSinceLastXpDrop = ScriptManager.getRuntime(true) + 3000
                 break
             }
 
             Condition.sleep(Random.nextGaussian(170, 250, 200, 20.0))
         }
 
-        if (Constants.ESCAPE_PKER)
+        if (Variables.escapePker)
             return
         else for (n in 1..3) {
             if (jChaosTemple.antiPkingCheck())

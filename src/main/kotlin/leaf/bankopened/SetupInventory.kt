@@ -1,5 +1,6 @@
 package com.jay.chaostemple.leaf.bankopened
 
+import com.jay.chaostemple.Variables
 import com.jay.chaostemple.Constants
 import com.jay.chaostemple.jChaosTemple
 import org.powbot.api.Condition
@@ -13,16 +14,16 @@ import org.powbot.mobile.script.ScriptManager
 
 class SetupInventory(script: jChaosTemple) : Leaf<jChaosTemple>(script, "Setting Up Inventory") {
     override fun execute() {
-        Constants.ESCAPE_PKER = false
-        if (Constants.STOP_AFTER_MINUTES > 0) {
+        Variables.escapePker = false
+        if (Variables.stopAfterMinutes > 0) {
             val minutes: Int = (ScriptManager.getRuntime(true) / 60000).toInt()
-            if (minutes >= Constants.STOP_AFTER_MINUTES) {
+            if (minutes >= Variables.stopAfterMinutes) {
                 script.info("Script stopping due to runtime goal reached.")
                 ScriptManager.stop()
                 return
             }
         }
-        if (Skills.realLevel(Skill.Prayer) >= Constants.STOP_AT_LEVEL) {
+        if (Skills.realLevel(Skill.Prayer) >= Variables.stopAtLvl) {
             script.info("Script stopping due to prayer level goal reached.")
             ScriptManager.stop()
             return
@@ -61,13 +62,13 @@ class SetupInventory(script: jChaosTemple) : Leaf<jChaosTemple>(script, "Setting
             }
         }
 
-        var bankBones = Bank.stream().name(Constants.BONE_TYPE).first()
+        var bankBones = Bank.stream().name(Variables.boneType).first()
         for (n in 1..10) {
             if (bankBones.valid())
                 break
 
             Condition.sleep(50)
-            bankBones = Bank.stream().name(Constants.BONE_TYPE).first()
+            bankBones = Bank.stream().name(Variables.boneType).first()
         }
 
         if (!bankBones.valid()) {

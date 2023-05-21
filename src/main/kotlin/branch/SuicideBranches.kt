@@ -1,6 +1,7 @@
 package com.jay.chaostemple.branch
 
 import com.jay.chaostemple.Constants
+import com.jay.chaostemple.Variables
 import com.jay.chaostemple.jChaosTemple
 import com.jay.chaostemple.leaf.OfferBones
 import com.jay.chaostemple.leaf.suiciding.Suicide
@@ -19,7 +20,7 @@ class SuicideCheck(script: jChaosTemple) : Branch<jChaosTemple>(script, "Time to
     override val failedComponent: TreeComponent<jChaosTemple> = OfferBones(script)
 
     override fun validate(): Boolean {
-        return Inventory.stream().name(Constants.BONE_TYPE).isEmpty()
+        return Inventory.stream().name(Variables.boneType).isEmpty()
     }
 }
 
@@ -28,7 +29,7 @@ class SuicideCheckTwo(script: jChaosTemple) : Branch<jChaosTemple>(script, "Time
     override val failedComponent: TreeComponent<jChaosTemple> = TravelToAltar(script)
 
     override fun validate(): Boolean {
-        return Inventory.stream().name(Constants.BONE_TYPE).isEmpty()
+        return Inventory.stream().name(Variables.boneType).isEmpty()
     }
 }
 
@@ -46,7 +47,7 @@ class WorldHopCheck(script: jChaosTemple) : Branch<jChaosTemple>(script, "World-
     override val failedComponent: TreeComponent<jChaosTemple> = Suicide(script)
 
     override fun validate(): Boolean {
-        return !Players.local().inCombat() && ScriptManager.getRuntime(true) > Constants.TIME_UNTIL_NEXT_LOGOUT &&
+        return !Players.local().inCombat() && ScriptManager.getRuntime(true) > Variables.timeUntilNextLogout &&
                 Npcs.stream().within(13).name("Chaos fanatic").filtered {
             it.distanceTo(Players.local()).toInt() <= 11 && it.inViewport() }.isEmpty()
     }

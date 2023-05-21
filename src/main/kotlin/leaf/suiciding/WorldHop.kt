@@ -1,6 +1,7 @@
 package com.jay.chaostemple.leaf.suiciding
 
 import com.jay.chaostemple.Constants
+import com.jay.chaostemple.Variables
 import com.jay.chaostemple.jChaosTemple
 import org.powbot.api.Condition
 import org.powbot.api.Random
@@ -11,13 +12,13 @@ import org.powbot.api.script.tree.Leaf
 
 class WorldHop(script: jChaosTemple) : Leaf<jChaosTemple>(script, "World-hopping") {
     override fun execute() {
-        var worlds = Worlds.stream().filtered { it.number != Constants.WORLD_ID && it.type == World.Type.MEMBERS
+        var worlds = Worlds.stream().filtered { it.number != Variables.worldId && it.type == World.Type.MEMBERS
                 && !Constants.WORLD_SPECIALITY_FILTER.contains(it.specialty) && it.population > 0 && it.population < 990 }
         for (n in 1..10) {
             if (worlds.isNotEmpty())
                 break
             Condition.sleep(50)
-            worlds = Worlds.stream().filtered { it.number != Constants.WORLD_ID && it.type == World.Type.MEMBERS
+            worlds = Worlds.stream().filtered { it.number != Variables.worldId && it.type == World.Type.MEMBERS
                     && !Constants.WORLD_SPECIALITY_FILTER.contains(it.specialty) && it.population > 0 && it.population < 990 }
         }
 
@@ -32,7 +33,7 @@ class WorldHop(script: jChaosTemple) : Leaf<jChaosTemple>(script, "World-hopping
             return
         }
 
-        Constants.WORLD_ID = newWorld.number
+        Variables.worldId = newWorld.number
         if (!newWorld.hop()) {
             Condition.sleep(Random.nextGaussian(170, 250, 200, 20.0))
             if (!newWorld.hop()) {
@@ -41,7 +42,7 @@ class WorldHop(script: jChaosTemple) : Leaf<jChaosTemple>(script, "World-hopping
             }
         }
 
-        if (!Condition.wait({ Worlds.current().number == Constants.WORLD_ID || Players.local().healthBarVisible() }, 50, 200)) {
+        if (!Condition.wait({ Worlds.current().number == Variables.worldId || Players.local().healthBarVisible() }, 50, 200)) {
             script.info("JayLOGS: Failed to find that we had hopped to our new world.")
             return
         }

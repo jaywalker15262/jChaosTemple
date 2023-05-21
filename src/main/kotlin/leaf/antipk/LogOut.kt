@@ -1,6 +1,7 @@
 package com.jay.chaostemple.leaf.antipk
 
 import com.jay.chaostemple.Constants
+import com.jay.chaostemple.Variables
 import com.jay.chaostemple.jChaosTemple
 import org.powbot.api.Condition
 import org.powbot.api.Input
@@ -14,7 +15,7 @@ import org.powbot.mobile.script.ScriptManager
 class LogOut(script: jChaosTemple) : Leaf<jChaosTemple>(script, "Logging Out") {
     override fun execute() {
         // We are in combat so we cannot log out.
-        if (Players.local().inCombat() || Constants.TIME_UNTIL_NEXT_LOGOUT > ScriptManager.getRuntime(true)) {
+        if (Players.local().inCombat() || Variables.timeUntilNextLogout > ScriptManager.getRuntime(true)) {
             Condition.sleep(50)
             return
         }
@@ -24,34 +25,34 @@ class LogOut(script: jChaosTemple) : Leaf<jChaosTemple>(script, "Logging Out") {
         if (!tryLogOut()) {
             if (ScriptManager.isStopping())
                 return
-            else if (Players.local().inCombat() || Constants.TIME_UNTIL_NEXT_LOGOUT > ScriptManager.getRuntime(true)) {
+            else if (Players.local().inCombat() || Variables.timeUntilNextLogout > ScriptManager.getRuntime(true)) {
                 Condition.wait{ Constants.AREA_LUMBY.contains(Players.local())
-                        || ScriptManager.getRuntime(true) > Constants.TIME_UNTIL_NEXT_LOGOUT }
+                        || ScriptManager.getRuntime(true) > Variables.timeUntilNextLogout }
                 return
             }
 
             Condition.sleep(Random.nextGaussian(170, 250, 200, 20.0))
             if (Game.loggedIn() && !Game.logout() && !Condition.wait({ !Game.loggedIn() || Players.local().inCombat()
-                        || Constants.TIME_UNTIL_NEXT_LOGOUT > ScriptManager.getRuntime(true) }, 50, 60)) {
+                        || Variables.timeUntilNextLogout > ScriptManager.getRuntime(true) }, 50, 60)) {
                 script.severe("Failed to log out to avoid getting pked.")
                 ScriptManager.stop()
                 return
             }
             else if (Game.loggedIn()) {
                 Condition.wait{ Constants.AREA_LUMBY.contains(Players.local())
-                        || ScriptManager.getRuntime(true) > Constants.TIME_UNTIL_NEXT_LOGOUT }
+                        || ScriptManager.getRuntime(true) > Variables.timeUntilNextLogout }
                 return
             }
         }
 
-        var worlds = Worlds.stream().filtered { it.number < 400 && it.number != Constants.WORLD_ID && it.type == World.Type.MEMBERS
+        var worlds = Worlds.stream().filtered { it.number < 400 && it.number != Variables.worldId && it.type == World.Type.MEMBERS
                 && !Constants.WORLD_SPECIALITY_FILTER.contains(it.specialty) && it.population > 0 && it.population < 990 }
         for (n in 1..10) {
             if (worlds.isNotEmpty())
                 break
 
             Condition.sleep(50)
-            worlds = Worlds.stream().filtered { it.number < 400 && it.number != Constants.WORLD_ID && it.type == World.Type.MEMBERS
+            worlds = Worlds.stream().filtered { it.number < 400 && it.number != Variables.worldId && it.type == World.Type.MEMBERS
                     && !Constants.WORLD_SPECIALITY_FILTER.contains(it.specialty) && it.population > 0 && it.population < 990 }
         }
 
@@ -99,25 +100,25 @@ class LogOut(script: jChaosTemple) : Leaf<jChaosTemple>(script, "Logging Out") {
 
                 Condition.sleep(25000)  // Wait for 25 sec to make sure pker no longer being there.
             }
-            else Constants.WORLD_ID = newWorld.number
+            else Variables.worldId = newWorld.number
         }
         else {
             script.info("Failed to open up the login-screen worldhopper.")
             Condition.sleep(30000)     // Wait for 30 sec to make sure pker no longer being there.
         }
 
-        Constants.ESCAPE_PKER = false
+        Variables.escapePker = false
     }
 
     private fun tryLogOut(): Boolean {
-        if (ScriptManager.getRuntime(true) >= Constants.TIME_UNTIL_NEXT_LOGOUT && Game.logout()) {
+        if (ScriptManager.getRuntime(true) >= Variables.timeUntilNextLogout && Game.logout()) {
             if (!Condition.wait({ !Game.loggedIn() || Players.local().inCombat()
-                        || Constants.TIME_UNTIL_NEXT_LOGOUT > ScriptManager.getRuntime(true) }, 50, 60)) {
+                        || Variables.timeUntilNextLogout > ScriptManager.getRuntime(true) }, 50, 60)) {
                 script.severe("Failed to find that we logged out.")
                 ScriptManager.stop()
                 return false
             }
-            else if (Players.local().inCombat() || Constants.TIME_UNTIL_NEXT_LOGOUT > ScriptManager.getRuntime(true))
+            else if (Players.local().inCombat() || Variables.timeUntilNextLogout > ScriptManager.getRuntime(true))
                 return false
 
             return true

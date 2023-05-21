@@ -2,6 +2,7 @@ package com.jay.chaostemple.leaf
 
 import com.jay.chaostemple.Constants
 import com.jay.chaostemple.Constants.CHAOS_ALTAR_PATH
+import com.jay.chaostemple.Variables
 import com.jay.chaostemple.jChaosTemple
 import org.powbot.api.Condition
 import org.powbot.api.Input
@@ -74,7 +75,7 @@ class TravelToAltar(script: jChaosTemple) : Leaf<jChaosTemple>(script, "Travelin
         }
 
         // Protect item support
-        if (Constants.PROTECT_ITEM && Skills.realLevel(Skill.Prayer) >= 25 && Skills.level(Skill.Prayer) > 5
+        if (Variables.protectItem && Skills.realLevel(Skill.Prayer) >= 25 && Skills.level(Skill.Prayer) > 5
             && !Prayer.prayerActive(Prayer.Effect.PROTECT_ITEM)) {
             for (n in 1..10) {
                 if (jChaosTemple.antiPkingCheck())
@@ -107,7 +108,7 @@ class TravelToAltar(script: jChaosTemple) : Leaf<jChaosTemple>(script, "Travelin
 
         if (!Condition.wait({ Game.tab() == Game.Tab.LOGOUT || jChaosTemple.antiPkingCheck() }, 50, 50))
             script.severe("We were unable to open up the logout tab after starting to travel towards the altar.")
-        else if (Constants.ESCAPE_PKER)
+        else if (Variables.escapePker)
             return
         else while (!ScriptManager.isStopping() && !jChaosTemple.antiPkingCheck() && Skills.level(Skill.Hitpoints) != 0
             && !Constants.AREA_LUMBY.contains(Players.local())
@@ -119,7 +120,7 @@ class TravelToAltar(script: jChaosTemple) : Leaf<jChaosTemple>(script, "Travelin
                     || !Players.local().inMotion() || jChaosTemple.antiPkingCheck() }, 50, 25)
         }
 
-        if (Constants.ESCAPE_PKER || Skills.level(Skill.Hitpoints) == 0 || Constants.AREA_LUMBY.contains(Players.local()))
+        if (Variables.escapePker || Skills.level(Skill.Hitpoints) == 0 || Constants.AREA_LUMBY.contains(Players.local()))
             return
         else if (Players.local().distanceTo(CHAOS_ALTAR_PATH.end()) > 8) {
             script.severe("We were unable to get to the entrance to the Chaos Temple.")
@@ -150,7 +151,7 @@ class TravelToAltar(script: jChaosTemple) : Leaf<jChaosTemple>(script, "Travelin
 
                 Camera.turnTo(altarDoor.tile)
                 if (Condition.wait({ altarDoor.inViewport() || jChaosTemple.antiPkingCheck() }, 50 ,25)) {
-                    if (Constants.ESCAPE_PKER)
+                    if (Variables.escapePker)
                         return
                 }
             }
@@ -166,7 +167,7 @@ class TravelToAltar(script: jChaosTemple) : Leaf<jChaosTemple>(script, "Travelin
                     return
                 else if (!altarDoor.valid() || (altarDoor.interact("Open")
                             && Condition.wait({ !altarDoor.valid() || jChaosTemple.antiPkingCheck()  }, 50, 50))) {
-                    if (Constants.ESCAPE_PKER)
+                    if (Variables.escapePker)
                         return
 
                     break
@@ -190,7 +191,7 @@ class TravelToAltar(script: jChaosTemple) : Leaf<jChaosTemple>(script, "Travelin
 
             Camera.turnTo(altarTileMatrix)
             if (Condition.wait({ altarTileMatrix.inViewport() || jChaosTemple.antiPkingCheck() }, 50 ,25)) {
-                if (Constants.ESCAPE_PKER)
+                if (Variables.escapePker)
                     return
             }
         }
@@ -221,7 +222,7 @@ class TravelToAltar(script: jChaosTemple) : Leaf<jChaosTemple>(script, "Travelin
                             return
                         else if (!altarDoor.valid() || (altarDoor.interact("Open")
                                     && Condition.wait({ !altarDoor.valid() || jChaosTemple.antiPkingCheck() }, 50, 50))) {
-                            if (Constants.ESCAPE_PKER)
+                            if (Variables.escapePker)
                                 return
 
                             break
@@ -237,7 +238,7 @@ class TravelToAltar(script: jChaosTemple) : Leaf<jChaosTemple>(script, "Travelin
 
             if (Movement.step(Constants.ALTAR_TILE) && Condition.wait({ Constants.AREA_ALTAR.contains(Players.local())
                         || jChaosTemple.antiPkingCheck() }, 50, 50)) {
-                if (Constants.ESCAPE_PKER)
+                if (Variables.escapePker)
                     return
 
                 break
@@ -257,7 +258,7 @@ class TravelToAltar(script: jChaosTemple) : Leaf<jChaosTemple>(script, "Travelin
 
         if (!Condition.wait({ Game.tab() == Game.Tab.LOGOUT || jChaosTemple.antiPkingCheck() }, 50, 50))
             script.severe("We were unable to open up the logout tab after starting to offer bones at he altar.")
-        else if (Constants.ESCAPE_PKER)
+        else if (Variables.escapePker)
             return
 
         if (!Constants.AREA_ALTAR.contains(Players.local()))

@@ -1,6 +1,6 @@
 package com.jay.chaostemple.leaf.bankopened
 
-import com.jay.chaostemple.Constants
+import com.jay.chaostemple.Variables
 import com.jay.chaostemple.jChaosTemple
 import org.powbot.api.Condition
 import org.powbot.api.Random
@@ -15,9 +15,9 @@ class DepositInventory(script: jChaosTemple) : Leaf<jChaosTemple>(script, "Depos
             Condition.wait({ Inventory.isEmpty() }, Condition.sleep(Random.nextGaussian(170, 250, 200, 20.0)), 13)
 
         // We only do this once upon script start
-        if (Constants.DEPOSIT_EQUIPMENT && (Equipment.stream().isEmpty() || (Bank.depositEquipment()
+        if (Variables.depositEquipment && (Equipment.stream().isEmpty() || (Bank.depositEquipment()
             && Condition.wait({ Equipment.stream().isEmpty() },
                 Condition.sleep(Random.nextGaussian(170, 250, 200, 20.0)), 13))))
-            Constants.DEPOSIT_EQUIPMENT = false
+            Variables.depositEquipment = false
     }
 }

@@ -1,6 +1,6 @@
 package com.jay.chaostemple.branch
 
-import com.jay.chaostemple.Constants
+import com.jay.chaostemple.Variables
 import com.jay.chaostemple.jChaosTemple
 import com.jay.chaostemple.leaf.Chill
 import org.powbot.api.rt4.Inventory
@@ -16,14 +16,14 @@ class OfferingCheck(script: jChaosTemple) : Branch<jChaosTemple>(script, "Alread
     override val failedComponent: TreeComponent<jChaosTemple> = SuicideCheck(script)
 
     override fun validate(): Boolean {
-        if (Constants.LAST_KNOWN_PRAYER_XP != Skills.experience(Skill.Prayer)) {
-            Constants.LAST_KNOWN_PRAYER_XP = Skills.experience(Skill.Prayer)
-            Constants.TIME_SINCE_LAST_XP_DROP = if (!Players.local().inCombat())
+        if (Variables.lastKnownPrayerXp != Skills.experience(Skill.Prayer)) {
+            Variables.lastKnownPrayerXp = Skills.experience(Skill.Prayer)
+            Variables.timeSinceLastXpDrop = if (!Players.local().inCombat())
                 ScriptManager.getRuntime(true) + 3000
             // Player attacks interrupts us offering bones so check if we need to reattempt more often while suiciding.
             else ScriptManager.getRuntime(true) + 600
         }
 
-        return Inventory.stream().name(Constants.BONE_TYPE).isNotEmpty() && Constants.TIME_SINCE_LAST_XP_DROP > ScriptManager.getRuntime(true)
+        return Inventory.stream().name(Variables.boneType).isNotEmpty() && Variables.timeSinceLastXpDrop > ScriptManager.getRuntime(true)
     }
 }

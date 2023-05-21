@@ -7,15 +7,6 @@ import org.powbot.api.rt4.TilePath
 import org.powbot.api.rt4.World
 
 object Constants {
-    var STOP_AT_LEVEL = 99
-    var STOP_AFTER_MINUTES = 0
-    var LAST_KNOWN_PRAYER_XP = 0
-    var TIME_SINCE_LAST_XP_DROP: Long = 0
-
-    var PROTECT_ITEM = true
-    var DEPOSIT_EQUIPMENT = false
-
-    var BONE_TYPE = "Dragon Bones"
     val BONE_TYPES = arrayOf("Dragon bones","Lava dragon bones","Dagannoth bones","Wyvern bones",
         "Big bones", "Superior dragon bones","Bones","Hydra bones","Babydragon bones")
     val BURNING_AMULETS = arrayOf("Burning amulet(5)", "Burning amulet(4)", "Burning amulet(3)",
@@ -87,9 +78,6 @@ object Constants {
         Tile(3207, 3219, 2), Tile(3208, 3219, 2), Tile(3208, 3220, 2)))
 
     // antipk stuff
-    var WORLD_ID = 0
-    var TIME_UNTIL_NEXT_LOGOUT: Long = 0
-    var ESCAPE_PKER = false
     val LOGIN_SCREEN_WORLDHOPPER_POINT = Point(150, 460)
     val WORLD_SPECIALITY_FILTER = arrayOf(World.Specialty.BOUNTY_HUNTER, World.Specialty.TARGET_WORLD,
         World.Specialty.FRESH_START, World.Specialty.HIGH_RISK, World.Specialty.BETA, World.Specialty.DEAD_MAN,

@@ -1,6 +1,6 @@
 package com.jay.chaostemple.leaf.bankopened
 
-import com.jay.chaostemple.Constants
+import com.jay.chaostemple.Variables
 import com.jay.chaostemple.jChaosTemple
 import org.powbot.api.Condition
 import org.powbot.api.Random
@@ -15,6 +15,6 @@ class CloseBank (script: jChaosTemple) : Leaf<jChaosTemple>(script, "Closing Ban
             Condition.wait({ !Bank.opened() }, Random.nextGaussian(170, 250, 200, 20.0), 13)
 
         // Fixes a bug that causes us to not immediately offer bones upon arriving at the altar.
-        Constants.LAST_KNOWN_PRAYER_XP = Skills.experience(Skill.Prayer)
+        Variables.lastKnownPrayerXp = Skills.experience(Skill.Prayer)
     }
 }

@@ -50,24 +50,24 @@ class jChaosTemple : TreeScript() {
 
     @ValueChanged("stopAtLvl")
     fun stopAtLevelChanged(newValue: Int) {
-        Constants.STOP_AT_LEVEL = newValue
+        Variables.stopAtLvl = newValue
     }
 
     @ValueChanged("stopAfterMinutes")
     fun stopAfterMinutesChanged(newValue: Int) {
-        Constants.STOP_AFTER_MINUTES = if (newValue > 0)
+        Variables.stopAfterMinutes = if (newValue > 0)
             newValue else 0
     }
 
     @ValueChanged("bone")
     fun boneTypeChanged(newValue: String) {
         if (Constants.BONE_TYPES.contains(newValue))
-            Constants.BONE_TYPE = newValue
+            Variables.boneType = newValue
     }
 
     @ValueChanged("protectItem")
     fun protectItemChanged(newValue: Boolean) {
-        Constants.PROTECT_ITEM = newValue
+        Variables.protectItem = newValue
     }
 
     override val rootComponent: TreeComponent<*> by lazy {
@@ -77,15 +77,15 @@ class jChaosTemple : TreeScript() {
     override fun onStart() {
         val p: Paint = PaintBuilder.newBuilder()
             .addString("Last Leaf:") { lastLeaf.name }
-            .addString("Stop At Level: ") { Constants.STOP_AT_LEVEL.toString() }
+            .addString("Stop At Level: ") { Variables.stopAtLvl.toString() }
             .trackSkill(Skill.Prayer)
             .backgroundColor(Color.argb(255, 59,127,77))
             .build()
         addPaint(p)
 
-        Constants.LAST_KNOWN_PRAYER_XP = Skills.experience(Skill.Prayer)
+        Variables.lastKnownPrayerXp = Skills.experience(Skill.Prayer)
         if (Equipment.stream().isNotEmpty())
-            Constants.DEPOSIT_EQUIPMENT = true
+            Variables.depositEquipment = true
     }
 
     fun info(message: String) {
@@ -99,8 +99,8 @@ class jChaosTemple : TreeScript() {
     companion object {
         fun antiPkingCheck(): Boolean {
             // Do not stop what we are doing if we are in combat, we cannot log out anyway.
-            if (Inventory.stream().name(Constants.BONE_TYPE).count() < 3
-                || Players.local().inCombat() || Constants.TIME_UNTIL_NEXT_LOGOUT > ScriptManager.getRuntime(true))
+            if (Inventory.stream().name(Variables.boneType).count() < 3
+                || Players.local().inCombat() || Variables.timeUntilNextLogout > ScriptManager.getRuntime(true))
                 return false
 
             val playerCombatLevel = Players.local().combatLevel
@@ -108,7 +108,7 @@ class jChaosTemple : TreeScript() {
             if(Players.stream().notLocalPlayer().within(18).filtered {
                 (it.combatLevel + wildyLevel) >= playerCombatLevel && (it.combatLevel - wildyLevel) <= playerCombatLevel
             }.isNotEmpty()) {
-                Constants.ESCAPE_PKER = true
+                Variables.escapePker = true
                 return true
             }
 
@@ -121,7 +121,7 @@ class jChaosTemple : TreeScript() {
         if (messageEvent.messageType != MessageType.Game)
             return
         else if (messageEvent.message == logoutInCombatErrorMessage)
-            Constants.TIME_UNTIL_NEXT_LOGOUT = ScriptManager.getRuntime(true) + 10000
+            Variables.timeUntilNextLogout = ScriptManager.getRuntime(true) + 10000
     }
 }
 

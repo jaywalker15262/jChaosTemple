@@ -1,6 +1,7 @@
 package com.jay.chaostemple.branch
 
 import com.jay.chaostemple.Constants
+import com.jay.chaostemple.Variables
 import com.jay.chaostemple.jChaosTemple
 import com.jay.chaostemple.leaf.OpenBank
 import com.jay.chaostemple.leaf.TravelToAltar
@@ -17,8 +18,7 @@ class HaveInventory(script: jChaosTemple) : Branch<jChaosTemple>(script, "Have p
     override val failedComponent: TreeComponent<jChaosTemple> = OpenBank(script)
 
     override fun validate(): Boolean {
-        Constants.ESCAPE_PKER = false
-        return !Constants.DEPOSIT_EQUIPMENT && Inventory.stream().name(Constants.BONE_TYPE).count().toInt() == 27 &&
+        return !Variables.depositEquipment && Inventory.stream().name(Variables.boneType).count().toInt() == 27 &&
                 Inventory.stream().name(*Constants.BURNING_AMULETS).count().toInt() == 1
     }
 }
@@ -28,7 +28,7 @@ class HaveInventoryTwo(script: jChaosTemple) : Branch<jChaosTemple>(script, "Hav
     override val failedComponent: TreeComponent<jChaosTemple> = IsInventoryEmpty(script)
 
     override fun validate(): Boolean {
-        return !Constants.DEPOSIT_EQUIPMENT && Inventory.stream().name(Constants.BONE_TYPE).count().toInt() == 27 &&
+        return !Variables.depositEquipment && Inventory.stream().name(Variables.boneType).count().toInt() == 27 &&
                 Inventory.stream().name(*Constants.BURNING_AMULETS).count().toInt() == 1
     }
 }
