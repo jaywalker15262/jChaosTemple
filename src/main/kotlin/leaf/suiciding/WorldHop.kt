@@ -12,16 +12,8 @@ import org.powbot.api.script.tree.Leaf
 
 class WorldHop(script: jChaosTemple) : Leaf<jChaosTemple>(script, "World-hopping") {
     override fun execute() {
-        var worlds = Worlds.stream().filtered { it.number != Variables.worldId && it.type == World.Type.MEMBERS
+        val worlds = Worlds.stream().filtered { it.number != Variables.worldId && it.type == World.Type.MEMBERS
                 && !Constants.WORLD_SPECIALITY_FILTER.contains(it.specialty) && it.population > 0 && it.population < 990 }
-        for (n in 1..10) {
-            if (worlds.isNotEmpty())
-                break
-            Condition.sleep(50)
-            worlds = Worlds.stream().filtered { it.number != Variables.worldId && it.type == World.Type.MEMBERS
-                    && !Constants.WORLD_SPECIALITY_FILTER.contains(it.specialty) && it.population > 0 && it.population < 990 }
-        }
-
         if (worlds.isEmpty()) {
             script.info("Failed to find a list of worlds to hop to.")
             return
@@ -34,15 +26,11 @@ class WorldHop(script: jChaosTemple) : Leaf<jChaosTemple>(script, "World-hopping
         }
 
         Variables.worldId = newWorld.number
-        if (!newWorld.hop()) {
-            Condition.sleep(Random.nextGaussian(170, 250, 200, 20.0))
-            if (!newWorld.hop()) {
-                script.info("Failed to attempt to hop to our new world.")
-                return
-            }
+        if (!newWorld.hop() && !Condition.wait({ Worlds.current().number == Variables.worldId }, 50, 10)) {
+            script.info("Failed to attempt to hop to our new world.")
+            return
         }
-
-        if (!Condition.wait({ Worlds.current().number == Variables.worldId || Players.local().healthBarVisible() }, 50, 200)) {
+        else if (!Condition.wait({ Worlds.current().number == Variables.worldId || Players.local().healthBarVisible() }, 50, 200)) {
             script.info("JayLOGS: Failed to find that we had hopped to our new world.")
             return
         }

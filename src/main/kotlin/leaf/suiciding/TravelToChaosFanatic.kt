@@ -13,32 +13,23 @@ import org.powbot.mobile.script.ScriptManager
 
 class TravelToChaosFanatic(script: jChaosTemple) : Leaf<jChaosTemple>(script, "Traveling To Suicide Area") {
     override fun execute() {
+        // Hardcoded path
         if (Constants.AREA_ALTAR.contains(Players.local())) {
             var altarDoor = Objects.stream().within(20).id(1524, 1525).first()
             if (!altarDoor.valid())
                 return
             else if (altarDoor.id() == 1524) {
-                for (n in 1..10) {
-                    if (altarDoor.inViewport())
-                        break
-
+                if (!altarDoor.inViewport()) {
                     Camera.turnTo(altarDoor.tile)
-                    Condition.wait({ altarDoor.inViewport() }, 50, 25)
+                    Condition.wait({ altarDoor.inViewport() }, 50, 50)
                 }
-
-                if (!altarDoor.inViewport())
-                    return
 
                 altarDoor.bounds(-64, -56, -160, -16, -32, 32)
-                for (n in 1..20) {
-                    if (!altarDoor.valid() || (altarDoor.interact("Open")
-                                && Condition.wait({ !altarDoor.valid() }, 50, 50)))
-                        break
-
-                    Condition.sleep(50)
-                }
-
-                if (altarDoor.valid())
+                // Short sleep between attempts of opening the door.
+                if (!altarDoor.interact("Open") && !Condition.wait({ altarDoor.valid() },
+                        Condition.sleep(Random.nextGaussian(170, 250, 200, 20.0)), 1))
+                    return
+                else if (!Condition.wait({ !altarDoor.valid() }, 50, 50))
                     return
             }
 
@@ -50,22 +41,17 @@ class TravelToChaosFanatic(script: jChaosTemple) : Leaf<jChaosTemple>(script, "T
                     if (!altarDoor.valid())
                         return
                     else if (altarDoor.id() == 1524) {
-                        altarDoor.bounds(-64, -56, -160, -16, -32, 32)
-                        for (i in 1..20) {
-                            if (!altarDoor.valid())
-                                break
-                            else if (altarDoor.interact("Open")) {
-                                if (Players.local().distanceTo(altarDoor) < 3) {
-                                    if (Condition.wait({ !altarDoor.valid() }, 50, 50))
-                                        break
-                                } else if (Condition.wait({ !altarDoor.valid() }, 50, 120))
-                                    break
-                            }
-
-                            Condition.sleep(50)
+                        if (!altarDoor.inViewport()) {
+                            Camera.turnTo(altarDoor.tile)
+                            Condition.wait({ altarDoor.inViewport() }, 50, 50)
                         }
 
-                        if (altarDoor.valid())
+                        altarDoor.bounds(-64, -56, -160, -16, -32, 32)
+                        // Short sleep between attempts of opening the door.
+                        if (!altarDoor.interact("Open") && !Condition.wait({ altarDoor.valid() },
+                                Condition.sleep(Random.nextGaussian(170, 250, 200, 20.0)), 1))
+                            return
+                        else if (!Condition.wait({ !altarDoor.valid() }, 50, 50))
                             return
                     }
                 }
@@ -80,26 +66,8 @@ class TravelToChaosFanatic(script: jChaosTemple) : Leaf<jChaosTemple>(script, "T
                 script.severe("Failed to exit the altar.")
                 return
             }
-            else if (Constants.SUICIDE_TILE_MATRIX.valid()) {
-                for (n in 1..10) {
-                    if (Skills.level(Skill.Hitpoints) == 0 || Constants.AREA_LUMBY.contains(Players.local())
-                        || Players.local().distanceTo(Constants.SUICIDE_TILE) < 6)
-                        break
-                    else if (!Players.local().inMotion()) {
-                        if (!Constants.SUICIDE_TILE_MATRIX.inViewport() || Constants.SUICIDE_TILE_MATRIX.interact("Walk here")
-                            && Condition.wait({ Skills.level(Skill.Hitpoints) == 0
-                                    || Constants.AREA_LUMBY.contains(Players.local()) || Players.local().inMotion() }, 50 , 50))
-                            break
-                    }
-
-                    Condition.sleep(50)
-                }
-            }
-
-            if (Skills.level(Skill.Hitpoints) != 0 && !Constants.AREA_LUMBY.contains(Players.local())
-                && !Players.local().inCombat() && Players.local().distanceTo(Constants.SUICIDE_TILE) > 5)
-                script.severe("Failed to get to the suicide tile hardcoded path.")
         }
+        // DaxWalker-generated path
         else if (Players.local().distanceTo(Constants.SUICIDE_TILE) > 5) {
             val generatePath = DaxWalker.getPath(Constants.SUICIDE_TILE)
             if (generatePath.isNullOrEmpty())
@@ -112,29 +80,20 @@ class TravelToChaosFanatic(script: jChaosTemple) : Leaf<jChaosTemple>(script, "T
                 && !Constants.AREA_LUMBY.contains(Players.local())
                 && (escapePath.traverse() || escapePath.next() != escapePath.end()))
                 Condition.sleep(50)
-
-            Condition.wait({ !Players.local().inMotion() }, 50, 50)
-            if (Constants.SUICIDE_TILE_MATRIX.valid()) {
-                for (n in 1..10) {
-                    if (Skills.level(Skill.Hitpoints) == 0 || Constants.AREA_LUMBY.contains(Players.local())
-                        || Players.local().distanceTo(Constants.SUICIDE_TILE) < 6)
-                        break
-                    else if (!Players.local().inMotion()) {
-                        if (!Constants.SUICIDE_TILE_MATRIX.inViewport() || Constants.SUICIDE_TILE_MATRIX.interact("Walk here")
-                            && Condition.wait({ Skills.level(Skill.Hitpoints) == 0
-                                    || Constants.AREA_LUMBY.contains(Players.local()) || Players.local().inMotion() }, 50 , 50)) {
-                            Condition.sleep(Random.nextGaussian(170, 250, 200, 20.0))
-                            break
-                        }
-                    }
-
-                    Condition.sleep(50)
-                }
-            }
-
-            if (Skills.level(Skill.Hitpoints) != 0 && !Constants.AREA_LUMBY.contains(Players.local())
-                && !Players.local().inCombat() && Players.local().distanceTo(Constants.SUICIDE_TILE) > 5)
-                script.severe("Failed to get to the suicide tile with generated path..")
         }
+
+        // Screen-walking in case web-walking fails.
+        if (!Players.local().inMotion() && Players.local().distanceTo(Constants.SUICIDE_TILE) > 5
+            && Skills.level(Skill.Hitpoints) != 0 && !Constants.AREA_LUMBY.contains(Players.local())
+            && (!Players.local().inCombat() || Players.stream().interactingWithMe().isNotEmpty())
+            && Constants.SUICIDE_TILE_MATRIX.valid() && Constants.SUICIDE_TILE_MATRIX.inViewport()
+            && Constants.SUICIDE_TILE_MATRIX.interact("Walk here")) {
+                Condition.wait({ Players.local().inMotion() || Skills.level(Skill.Hitpoints) == 0
+                        || Constants.AREA_LUMBY.contains(Players.local()) }, 50 , 50)
+        }
+
+        if (Skills.level(Skill.Hitpoints) != 0 && !Constants.AREA_LUMBY.contains(Players.local())
+            && !Players.local().inCombat() && Players.local().distanceTo(Constants.SUICIDE_TILE) > 5)
+            script.severe("Failed to get to the suicide tile.")
     }
 }
