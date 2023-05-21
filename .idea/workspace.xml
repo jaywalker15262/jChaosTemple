@@ -4,9 +4,18 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="fed035d4-b86d-4be4-b658-43119d004291" name="Changes" comment="Protect Item, set default to off.">
+    <list default="true" id="fed035d4-b86d-4be4-b658-43119d004291" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/main/kotlin/branch/SuicideBranches.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/kotlin/leaf/suiciding/TravelToChaosFanatic.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/kotlin/leaf/suiciding/WorldHop.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/Script.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/Script.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/branch/MovementBranches.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/branch/MovementBranches.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/branch/OfferingBranches.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/branch/OfferingBranches.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/leaf/Chill.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/leaf/Chill.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/leaf/OfferBones.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/leaf/OfferBones.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/leaf/OpenBank.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/leaf/OpenBank.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/leaf/Suicide.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/leaf/suiciding/Suicide.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/leaf/TravelToAltar.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/leaf/TravelToAltar.kt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -28,11 +37,11 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
-  "lastFilter": {
-    "state": "OPEN"
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;
   }
-}]]></component>
+}</component>
   <component name="GithubPullRequestsUISettings">
     <option name="selectedUrlAndAccountId">
       <UrlAndAccount>
@@ -57,6 +66,12 @@
     &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;
   }
 }</component>
+  <component name="RecentsManager">
+    <key name="MoveKotlinTopLevelDeclarationsDialog.RECENTS_KEY">
+      <recent name="leaf" />
+      <recent name="leaf.suiciding" />
+    </key>
+  </component>
   <component name="RunManager">
     <configuration name="ScriptKt" type="JetRunConfigurationType" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.jay.chaostemple.ScriptKt" />
@@ -206,7 +221,13 @@
       <option name="presentableId" value="LOCAL−00021" />
       <updated>1684636985056</updated>
     </task>
-    <option name="localTasksCounter" value="22" />
+    <task id="LOCAL−00022" summary="Protect Item, set default to off.">
+      <created>1684663015874</created>
+      <option name="number" value="LOCAL−00022" />
+      <option name="presentableId" value="LOCAL−00022" />
+      <updated>1684663015874</updated>
+    </task>
+    <option name="localTasksCounter" value="23" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -242,6 +263,7 @@
     <MESSAGE value="Minor logic improvements." />
     <MESSAGE value="Improving banking and login/logout logic." />
     <MESSAGE value="Protect Item, set default to off." />
-    <option name="LAST_COMMIT_MESSAGE" value="Protect Item, set default to off." />
+    <MESSAGE value="Improve suicide logic and handling." />
+    <option name="LAST_COMMIT_MESSAGE" value="Improve suicide logic and handling." />
   </component>
 </project>

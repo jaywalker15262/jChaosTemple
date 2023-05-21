@@ -33,77 +33,67 @@ class OpenBank(script: Script) : Leaf<Script>(script, "Opening Bank") {
                             || lumbyBankBottomFloorPath.next() != lumbyBankBottomFloorPath.end()))
                     Condition.sleep(50)
 
-                var stairCase = Objects.stream().within(18).id(16671).nearest().first()
-                for (n in 1..30) {
-                    if (stairCase.valid())
-                        break
-
-                    Condition.sleep(100)
-                    stairCase = Objects.stream().within(18).id(16671).nearest().first()
-                }
-
-                if (!stairCase.valid()) {
-                    LoggingService.info("Failed to find the staircase in lumby castle.")
-                    return
-                }
-                else if (!Condition.wait({ stairCase.distanceTo(Players.local()).toInt() < 5
-                        || !Players.local().inMotion() }, 50, 300)) {
-                    LoggingService.info("Failed to walk to the lumby castle stairs.")
-                    return
-                }
-
-                stairCase.bounds(-26, 26, -76, 24, -26, 26)
-                for (n in 1..10) {
-                    if (!stairCase.inViewport()) {
-                        LoggingService.info("Stairs are not in view.")
-                        Camera.turnTo(stairCase)
-                        Condition.wait({ stairCase.inViewport() }, 50, 50)
+                if (Game.floor() == 0) {
+                    var stairCase = Objects.stream().within(18).id(16671).nearest().first()
+                    if (!stairCase.valid()) {
+                        LoggingService.info("Failed to find the staircase in lumby castle.")
+                        return
+                    } else if (!Condition.wait({
+                            stairCase.distanceTo(Players.local()).toInt() < 5
+                                    || !Players.local().inMotion()
+                        }, 50, 300)) {
+                        LoggingService.info("Failed to walk to the lumby castle stairs.")
+                        return
                     }
-                    if (Players.local().floor() == 1
-                        || (stairCase.interact("Climb-up") && Condition.wait({ Game.floor() == 1 }, 50, 90))) {
+
+                    stairCase.bounds(-26, 26, -76, 24, -26, 26)
+                    for (n in 1..10) {
+                        if (!stairCase.inViewport()) {
+                            LoggingService.info("Stairs are not in view.")
+                            Camera.turnTo(stairCase)
+                            Condition.wait({ stairCase.inViewport() }, 50, 50)
+                        }
+                        if (Players.local().floor() == 1
+                            || (stairCase.interact("Climb-up") && Condition.wait({ Game.floor() == 1 }, 50, 90))
+                        ) {
+                            Condition.sleep(Random.nextGaussian(170, 250, 200, 20.0))
+                            break
+                        }
+
                         Condition.sleep(Random.nextGaussian(170, 250, 200, 20.0))
-                        break
                     }
 
-                    Condition.sleep(Random.nextGaussian(170, 250, 200, 20.0))
+                    if (Game.floor() != 1) {
+                        LoggingService.info("Failed to walk up the stairs on the bottom floor.")
+                        return
+                    }
                 }
+                if (Game.floor() == 1) {
+                    var secondStairCase = Objects.stream().within(6).id(16672).first()
+                    if (!secondStairCase.valid()) {
+                        LoggingService.info("Failed to find the staircase on the first floor of the lumby castle.")
+                        return
+                    }
 
-                if (Players.local().floor() != 1) {
-                    LoggingService.info("Failed to walk up the stairs on the bottom floor.")
-                    return
-                }
+                    secondStairCase.bounds(-26, 26, -76, 24, -26, 26)
+                    for (n in 1..10) {
+                        if (Players.local().floor() == 2
+                            || (secondStairCase.interact("Climb-up", true)
+                                    && Condition.wait({ Game.floor() == 2 }, 50, 90))) {
+                            Condition.sleep(Random.nextGaussian(170, 250, 200, 20.0))
+                            break
+                        }
 
-                var secondStairCase = Objects.stream().within(6).id(16672).first()
-                for (n in 1..30) {
-                    if (secondStairCase.valid())
-                        break
-
-                    Condition.sleep(100)
-                    secondStairCase = Objects.stream().within(6).id(16672).first()
-                }
-
-                if (!secondStairCase.valid()) {
-                    LoggingService.info("Failed to find the staircase on the first floor of the lumby castle.")
-                    return
-                }
-
-                secondStairCase.bounds(-26, 26, -76, 24, -26, 26)
-                for (n in 1..10) {
-                    if (Players.local().floor() == 2
-                        || (secondStairCase.interact("Climb-up", true)
-                                && Condition.wait({ Players.local().floor() == 2 }, 50, 90))) {
                         Condition.sleep(Random.nextGaussian(170, 250, 200, 20.0))
-                        break
                     }
 
-                    Condition.sleep(Random.nextGaussian(170, 250, 200, 20.0))
+                    if (Game.floor() != 2) {
+                        LoggingService.info("Failed to walk up the stairs on the first floor.")
+                        return
+                    }
                 }
 
-                if (Players.local().floor() != 2) {
-                    LoggingService.info("Failed to walk up the stairs on the first floor.")
-                    return
-                }
-                else while (!ScriptManager.isStopping() && (lumbyBankTopFloorPath.traverse()
+                while (!ScriptManager.isStopping() && (lumbyBankTopFloorPath.traverse()
                             || lumbyBankTopFloorPath.next() != lumbyBankTopFloorPath.end()))
                     Condition.sleep(50)
 

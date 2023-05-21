@@ -1,28 +1,21 @@
-package com.jay.chaostemple.leaf
+package com.jay.chaostemple.leaf.suiciding
 
 import com.jay.chaostemple.Constants
 import com.jay.chaostemple.Constants.suicidePath
 import com.jay.chaostemple.LoggingService
 import com.jay.chaostemple.Script
 import org.powbot.api.Condition
+import org.powbot.api.Random
 import org.powbot.api.rt4.*
 import org.powbot.api.rt4.walking.model.Skill
 import org.powbot.api.script.tree.Leaf
 import org.powbot.dax.api.DaxWalker
 import org.powbot.mobile.script.ScriptManager
 
-class Suicide(script: Script) : Leaf<Script>(script, "Suiciding") {
+class TravelToChaosFanatic(script: Script) : Leaf<Script>(script, "Traveling To Suicide Area") {
     override fun execute() {
         if (Constants.AREA_ALTAR.contains(Players.local())) {
             var altarDoor = Objects.stream().within(20).id(1524, 1525).first()
-            for (n in 1..20) {
-                if (altarDoor.valid())
-                    break
-
-                Condition.sleep(50)
-                altarDoor = Objects.stream().within(20).id(1524, 1525).first()
-            }
-
             if (!altarDoor.valid())
                 return
             else if (altarDoor.id() == 1524) {
@@ -55,14 +48,6 @@ class Suicide(script: Script) : Leaf<Script>(script, "Suiciding") {
                 && (suicidePath.traverse() || suicidePath.next() != suicidePath.end())) {
                 if (Constants.AREA_ALTAR.contains(Players.local())) {
                     altarDoor = Objects.stream().within(20).id(1524, 1525).first()
-                    for (i in 1..20) {
-                        if (altarDoor.valid())
-                            break
-
-                        Condition.sleep(50)
-                        altarDoor = Objects.stream().within(20).id(1524, 1525).first()
-                    }
-
                     if (!altarDoor.valid())
                         return
                     else if (altarDoor.id() == 1524) {
@@ -113,11 +98,8 @@ class Suicide(script: Script) : Leaf<Script>(script, "Suiciding") {
             }
 
             if (Skills.level(Skill.Hitpoints) != 0 && !Constants.AREA_LUMBY.contains(Players.local())
-                && !Players.local().inCombat() && Players.local().distanceTo(Constants.suicideTile) > 5) {
-                LoggingService.severe("Failed to get to the suicide tile.")
-                ScriptManager.stop()
-                return
-            }
+                && !Players.local().inCombat() && Players.local().distanceTo(Constants.suicideTile) > 5)
+                LoggingService.severe("Failed to get to the suicide tile hardcoded path.")
         }
         else if (Players.local().distanceTo(Constants.suicideTile) > 5) {
             val generatePath = DaxWalker.getPath(Constants.suicideTile)
@@ -141,8 +123,10 @@ class Suicide(script: Script) : Leaf<Script>(script, "Suiciding") {
                     else if (!Players.local().inMotion()) {
                         if (!Constants.suicideTileMatrix.inViewport() || Constants.suicideTileMatrix.interact("Walk here")
                             && Condition.wait({ Skills.level(Skill.Hitpoints) == 0
-                                    || Constants.AREA_LUMBY.contains(Players.local()) || Players.local().inMotion() }, 50 , 50))
+                                    || Constants.AREA_LUMBY.contains(Players.local()) || Players.local().inMotion() }, 50 , 50)) {
+                            Condition.sleep(Random.nextGaussian(170, 250, 200, 20.0))
                             break
+                        }
                     }
 
                     Condition.sleep(50)
@@ -150,54 +134,8 @@ class Suicide(script: Script) : Leaf<Script>(script, "Suiciding") {
             }
 
             if (Skills.level(Skill.Hitpoints) != 0 && !Constants.AREA_LUMBY.contains(Players.local())
-                && !Players.local().inCombat() && Players.local().distanceTo(Constants.suicideTile) > 5) {
-                LoggingService.severe("Failed to get to the suicide tile 2.")
-                ScriptManager.stop()
-                return
-            }
-        }
-
-        /* Chaos Fanatic might not always be alive and is sometimes killed or in combat with other players/bots.
-        So as counter measure to make sure we die, make sure we wait for him to spawn and to attack him instead of
-        waiting for us to timeout and the script ending*/
-        var chaosFanatic = Npcs.stream().within(13).name("Chaos fanatic").filtered {
-            it.distanceTo(Players.local()).toInt() <= 11 && !it.healthBarVisible() && it.inViewport() }.first()
-        // Some users might use accounts with high stats that are really tanky, and so we should wait at least a full minute.
-        for (n in 1..1200) {
-            if (Constants.AREA_LUMBY.contains(Players.local()))
-                return
-            // Let's afk until Chaos Fanatic is there, so that we do not time out.
-            else while (Game.loggedIn() && !Constants.AREA_LUMBY.contains(Players.local())
-                && Skills.level(Skill.Hitpoints) > 0 && Players.stream().interactingWithMe().isEmpty() &&
-                (!chaosFanatic.valid() || Players.local().interacting() != chaosFanatic)) {
-                for (i in 1..20) {
-                    if (chaosFanatic.valid() && !chaosFanatic.healthBarVisible())
-                        break
-
-                    // The stream below is expensive but very robust, so lets sleep for at least 100ms each iteration.
-                    Condition.sleep(100)
-                    chaosFanatic = Npcs.stream().within(13).name("Chaos Fanatic").filtered {
-                        it.distanceTo(Players.local()).toInt() <= 11 && !it.healthBarVisible() && it.inViewport() }.first()
-                }
-
-                if (chaosFanatic.valid()) {
-                    chaosFanatic.bounds(-16, 16, -16, -16, -16, 16)
-                    if (chaosFanatic.click())
-                        Condition.wait({ chaosFanatic.healthBarVisible() }, 50, 90)
-                }
-
-                Condition.sleep(50)
-            }
-            if (!Game.loggedIn())
-                return
-
-            Condition.sleep(50)
-        }
-
-        // Some users might use accounts with high stats that are really tanky, and so we should wait at least a full minute.
-        if (!Constants.AREA_LUMBY.contains(Players.local())) {
-            LoggingService.severe("Failed to suicide.")
-            ScriptManager.stop()
+                && !Players.local().inCombat() && Players.local().distanceTo(Constants.suicideTile) > 5)
+                LoggingService.severe("Failed to get to the suicide tile with generated path..")
         }
     }
 }

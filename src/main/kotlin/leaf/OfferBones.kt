@@ -13,30 +13,10 @@ import org.powbot.mobile.script.ScriptManager
 class OfferBones(script: Script) : Leaf<Script>(script, "Offering Bones") {
     override fun execute() {
         var bone = Inventory.stream().name(Constants.boneType).first()
-        for (n in 1..10) {
-            if (Script.antiPkingCheck())
-                return
-            else if (bone.valid())
-                break
-
-            Condition.sleep(50)
-            bone = Inventory.stream().name(Constants.boneType).first()
-        }
-
         if (!bone.valid())
             return
 
         var altar = Objects.stream().within(20).name("Chaos altar").first()
-        for (n in 1..10) {
-            if (Script.antiPkingCheck())
-                return
-            else if (bone.valid())
-                break
-
-            Condition.sleep(50)
-            altar = Objects.stream().within(20).name("Chaos altar").first()
-        }
-
         if (!altar.valid()) {
             LoggingService.info("Failed to find the Chaos Temple altar.")
             return
@@ -102,7 +82,5 @@ class OfferBones(script: Script) : Leaf<Script>(script, "Offering Bones") {
 
         if (!Condition.wait({ Game.tab() == Game.Tab.LOGOUT || Script.antiPkingCheck() }, 50, 50))
             LoggingService.severe("We were unable to open up the logout tab after starting to offer bones at he altar.")
-        else if (Constants.escapePker)
-            return
     }
 }
