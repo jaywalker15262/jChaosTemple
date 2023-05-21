@@ -13,18 +13,8 @@ import org.powbot.mobile.script.ScriptManager
 class OpenBank(script: jChaosTemple) : Leaf<jChaosTemple>(script, "Opening Bank") {
     override fun execute() {
         if (Bank.inViewport()) {
-            for (n in 1..10) {
-                if (Bank.opened())
-                    break
-                else if (Bank.open()) {
-                    if (Condition.wait({ Bank.opened() }, 50, 50)) {
-                        Condition.sleep(Random.nextGaussian(170, 250, 200, 20.0))
-                        break
-                    }
-                }
-
-                Condition.sleep(Random.nextGaussian(170, 250, 200, 20.0))
-            }
+            if (Bank.open())
+                Condition.wait({ Bank.opened() }, Condition.sleep(Random.nextGaussian(170, 250, 200, 20.0)), 50)
         }
         else {
             if (Constants.AREA_LUMBY.contains(Players.local())) {

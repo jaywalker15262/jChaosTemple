@@ -11,35 +11,13 @@ import org.powbot.api.script.tree.Leaf
 
 class DepositInventory(script: jChaosTemple) : Leaf<jChaosTemple>(script, "Depositing Inventory") {
     override fun execute() {
-        for (n in 1..10) {
-            if (Inventory.isEmpty())
-                break
-            else if (Bank.depositInventory()) {
-                if (Condition.wait({ Inventory.isEmpty() }, 50, 50)) {
-                    Condition.sleep(Random.nextGaussian(170, 250, 200, 20.0))
-                    break
-                }
-            }
-
-            Condition.sleep(Random.nextGaussian(170, 250, 200, 20.0))
-        }
+        if (Bank.depositInventory())
+            Condition.wait({ Inventory.isEmpty() }, Condition.sleep(Random.nextGaussian(170, 250, 200, 20.0)), 13)
 
         // We only do this once upon script start
-        if (Constants.DEPOSIT_EQUIPMENT) {
-            for (n in 1..10) {
-                if (Equipment.stream().isEmpty())
-                    break
-                else if (Bank.depositEquipment()) {
-                    if (Condition.wait({ Equipment.stream().isEmpty() }, 50, 50)) {
-                        Condition.sleep(Random.nextGaussian(170, 250, 200, 20.0))
-                        break
-                    }
-                }
-
-                Condition.sleep(Random.nextGaussian(170, 250, 200, 20.0))
-            }
-
+        if (Constants.DEPOSIT_EQUIPMENT && (Equipment.stream().isEmpty() || (Bank.depositEquipment()
+            && Condition.wait({ Equipment.stream().isEmpty() },
+                Condition.sleep(Random.nextGaussian(170, 250, 200, 20.0)), 13))))
             Constants.DEPOSIT_EQUIPMENT = false
-        }
     }
 }

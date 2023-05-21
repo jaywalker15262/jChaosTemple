@@ -13,6 +13,7 @@ import org.powbot.mobile.script.ScriptManager
 
 class SetupInventory(script: jChaosTemple) : Leaf<jChaosTemple>(script, "Setting Up Inventory") {
     override fun execute() {
+        Constants.ESCAPE_PKER = false
         if (Constants.STOP_AFTER_MINUTES > 0) {
             val minutes: Int = (ScriptManager.getRuntime(true) / 60000).toInt()
             if (minutes >= Constants.STOP_AFTER_MINUTES) {

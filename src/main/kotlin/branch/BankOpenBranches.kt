@@ -28,7 +28,6 @@ class HaveInventoryTwo(script: jChaosTemple) : Branch<jChaosTemple>(script, "Hav
     override val failedComponent: TreeComponent<jChaosTemple> = IsInventoryEmpty(script)
 
     override fun validate(): Boolean {
-        Constants.ESCAPE_PKER = false
         return !Constants.DEPOSIT_EQUIPMENT && Inventory.stream().name(Constants.BONE_TYPE).count().toInt() == 27 &&
                 Inventory.stream().name(*Constants.BURNING_AMULETS).count().toInt() == 1
     }
