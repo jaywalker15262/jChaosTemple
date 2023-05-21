@@ -1,7 +1,7 @@
 package com.jay.chaostemple.leaf.bankopened
 
 import com.jay.chaostemple.Constants
-import com.jay.chaostemple.Script
+import com.jay.chaostemple.jChaosTemple
 import org.powbot.api.Condition
 import org.powbot.api.Random
 import org.powbot.api.rt4.Bank
@@ -11,7 +11,7 @@ import org.powbot.api.rt4.walking.model.Skill
 import org.powbot.api.script.tree.Leaf
 import org.powbot.mobile.script.ScriptManager
 
-class SetupInventory(script: Script) : Leaf<Script>(script, "Setting Up Inventory") {
+class SetupInventory(script: jChaosTemple) : Leaf<jChaosTemple>(script, "Setting Up Inventory") {
     override fun execute() {
         if (Constants.STOP_AFTER_MINUTES > 0) {
             val minutes: Int = (ScriptManager.getRuntime(true) / 60000).toInt()

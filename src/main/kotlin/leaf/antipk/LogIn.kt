@@ -1,7 +1,7 @@
 package com.jay.chaostemple.leaf.antipk
 
 import com.jay.chaostemple.Constants
-import com.jay.chaostemple.Script
+import com.jay.chaostemple.jChaosTemple
 import org.powbot.api.Condition
 import org.powbot.api.rt4.Game
 import org.powbot.api.rt4.Skills
@@ -10,7 +10,7 @@ import org.powbot.api.script.tree.Leaf
 import org.powbot.mobile.SettingsManager
 import org.powbot.mobile.ToggleId
 
-class LogIn(script: Script) : Leaf<Script>(script, "Logging In") {
+class LogIn(script: jChaosTemple) : Leaf<jChaosTemple>(script, "Logging In") {
     override fun execute() {
         SettingsManager.set(ToggleId.AutoLogin, true)
         while (!Game.loggedIn())

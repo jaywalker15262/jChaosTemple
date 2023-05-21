@@ -48,7 +48,7 @@ import org.powbot.mobile.service.ScriptUploader
     ]
 )
 
-class Script : TreeScript() {
+class jChaosTemple : TreeScript() {
     private val logoutInCombatErrorMessage = "You can't log out until 10 seconds after the end of combat."
 
     @ValueChanged("stopAtLvl")

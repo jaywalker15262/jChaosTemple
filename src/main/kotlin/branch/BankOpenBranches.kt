@@ -1,7 +1,7 @@
 package com.jay.chaostemple.branch
 
 import com.jay.chaostemple.Constants
-import com.jay.chaostemple.Script
+import com.jay.chaostemple.jChaosTemple
 import com.jay.chaostemple.leaf.OpenBank
 import com.jay.chaostemple.leaf.TravelToAltar
 import com.jay.chaostemple.leaf.bankopened.CloseBank
@@ -12,9 +12,9 @@ import org.powbot.api.rt4.Inventory
 import org.powbot.api.script.tree.Branch
 import org.powbot.api.script.tree.TreeComponent
 
-class HaveInventory(script: Script) : Branch<Script>(script, "Have proper inventory?") {
-    override val successComponent: TreeComponent<Script> = TravelToAltar(script)
-    override val failedComponent: TreeComponent<Script> = OpenBank(script)
+class HaveInventory(script: jChaosTemple) : Branch<jChaosTemple>(script, "Have proper inventory?") {
+    override val successComponent: TreeComponent<jChaosTemple> = TravelToAltar(script)
+    override val failedComponent: TreeComponent<jChaosTemple> = OpenBank(script)
 
     override fun validate(): Boolean {
         Constants.ESCAPE_PKER = false
@@ -23,9 +23,9 @@ class HaveInventory(script: Script) : Branch<Script>(script, "Have proper invent
     }
 }
 
-class HaveInventoryTwo(script: Script) : Branch<Script>(script, "Have proper inventory?") {
-    override val successComponent: TreeComponent<Script> = CloseBank(script)
-    override val failedComponent: TreeComponent<Script> = IsInventoryEmpty(script)
+class HaveInventoryTwo(script: jChaosTemple) : Branch<jChaosTemple>(script, "Have proper inventory?") {
+    override val successComponent: TreeComponent<jChaosTemple> = CloseBank(script)
+    override val failedComponent: TreeComponent<jChaosTemple> = IsInventoryEmpty(script)
 
     override fun validate(): Boolean {
         Constants.ESCAPE_PKER = false
@@ -34,18 +34,18 @@ class HaveInventoryTwo(script: Script) : Branch<Script>(script, "Have proper inv
     }
 }
 
-class IsBankOpened(script: Script) : Branch<Script>(script, "Bank open?") {
-    override val successComponent: TreeComponent<Script> = HaveInventoryTwo(script)
-    override val failedComponent: TreeComponent<Script> = HaveInventory(script)
+class IsBankOpened(script: jChaosTemple) : Branch<jChaosTemple>(script, "Bank open?") {
+    override val successComponent: TreeComponent<jChaosTemple> = HaveInventoryTwo(script)
+    override val failedComponent: TreeComponent<jChaosTemple> = HaveInventory(script)
 
     override fun validate(): Boolean {
         return Bank.opened()
     }
 }
 
-class IsInventoryEmpty(script: Script) : Branch<Script>(script, "Empty Inventory?") {
-    override val successComponent: TreeComponent<Script> = SetupInventory(script)
-    override val failedComponent: TreeComponent<Script> = DepositInventory(script)
+class IsInventoryEmpty(script: jChaosTemple) : Branch<jChaosTemple>(script, "Empty Inventory?") {
+    override val successComponent: TreeComponent<jChaosTemple> = SetupInventory(script)
+    override val failedComponent: TreeComponent<jChaosTemple> = DepositInventory(script)
 
     override fun validate(): Boolean {
         return Inventory.isEmpty() || (Inventory.stream().name(*Constants.BURNING_AMULETS).count().toInt() == 1

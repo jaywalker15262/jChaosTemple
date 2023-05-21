@@ -1,15 +1,14 @@
 package com.jay.chaostemple.leaf.suiciding
 
 import com.jay.chaostemple.Constants
-import com.jay.chaostemple.LoggingService
-import com.jay.chaostemple.Script
+import com.jay.chaostemple.jChaosTemple
 import org.powbot.api.Condition
 import org.powbot.api.rt4.*
 import org.powbot.api.rt4.walking.model.Skill
 import org.powbot.api.script.tree.Leaf
 import org.powbot.mobile.script.ScriptManager
 
-class Suicide(script: Script) : Leaf<Script>(script, "Suiciding") {
+class Suicide(script: jChaosTemple) : Leaf<jChaosTemple>(script, "Suiciding") {
     override fun execute() {
         /* Chaos Fanatic might not always be alive and is sometimes killed or in combat with other players/bots.
         So as counter measure to make sure we die, make sure we wait for him to spawn and to attack him instead of
@@ -43,7 +42,7 @@ class Suicide(script: Script) : Leaf<Script>(script, "Suiciding") {
 
         // Some users might use accounts with high stats that are really tanky, and so we should wait at least a full minute.
         if (!Constants.AREA_LUMBY.contains(Players.local())) {
-            LoggingService.severe("Failed to suicide.")
+            script.severe("Failed to suicide.")
             ScriptManager.stop()
         }
     }

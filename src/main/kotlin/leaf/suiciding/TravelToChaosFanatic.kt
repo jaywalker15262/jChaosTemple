@@ -2,8 +2,7 @@ package com.jay.chaostemple.leaf.suiciding
 
 import com.jay.chaostemple.Constants
 import com.jay.chaostemple.Constants.SUICIDE_PATH
-import com.jay.chaostemple.LoggingService
-import com.jay.chaostemple.Script
+import com.jay.chaostemple.jChaosTemple
 import org.powbot.api.Condition
 import org.powbot.api.Random
 import org.powbot.api.rt4.*
@@ -12,7 +11,7 @@ import org.powbot.api.script.tree.Leaf
 import org.powbot.dax.api.DaxWalker
 import org.powbot.mobile.script.ScriptManager
 
-class TravelToChaosFanatic(script: Script) : Leaf<Script>(script, "Traveling To Suicide Area") {
+class TravelToChaosFanatic(script: jChaosTemple) : Leaf<jChaosTemple>(script, "Traveling To Suicide Area") {
     override fun execute() {
         if (Constants.AREA_ALTAR.contains(Players.local())) {
             var altarDoor = Objects.stream().within(20).id(1524, 1525).first()
@@ -78,7 +77,7 @@ class TravelToChaosFanatic(script: Script) : Leaf<Script>(script, "Traveling To 
             if (Skills.level(Skill.Hitpoints) == 0 || Constants.AREA_LUMBY.contains(Players.local()))
                 return
             else if (Constants.AREA_ALTAR.contains(Players.local())) {
-                LoggingService.severe("Failed to exit the altar.")
+                script.severe("Failed to exit the altar.")
                 return
             }
             else if (Constants.SUICIDE_TILE_MATRIX.valid()) {
@@ -99,7 +98,7 @@ class TravelToChaosFanatic(script: Script) : Leaf<Script>(script, "Traveling To 
 
             if (Skills.level(Skill.Hitpoints) != 0 && !Constants.AREA_LUMBY.contains(Players.local())
                 && !Players.local().inCombat() && Players.local().distanceTo(Constants.SUICIDE_TILE) > 5)
-                LoggingService.severe("Failed to get to the suicide tile hardcoded path.")
+                script.severe("Failed to get to the suicide tile hardcoded path.")
         }
         else if (Players.local().distanceTo(Constants.SUICIDE_TILE) > 5) {
             val generatePath = DaxWalker.getPath(Constants.SUICIDE_TILE)
@@ -135,7 +134,7 @@ class TravelToChaosFanatic(script: Script) : Leaf<Script>(script, "Traveling To 
 
             if (Skills.level(Skill.Hitpoints) != 0 && !Constants.AREA_LUMBY.contains(Players.local())
                 && !Players.local().inCombat() && Players.local().distanceTo(Constants.SUICIDE_TILE) > 5)
-                LoggingService.severe("Failed to get to the suicide tile with generated path..")
+                script.severe("Failed to get to the suicide tile with generated path..")
         }
     }
 }

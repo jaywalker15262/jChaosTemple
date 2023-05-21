@@ -1,8 +1,7 @@
 package com.jay.chaostemple.leaf.suiciding
 
 import com.jay.chaostemple.Constants
-import com.jay.chaostemple.LoggingService
-import com.jay.chaostemple.Script
+import com.jay.chaostemple.jChaosTemple
 import org.powbot.api.Condition
 import org.powbot.api.Random
 import org.powbot.api.rt4.Players
@@ -10,7 +9,7 @@ import org.powbot.api.rt4.World
 import org.powbot.api.rt4.Worlds
 import org.powbot.api.script.tree.Leaf
 
-class WorldHop(script: Script) : Leaf<Script>(script, "World-hopping") {
+class WorldHop(script: jChaosTemple) : Leaf<jChaosTemple>(script, "World-hopping") {
     override fun execute() {
         var worlds = Worlds.stream().filtered { it.number != Constants.WORLD_ID && it.type == World.Type.MEMBERS
                 && !Constants.WORLD_SPECIALITY_FILTER.contains(it.specialty) && it.population > 0 && it.population < 990 }
@@ -23,13 +22,13 @@ class WorldHop(script: Script) : Leaf<Script>(script, "World-hopping") {
         }
 
         if (worlds.isEmpty()) {
-            LoggingService.info("Failed to find a list of worlds to hop to.")
+            script.info("Failed to find a list of worlds to hop to.")
             return
         }
 
         val newWorld = worlds.list().random()
         if (!newWorld.valid()) {
-            LoggingService.info("Failed to find a valid world in our list.")
+            script.info("Failed to find a valid world in our list.")
             return
         }
 
@@ -37,13 +36,13 @@ class WorldHop(script: Script) : Leaf<Script>(script, "World-hopping") {
         if (!newWorld.hop()) {
             Condition.sleep(Random.nextGaussian(170, 250, 200, 20.0))
             if (!newWorld.hop()) {
-                LoggingService.info("Failed to attempt to hop to our new world.")
+                script.info("Failed to attempt to hop to our new world.")
                 return
             }
         }
 
         if (!Condition.wait({ Worlds.current().number == Constants.WORLD_ID || Players.local().healthBarVisible() }, 50, 200)) {
-            LoggingService.info("JayLOGS: Failed to find that we had hopped to our new world.")
+            script.info("JayLOGS: Failed to find that we had hopped to our new world.")
             return
         }
 

@@ -1,7 +1,7 @@
 package com.jay.chaostemple.leaf.antipk
 
 import com.jay.chaostemple.Constants
-import com.jay.chaostemple.Script
+import com.jay.chaostemple.jChaosTemple
 import org.powbot.api.Condition
 import org.powbot.api.Input
 import org.powbot.api.Random
@@ -11,7 +11,7 @@ import org.powbot.mobile.SettingsManager
 import org.powbot.mobile.ToggleId
 import org.powbot.mobile.script.ScriptManager
 
-class LogOut(script: Script) : Leaf<Script>(script, "Logging Out") {
+class LogOut(script: jChaosTemple) : Leaf<jChaosTemple>(script, "Logging Out") {
     override fun execute() {
         // We are in combat so we cannot log out.
         if (Players.local().inCombat() || Constants.TIME_UNTIL_NEXT_LOGOUT > ScriptManager.getRuntime(true)) {
