@@ -40,7 +40,7 @@ import java.util.logging.Logger
         ),
         ScriptConfiguration(
             "protectItem", "Use Protect Item?",
-            optionType = OptionType.BOOLEAN, defaultValue = "true"
+            optionType = OptionType.BOOLEAN, defaultValue = "false"
         )
     ]
 )
