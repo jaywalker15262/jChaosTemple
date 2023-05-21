@@ -4,10 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="fed035d4-b86d-4be4-b658-43119d004291" name="Changes" comment="Misc stuff.">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/jChaosTemple.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/jChaosTemple.kt" afterDir="false" />
-    </list>
+    <list default="true" id="fed035d4-b86d-4be4-b658-43119d004291" name="Changes" comment="Removing redundant for loops for closing the bank." />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -309,7 +306,13 @@
       <option name="presentableId" value="LOCAL−00034" />
       <updated>1684697177301</updated>
     </task>
-    <option name="localTasksCounter" value="35" />
+    <task id="LOCAL−00035" summary="Removing redundant for loops for closing the bank.">
+      <created>1684697469677</created>
+      <option name="number" value="LOCAL−00035" />
+      <option name="presentableId" value="LOCAL−00035" />
+      <updated>1684697469677</updated>
+    </task>
+    <option name="localTasksCounter" value="36" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -324,7 +327,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Improved suiciding checking for empty inventory and added more logic and more failsafes when suiciding with Chaos Fantic." />
     <MESSAGE value="For the sake of consistency with coding style." />
     <MESSAGE value="Unnecessary, to have .inViewport() here, we are already handling that in the code below and having it here can cause unwanted downtime and idling." />
     <MESSAGE value="For sake of consistency." />
@@ -349,6 +351,7 @@
     <MESSAGE value="Using Combat.wildernessLevel() instead of checking wildy level based on y-coord." />
     <MESSAGE value="More Combat.wildernessLevel() refactoring, also we need to account for if other players combat level are too high too attack us." />
     <MESSAGE value="Misc stuff." />
-    <option name="LAST_COMMIT_MESSAGE" value="Misc stuff." />
+    <MESSAGE value="Removing redundant for loops for closing the bank." />
+    <option name="LAST_COMMIT_MESSAGE" value="Removing redundant for loops for closing the bank." />
   </component>
 </project>
