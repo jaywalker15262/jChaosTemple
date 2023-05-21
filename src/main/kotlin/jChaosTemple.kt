@@ -1,7 +1,6 @@
 package com.jay.chaostemple
 
 import com.google.common.eventbus.Subscribe
-import com.jay.chaostemple.branch.IsInWildy
 import com.jay.chaostemple.branch.IsLoggedIn
 import org.powbot.api.Color
 import org.powbot.api.event.MessageEvent
@@ -107,11 +106,13 @@ class jChaosTemple : TreeScript() {
                 return false
 
             val playerCombatLevel = Players.local().combatLevel
-            if (IsInWildy.yCoord > 3527)
-                IsInWildy.wildyLevel = ((IsInWildy.yCoord - 3528) / 8) + 2
+            var wildyLevel = 1
+            val yCoord = Players.local().y()
+            if (yCoord > 3527)
+                wildyLevel = ((yCoord - 3528) / 8) + 2
 
             Players.stream().notLocalPlayer().within(18).forEach {
-                if ((it.combatLevel + IsInWildy.wildyLevel) >= playerCombatLevel) {
+                if ((it.combatLevel + wildyLevel) >= playerCombatLevel) {
                     Constants.ESCAPE_PKER = true
                     return true
                 }
