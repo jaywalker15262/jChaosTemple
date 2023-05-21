@@ -4,12 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="fed035d4-b86d-4be4-b658-43119d004291" name="Changes" comment="Rename Script.kt and our class to jChaosTemple. Also missed refactoring of a few more LoggingService usages.">
+    <list default="true" id="fed035d4-b86d-4be4-b658-43119d004291" name="Changes" comment="Using Combat.wildernessLevel() instead of checking wildy level based on y-coord.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/branch/RootBranch.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/branch/RootBranch.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/kotlin/jChaosTemple.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/jChaosTemple.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/leaf/Chill.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/leaf/Chill.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/leaf/TravelToAltar.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/leaf/TravelToAltar.kt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -294,7 +291,13 @@
       <option name="presentableId" value="LOCAL−00031" />
       <updated>1684690388098</updated>
     </task>
-    <option name="localTasksCounter" value="32" />
+    <task id="LOCAL−00032" summary="Using Combat.wildernessLevel() instead of checking wildy level based on y-coord.">
+      <created>1684692982797</created>
+      <option name="number" value="LOCAL−00032" />
+      <option name="presentableId" value="LOCAL−00032" />
+      <updated>1684692982797</updated>
+    </task>
+    <option name="localTasksCounter" value="33" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -309,7 +312,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Improvements towards handling teleporting to the lava maze." />
     <MESSAGE value="We will no longer stop what we are doing if we are already in combat or cannot logout." />
     <MESSAGE value="Fixed some bugs &amp; inefficiencies with the lumby banking." />
     <MESSAGE value="Improved suiciding checking for empty inventory and added more logic and more failsafes when suiciding with Chaos Fantic." />
@@ -334,6 +336,7 @@
     <MESSAGE value="Small mistake on last commit." />
     <MESSAGE value="Rename Script.kt and our class to jChaosTemple." />
     <MESSAGE value="Rename Script.kt and our class to jChaosTemple. Also missed refactoring of a few more LoggingService usages." />
-    <option name="LAST_COMMIT_MESSAGE" value="Rename Script.kt and our class to jChaosTemple. Also missed refactoring of a few more LoggingService usages." />
+    <MESSAGE value="Using Combat.wildernessLevel() instead of checking wildy level based on y-coord." />
+    <option name="LAST_COMMIT_MESSAGE" value="Using Combat.wildernessLevel() instead of checking wildy level based on y-coord." />
   </component>
 </project>

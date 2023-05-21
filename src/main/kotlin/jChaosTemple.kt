@@ -4,10 +4,7 @@ import com.google.common.eventbus.Subscribe
 import com.jay.chaostemple.branch.IsLoggedIn
 import org.powbot.api.Color
 import org.powbot.api.event.MessageEvent
-import org.powbot.api.rt4.Equipment
-import org.powbot.api.rt4.Inventory
-import org.powbot.api.rt4.Players
-import org.powbot.api.rt4.Skills
+import org.powbot.api.rt4.*
 import org.powbot.api.rt4.walking.model.Skill
 import org.powbot.api.script.*
 import org.powbot.api.script.paint.Paint
@@ -106,13 +103,10 @@ class jChaosTemple : TreeScript() {
                 return false
 
             val playerCombatLevel = Players.local().combatLevel
-            var wildyLevel = 1
-            val yCoord = Players.local().y()
-            if (yCoord > 3527)
-                wildyLevel = ((yCoord - 3528) / 8) + 2
-
+            val wildyLevel = Combat.wildernessLevel()
             Players.stream().notLocalPlayer().within(18).forEach {
-                if ((it.combatLevel + wildyLevel) >= playerCombatLevel) {
+                if ((it.combatLevel + wildyLevel) >= playerCombatLevel
+                    || (it.combatLevel - wildyLevel) <= playerCombatLevel ) {
                     Constants.ESCAPE_PKER = true
                     return true
                 }
