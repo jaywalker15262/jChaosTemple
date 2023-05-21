@@ -1,8 +1,8 @@
 package com.jay.chaostemple.leaf
 
 import com.jay.chaostemple.Constants
-import com.jay.chaostemple.Constants.lumbyBankBottomFloorPath
-import com.jay.chaostemple.Constants.lumbyBankTopFloorPath
+import com.jay.chaostemple.Constants.LUMBY_BOTTOM_FLOOR_PATH
+import com.jay.chaostemple.Constants.LUMBY_TOP_FLOOR_PATH
 import com.jay.chaostemple.LoggingService
 import com.jay.chaostemple.Script
 import org.powbot.api.Condition
@@ -29,12 +29,12 @@ class OpenBank(script: Script) : Leaf<Script>(script, "Opening Bank") {
         }
         else {
             if (Constants.AREA_LUMBY.contains(Players.local())) {
-                while (!ScriptManager.isStopping() && (lumbyBankBottomFloorPath.traverse()
-                            || lumbyBankBottomFloorPath.next() != lumbyBankBottomFloorPath.end()))
+                while (!ScriptManager.isStopping() && (LUMBY_BOTTOM_FLOOR_PATH.traverse()
+                            || LUMBY_BOTTOM_FLOOR_PATH.next() != LUMBY_BOTTOM_FLOOR_PATH.end()))
                     Condition.sleep(50)
 
                 if (Game.floor() == 0) {
-                    var stairCase = Objects.stream().within(18).id(16671).nearest().first()
+                    val stairCase = Objects.stream().within(18).id(16671).nearest().first()
                     if (!stairCase.valid()) {
                         LoggingService.info("Failed to find the staircase in lumby castle.")
                         return
@@ -54,8 +54,7 @@ class OpenBank(script: Script) : Leaf<Script>(script, "Opening Bank") {
                             Condition.wait({ stairCase.inViewport() }, 50, 50)
                         }
                         if (Players.local().floor() == 1
-                            || (stairCase.interact("Climb-up") && Condition.wait({ Game.floor() == 1 }, 50, 90))
-                        ) {
+                            || (stairCase.interact("Climb-up") && Condition.wait({ Game.floor() == 1 }, 50, 90))) {
                             Condition.sleep(Random.nextGaussian(170, 250, 200, 20.0))
                             break
                         }
@@ -69,7 +68,7 @@ class OpenBank(script: Script) : Leaf<Script>(script, "Opening Bank") {
                     }
                 }
                 if (Game.floor() == 1) {
-                    var secondStairCase = Objects.stream().within(6).id(16672).first()
+                    val secondStairCase = Objects.stream().within(6).id(16672).first()
                     if (!secondStairCase.valid()) {
                         LoggingService.info("Failed to find the staircase on the first floor of the lumby castle.")
                         return
@@ -93,8 +92,8 @@ class OpenBank(script: Script) : Leaf<Script>(script, "Opening Bank") {
                     }
                 }
 
-                while (!ScriptManager.isStopping() && (lumbyBankTopFloorPath.traverse()
-                            || lumbyBankTopFloorPath.next() != lumbyBankTopFloorPath.end()))
+                while (!ScriptManager.isStopping() && (LUMBY_TOP_FLOOR_PATH.traverse()
+                            || LUMBY_TOP_FLOOR_PATH.next() != LUMBY_TOP_FLOOR_PATH.end()))
                     Condition.sleep(50)
 
                 Condition.wait({ !Players.local().inMotion() }, 50, 100)

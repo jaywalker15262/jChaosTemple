@@ -1,7 +1,7 @@
 package com.jay.chaostemple.leaf
 
 import com.jay.chaostemple.Constants
-import com.jay.chaostemple.Constants.chaosAltarPath
+import com.jay.chaostemple.Constants.CHAOS_ALTAR_PATH
 import com.jay.chaostemple.LoggingService
 import com.jay.chaostemple.Script
 import org.powbot.api.Condition
@@ -70,17 +70,17 @@ class TravelToAltar(script: Script) : Leaf<Script>(script, "Traveling To Altar")
             }
             else for (n in 1..5) {
                 Input.send("1")
-                if (Condition.wait({ Players.local().distanceTo(Constants.lavaMazeTile).toInt() < 10 }, 50, 140))
+                if (Condition.wait({ Players.local().distanceTo(Constants.LAVA_MAZE_TILE).toInt() < 10 }, 50, 140))
                     break
             }
-            if (Players.local().distanceTo(Constants.lavaMazeTile).toInt() > 9) {
+            if (Players.local().distanceTo(Constants.LAVA_MAZE_TILE).toInt() > 9) {
                 LoggingService.info("Failed to find that teleported to the Lava Maze.")
                 return
             }
         }
 
         // Protect item support
-        if (Constants.protectItem && Skills.realLevel(Skill.Prayer) >= 25 && Skills.level(Skill.Prayer) > 5
+        if (Constants.PROTECT_ITEM && Skills.realLevel(Skill.Prayer) >= 25 && Skills.level(Skill.Prayer) > 5
             && !Prayer.prayerActive(Prayer.Effect.PROTECT_ITEM)) {
             for (n in 1..10) {
                 if (Script.antiPkingCheck())
@@ -113,21 +113,21 @@ class TravelToAltar(script: Script) : Leaf<Script>(script, "Traveling To Altar")
 
         if (!Condition.wait({ Game.tab() == Game.Tab.LOGOUT || Script.antiPkingCheck() }, 50, 50))
             LoggingService.severe("We were unable to open up the logout tab after starting to travel towards the altar.")
-        else if (Constants.escapePker)
+        else if (Constants.ESCAPE_PKER)
             return
         else while (!ScriptManager.isStopping() && !Script.antiPkingCheck() && Skills.level(Skill.Hitpoints) != 0
             && !Constants.AREA_LUMBY.contains(Players.local())
-            && (chaosAltarPath.traverse() || chaosAltarPath.next() != chaosAltarPath.end()))
+            && (CHAOS_ALTAR_PATH.traverse() || CHAOS_ALTAR_PATH.next() != CHAOS_ALTAR_PATH.end()))
             Condition.sleep(50)
 
         if (Players.local().inMotion()) {
-            Condition.wait({ Players.local().distanceTo(chaosAltarPath.end()) < 8
+            Condition.wait({ Players.local().distanceTo(CHAOS_ALTAR_PATH.end()) < 8
                     || !Players.local().inMotion() || Script.antiPkingCheck() }, 50, 25)
         }
 
-        if (Constants.escapePker || Skills.level(Skill.Hitpoints) == 0 || Constants.AREA_LUMBY.contains(Players.local()))
+        if (Constants.ESCAPE_PKER || Skills.level(Skill.Hitpoints) == 0 || Constants.AREA_LUMBY.contains(Players.local()))
             return
-        else if (Players.local().distanceTo(chaosAltarPath.end()) > 8) {
+        else if (Players.local().distanceTo(CHAOS_ALTAR_PATH.end()) > 8) {
             LoggingService.severe("We were unable to get to the entrance to the Chaos Temple.")
             return
         }
@@ -156,7 +156,7 @@ class TravelToAltar(script: Script) : Leaf<Script>(script, "Traveling To Altar")
 
                 Camera.turnTo(altarDoor.tile)
                 if (Condition.wait({ altarDoor.inViewport() || Script.antiPkingCheck() }, 50 ,25)) {
-                    if (Constants.escapePker)
+                    if (Constants.ESCAPE_PKER)
                         return
                 }
             }
@@ -172,7 +172,7 @@ class TravelToAltar(script: Script) : Leaf<Script>(script, "Traveling To Altar")
                     return
                 else if (!altarDoor.valid() || (altarDoor.interact("Open")
                             && Condition.wait({ !altarDoor.valid() || Script.antiPkingCheck()  }, 50, 50))) {
-                    if (Constants.escapePker)
+                    if (Constants.ESCAPE_PKER)
                         return
 
                     break
@@ -185,7 +185,7 @@ class TravelToAltar(script: Script) : Leaf<Script>(script, "Traveling To Altar")
                 return
         }
 
-        val altarTileMatrix = Constants.altarTile.matrix()
+        val altarTileMatrix = Constants.ALTAR_TILE.matrix()
         if (!altarTileMatrix.valid())
             return
         else for (n in 1..10) {
@@ -196,7 +196,7 @@ class TravelToAltar(script: Script) : Leaf<Script>(script, "Traveling To Altar")
 
             Camera.turnTo(altarTileMatrix)
             if (Condition.wait({ altarTileMatrix.inViewport() || Script.antiPkingCheck() }, 50 ,25)) {
-                if (Constants.escapePker)
+                if (Constants.ESCAPE_PKER)
                     return
             }
         }
@@ -227,7 +227,7 @@ class TravelToAltar(script: Script) : Leaf<Script>(script, "Traveling To Altar")
                             return
                         else if (!altarDoor.valid() || (altarDoor.interact("Open")
                                     && Condition.wait({ !altarDoor.valid() || Script.antiPkingCheck() }, 50, 50))) {
-                            if (Constants.escapePker)
+                            if (Constants.ESCAPE_PKER)
                                 return
 
                             break
@@ -241,9 +241,9 @@ class TravelToAltar(script: Script) : Leaf<Script>(script, "Traveling To Altar")
                 }
             }
 
-            if (Movement.step(Constants.altarTile) && Condition.wait({ Constants.AREA_ALTAR.contains(Players.local())
+            if (Movement.step(Constants.ALTAR_TILE) && Condition.wait({ Constants.AREA_ALTAR.contains(Players.local())
                         || Script.antiPkingCheck() }, 50, 50)) {
-                if (Constants.escapePker)
+                if (Constants.ESCAPE_PKER)
                     return
 
                 break
@@ -263,7 +263,7 @@ class TravelToAltar(script: Script) : Leaf<Script>(script, "Traveling To Altar")
 
         if (!Condition.wait({ Game.tab() == Game.Tab.LOGOUT || Script.antiPkingCheck() }, 50, 50))
             LoggingService.severe("We were unable to open up the logout tab after starting to offer bones at he altar.")
-        else if (Constants.escapePker)
+        else if (Constants.ESCAPE_PKER)
             return
 
         if (!Constants.AREA_ALTAR.contains(Players.local()))

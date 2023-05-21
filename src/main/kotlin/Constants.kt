@@ -7,29 +7,29 @@ import org.powbot.api.rt4.TilePath
 import org.powbot.api.rt4.World
 
 object Constants {
-    var stopAtLvl = 99
-    var stopAfterMinutes = 0
-    var lastKnownPrayerXp = 0
-    var timeSinceLastXpDrop: Long = 0
+    var STOP_AT_LEVEL = 99
+    var STOP_AFTER_MINUTES = 0
+    var LAST_KNOWN_PRAYER_XP = 0
+    var TIME_SINCE_LAST_XP_DROP: Long = 0
 
-    var protectItem = true
-    var depositEquipment = false
+    var PROTECT_ITEM = true
+    var DEPOSIT_EQUIPMENT = false
 
-    var boneType = "Dragon Bones"
+    var BONE_TYPE = "Dragon Bones"
     val BONE_TYPES = arrayOf("Dragon bones","Lava dragon bones","Dagannoth bones","Wyvern bones",
         "Big bones", "Superior dragon bones","Bones","Hydra bones","Babydragon bones")
     val BURNING_AMULETS = arrayOf("Burning amulet(5)", "Burning amulet(4)", "Burning amulet(3)",
         "Burning amulet(2)", "Burning amulet(1)")
 
-    val lavaMazeTile = Tile(3028, 3842, 0)
-    val altarTile = Tile(2948, 3821, 0)
-    val suicideTile = Tile(2982, 3848, 0)
-    val suicideTileMatrix = suicideTile.matrix()
+    val LAVA_MAZE_TILE = Tile(3028, 3842, 0)
+    val ALTAR_TILE = Tile(2948, 3821, 0)
+    val SUICIDE_TILE = Tile(2982, 3848, 0)
+    val SUICIDE_TILE_MATRIX = SUICIDE_TILE.matrix()
 
     val AREA_LUMBY = Area(Tile(3203, 3227, 0), Tile(3226, 3205, 0))
     val AREA_ALTAR = Area(Tile(2948, 3822, 0), Tile(2957, 3819, 0))
 
-    val chaosAltarPath = TilePath(arrayOf(Tile(3028, 3842, 0), Tile(3027, 3842, 0),
+    val CHAOS_ALTAR_PATH = TilePath(arrayOf(Tile(3028, 3842, 0), Tile(3027, 3842, 0),
         Tile(3026, 3841, 0), Tile(3025, 3840, 0), Tile(3024, 3840, 0), Tile(3023, 3839, 0),
         Tile(3022, 3839, 0), Tile(3021, 3839, 0), Tile(3020, 3839, 0),
         Tile(3019, 3839, 0), Tile(3018, 3839, 0), Tile(3017, 3839, 0),
@@ -56,7 +56,7 @@ object Constants {
         Tile(2965, 3824, 0), Tile(2964, 3824, 0), Tile(2963, 3824, 0),
         Tile(2962, 3824, 0), Tile(2961, 3824, 0), Tile(2960, 3823, 0),
         Tile(2959, 3822, 0), Tile(2958, 3821, 0)))
-    val suicidePath = TilePath(arrayOf(Tile(2948, 3821, 0), Tile(2949, 3821, 0),
+    val SUICIDE_PATH = TilePath(arrayOf(Tile(2948, 3821, 0), Tile(2949, 3821, 0),
         Tile(2950, 3821, 0), Tile(2951, 3821, 0), Tile(2952, 3821, 0),
         Tile(2953, 3821, 0), Tile(2954, 3821, 0), Tile(2955, 3821, 0),
         Tile(2956, 3821, 0), Tile(2957, 3821, 0), Tile(2958, 3821, 0),
@@ -70,7 +70,7 @@ object Constants {
         Tile(2978, 3842, 0), Tile(2979, 3843, 0), Tile(2980, 3844, 0),
         Tile(2981, 3845, 0), Tile(2982, 3846, 0), Tile(2982, 3847, 0),
         Tile(2982, 3848, 0)))
-    val lumbyBankBottomFloorPath = TilePath(arrayOf(Tile(3226, 3219, 0), Tile(3225, 3219, 0),
+    val LUMBY_BOTTOM_FLOOR_PATH = TilePath(arrayOf(Tile(3226, 3219, 0), Tile(3225, 3219, 0),
         Tile(3224, 3219, 0), Tile(3223, 3219, 0), Tile(3222, 3219, 0),
         Tile(3221, 3219, 0), Tile(3220, 3219, 0), Tile(3219, 3219, 0),
         Tile(3218, 3219, 0), Tile(3217, 3219, 0), Tile(3216, 3219, 0),
@@ -80,18 +80,18 @@ object Constants {
         Tile(3213, 3228, 0), Tile(3212, 3228, 0), Tile(3211, 3228, 0),
         Tile(3210, 3228, 0), Tile(3209, 3228, 0), Tile(3208, 3228, 0),
         Tile(3207, 3228, 0), Tile(3206, 3228, 0)))
-    val lumbyBankTopFloorPath = TilePath(arrayOf(Tile(3206, 3229, 2), Tile(3206, 3228, 2),
+    val LUMBY_TOP_FLOOR_PATH = TilePath(arrayOf(Tile(3206, 3229, 2), Tile(3206, 3228, 2),
         Tile(3206, 3227, 2), Tile(3206, 3226, 2), Tile(3206, 3225, 2),
         Tile(3206, 3224, 2), Tile(3206, 3223, 2), Tile(3206, 3222, 2),
         Tile(3206, 3221, 2), Tile(3206, 3220, 2), Tile(3206, 3219, 2),
         Tile(3207, 3219, 2), Tile(3208, 3219, 2), Tile(3208, 3220, 2)))
 
     // antipk stuff
-    var worldId = 0
-    var timeUntilNextLogOut: Long = 0
-    var escapePker = false
-    val loginScreenWorldHopperPoint = Point(150, 460)
-    val worldSpecialtyFilter = arrayOf(World.Specialty.BOUNTY_HUNTER, World.Specialty.TARGET_WORLD,
+    var WORLD_ID = 0
+    var TIME_UNTIL_NEXT_LOGOUT: Long = 0
+    var ESCAPE_PKER = false
+    val LOGIN_SCREEN_WORLDHOPPER_POINT = Point(150, 460)
+    val WORLD_SPECIALITY_FILTER = arrayOf(World.Specialty.BOUNTY_HUNTER, World.Specialty.TARGET_WORLD,
         World.Specialty.FRESH_START, World.Specialty.HIGH_RISK, World.Specialty.BETA, World.Specialty.DEAD_MAN,
         World.Specialty.LEAGUE, World.Specialty.PVP_ARENA, World.Specialty.SKILL_REQUIREMENT,
         World.Specialty.SPEEDRUNNING, World.Specialty.TWISTED_LEAGUE)

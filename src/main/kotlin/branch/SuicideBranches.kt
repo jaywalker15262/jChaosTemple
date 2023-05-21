@@ -19,7 +19,7 @@ class SuicideCheck(script: Script) : Branch<Script>(script, "Time to suicide?") 
     override val failedComponent: TreeComponent<Script> = OfferBones(script)
 
     override fun validate(): Boolean {
-        return Inventory.stream().name(Constants.boneType).isEmpty()
+        return Inventory.stream().name(Constants.BONE_TYPE).isEmpty()
     }
 }
 
@@ -28,7 +28,7 @@ class SuicideCheckTwo(script: Script) : Branch<Script>(script, "Time to suicide?
     override val failedComponent: TreeComponent<Script> = TravelToAltar(script)
 
     override fun validate(): Boolean {
-        return Inventory.stream().name(Constants.boneType).isEmpty()
+        return Inventory.stream().name(Constants.BONE_TYPE).isEmpty()
     }
 }
 
@@ -37,7 +37,7 @@ class SuicideAreaCheck(script: Script) : Branch<Script>(script, "At suicide area
     override val failedComponent: TreeComponent<Script> = TravelToChaosFanatic(script)
 
     override fun validate(): Boolean {
-        return Players.local().distanceTo(Constants.suicideTile) < 6
+        return Players.local().distanceTo(Constants.SUICIDE_TILE) < 6
     }
 }
 
@@ -46,7 +46,7 @@ class WorldHopCheck(script: Script) : Branch<Script>(script, "World-hop?") {
     override val failedComponent: TreeComponent<Script> = Suicide(script)
 
     override fun validate(): Boolean {
-        return !Players.local().inCombat() && ScriptManager.getRuntime(true) > Constants.timeUntilNextLogOut &&
+        return !Players.local().inCombat() && ScriptManager.getRuntime(true) > Constants.TIME_UNTIL_NEXT_LOGOUT &&
                 Npcs.stream().within(13).name("Chaos fanatic").filtered {
             it.distanceTo(Players.local()).toInt() <= 11 && it.inViewport() }.isEmpty()
     }

@@ -25,6 +25,6 @@ class CloseBank (script: Script) : Leaf<Script>(script, "Closing Bank") {
         }
 
         // Fixes a bug that causes us to not immediately offer bones upon arriving at the altar.
-        Constants.lastKnownPrayerXp = Skills.experience(Skill.Prayer)
+        Constants.LAST_KNOWN_PRAYER_XP = Skills.experience(Skill.Prayer)
     }
 }

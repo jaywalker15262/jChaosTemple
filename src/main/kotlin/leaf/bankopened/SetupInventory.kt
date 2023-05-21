@@ -14,15 +14,15 @@ import org.powbot.mobile.script.ScriptManager
 
 class SetupInventory(script: Script) : Leaf<Script>(script, "Setting Up Inventory") {
     override fun execute() {
-        if (Constants.stopAfterMinutes > 0) {
+        if (Constants.STOP_AFTER_MINUTES > 0) {
             val minutes: Int = (ScriptManager.getRuntime(true) / 60000).toInt()
-            if (minutes >= Constants.stopAfterMinutes) {
+            if (minutes >= Constants.STOP_AFTER_MINUTES) {
                 LoggingService.info("Script stopping due to runtime goal reached.")
                 ScriptManager.stop()
                 return
             }
         }
-        if (Skills.realLevel(Skill.Prayer) >= Constants.stopAtLvl) {
+        if (Skills.realLevel(Skill.Prayer) >= Constants.STOP_AT_LEVEL) {
             LoggingService.info("Script stopping due to prayer level goal reached.")
             ScriptManager.stop()
             return
@@ -61,13 +61,13 @@ class SetupInventory(script: Script) : Leaf<Script>(script, "Setting Up Inventor
             }
         }
 
-        var bankBones = Bank.stream().name(Constants.boneType).first()
+        var bankBones = Bank.stream().name(Constants.BONE_TYPE).first()
         for (n in 1..10) {
             if (bankBones.valid())
                 break
 
             Condition.sleep(50)
-            bankBones = Bank.stream().name(Constants.boneType).first()
+            bankBones = Bank.stream().name(Constants.BONE_TYPE).first()
         }
 
         if (!bankBones.valid()) {

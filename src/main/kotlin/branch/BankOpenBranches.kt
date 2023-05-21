@@ -17,8 +17,8 @@ class HaveInventory(script: Script) : Branch<Script>(script, "Have proper invent
     override val failedComponent: TreeComponent<Script> = OpenBank(script)
 
     override fun validate(): Boolean {
-        Constants.escapePker = false
-        return !Constants.depositEquipment && Inventory.stream().name(Constants.boneType).count().toInt() == 27 &&
+        Constants.ESCAPE_PKER = false
+        return !Constants.DEPOSIT_EQUIPMENT && Inventory.stream().name(Constants.BONE_TYPE).count().toInt() == 27 &&
                 Inventory.stream().name(*Constants.BURNING_AMULETS).count().toInt() == 1
     }
 }
@@ -28,8 +28,8 @@ class HaveInventoryTwo(script: Script) : Branch<Script>(script, "Have proper inv
     override val failedComponent: TreeComponent<Script> = IsInventoryEmpty(script)
 
     override fun validate(): Boolean {
-        Constants.escapePker = false
-        return !Constants.depositEquipment && Inventory.stream().name(Constants.boneType).count().toInt() == 27 &&
+        Constants.ESCAPE_PKER = false
+        return !Constants.DEPOSIT_EQUIPMENT && Inventory.stream().name(Constants.BONE_TYPE).count().toInt() == 27 &&
                 Inventory.stream().name(*Constants.BURNING_AMULETS).count().toInt() == 1
     }
 }

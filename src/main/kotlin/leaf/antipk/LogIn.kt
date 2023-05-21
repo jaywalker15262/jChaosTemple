@@ -15,6 +15,6 @@ class LogIn(script: Script) : Leaf<Script>(script, "Logging In") {
         SettingsManager.set(ToggleId.AutoLogin, true)
         while (!Game.loggedIn())
             Condition.sleep(50)
-        Constants.lastKnownPrayerXp = Skills.experience(Skill.Prayer)
+        Constants.LAST_KNOWN_PRAYER_XP = Skills.experience(Skill.Prayer)
     }
 }

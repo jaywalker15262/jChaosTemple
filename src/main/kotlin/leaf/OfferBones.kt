@@ -12,7 +12,7 @@ import org.powbot.mobile.script.ScriptManager
 
 class OfferBones(script: Script) : Leaf<Script>(script, "Offering Bones") {
     override fun execute() {
-        val bone = Inventory.stream().name(Constants.boneType).first()
+        val bone = Inventory.stream().name(Constants.BONE_TYPE).first()
         if (!bone.valid())
             return
 
@@ -22,7 +22,7 @@ class OfferBones(script: Script) : Leaf<Script>(script, "Offering Bones") {
             return
         }
         // Protect item support
-        else if (Constants.protectItem && Skills.realLevel(Skill.Prayer) >= 25 && Skills.level(Skill.Prayer) > 5
+        else if (Constants.PROTECT_ITEM && Skills.realLevel(Skill.Prayer) >= 25 && Skills.level(Skill.Prayer) > 5
             && !Prayer.prayerActive(Prayer.Effect.PROTECT_ITEM)) {
             for (n in 1..10) {
                 if (Script.antiPkingCheck())
@@ -63,14 +63,14 @@ class OfferBones(script: Script) : Leaf<Script>(script, "Offering Bones") {
                 Camera.turnTo(altar)
             else if (prayerXp != Skills.experience(Skill.Prayer) || (altar.interact("Use")
                         && Condition.wait({ prayerXp != Skills.experience(Skill.Prayer) || Script.antiPkingCheck() }, 50, 60))) {
-                Constants.timeSinceLastXpDrop = ScriptManager.getRuntime(true) + 3000
+                Constants.TIME_SINCE_LAST_XP_DROP = ScriptManager.getRuntime(true) + 3000
                 break
             }
 
             Condition.sleep(Random.nextGaussian(170, 250, 200, 20.0))
         }
 
-        if (Constants.escapePker)
+        if (Constants.ESCAPE_PKER)
             return
         else for (n in 1..3) {
             if (Script.antiPkingCheck())

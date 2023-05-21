@@ -16,14 +16,14 @@ class OfferingCheck(script: Script) : Branch<Script>(script, "Already offering?"
     override val failedComponent: TreeComponent<Script> = SuicideCheck(script)
 
     override fun validate(): Boolean {
-        if (Constants.lastKnownPrayerXp != Skills.experience(Skill.Prayer)) {
-            Constants.lastKnownPrayerXp = Skills.experience(Skill.Prayer)
-            Constants.timeSinceLastXpDrop = if (!Players.local().inCombat())
+        if (Constants.LAST_KNOWN_PRAYER_XP != Skills.experience(Skill.Prayer)) {
+            Constants.LAST_KNOWN_PRAYER_XP = Skills.experience(Skill.Prayer)
+            Constants.TIME_SINCE_LAST_XP_DROP = if (!Players.local().inCombat())
                 ScriptManager.getRuntime(true) + 3000
             // Player attacks interrupts us offering bones so check if we need to reattempt more often while suiciding.
             else ScriptManager.getRuntime(true) + 600
         }
 
-        return Inventory.stream().name(Constants.boneType).isNotEmpty() && Constants.timeSinceLastXpDrop > ScriptManager.getRuntime(true)
+        return Inventory.stream().name(Constants.BONE_TYPE).isNotEmpty() && Constants.TIME_SINCE_LAST_XP_DROP > ScriptManager.getRuntime(true)
     }
 }

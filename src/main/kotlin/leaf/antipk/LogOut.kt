@@ -15,7 +15,7 @@ import org.powbot.mobile.script.ScriptManager
 class LogOut(script: Script) : Leaf<Script>(script, "Logging Out") {
     override fun execute() {
         // We are in combat so we cannot log out.
-        if (Players.local().inCombat() || Constants.timeUntilNextLogOut > ScriptManager.getRuntime(true)) {
+        if (Players.local().inCombat() || Constants.TIME_UNTIL_NEXT_LOGOUT > ScriptManager.getRuntime(true)) {
             Condition.sleep(50)
             return
         }
@@ -25,35 +25,35 @@ class LogOut(script: Script) : Leaf<Script>(script, "Logging Out") {
         if (!tryLogOut()) {
             if (ScriptManager.isStopping())
                 return
-            else if (Players.local().inCombat() || Constants.timeUntilNextLogOut > ScriptManager.getRuntime(true)) {
+            else if (Players.local().inCombat() || Constants.TIME_UNTIL_NEXT_LOGOUT > ScriptManager.getRuntime(true)) {
                 Condition.wait{ Constants.AREA_LUMBY.contains(Players.local())
-                        || ScriptManager.getRuntime(true) > Constants.timeUntilNextLogOut }
+                        || ScriptManager.getRuntime(true) > Constants.TIME_UNTIL_NEXT_LOGOUT }
                 return
             }
 
             Condition.sleep(Random.nextGaussian(170, 250, 200, 20.0))
             if (Game.loggedIn() && !Game.logout() && !Condition.wait({ !Game.loggedIn() || Players.local().inCombat()
-                        || Constants.timeUntilNextLogOut > ScriptManager.getRuntime(true) }, 50, 60)) {
+                        || Constants.TIME_UNTIL_NEXT_LOGOUT > ScriptManager.getRuntime(true) }, 50, 60)) {
                 LoggingService.severe("Failed to log out to avoid getting pked.")
                 ScriptManager.stop()
                 return
             }
             else if (Game.loggedIn()) {
                 Condition.wait{ Constants.AREA_LUMBY.contains(Players.local())
-                        || ScriptManager.getRuntime(true) > Constants.timeUntilNextLogOut }
+                        || ScriptManager.getRuntime(true) > Constants.TIME_UNTIL_NEXT_LOGOUT }
                 return
             }
         }
 
-        var worlds = Worlds.stream().filtered { it.number < 400 && it.number != Constants.worldId && it.type == World.Type.MEMBERS
-                && !Constants.worldSpecialtyFilter.contains(it.specialty) && it.population > 0 && it.population < 990 }
+        var worlds = Worlds.stream().filtered { it.number < 400 && it.number != Constants.WORLD_ID && it.type == World.Type.MEMBERS
+                && !Constants.WORLD_SPECIALITY_FILTER.contains(it.specialty) && it.population > 0 && it.population < 990 }
         for (n in 1..10) {
             if (worlds.isNotEmpty())
                 break
 
             Condition.sleep(50)
-            worlds = Worlds.stream().filtered { it.number < 400 && it.number != Constants.worldId && it.type == World.Type.MEMBERS
-                    && !Constants.worldSpecialtyFilter.contains(it.specialty) && it.population > 0 && it.population < 990 }
+            worlds = Worlds.stream().filtered { it.number < 400 && it.number != Constants.WORLD_ID && it.type == World.Type.MEMBERS
+                    && !Constants.WORLD_SPECIALITY_FILTER.contains(it.specialty) && it.population > 0 && it.population < 990 }
         }
 
         if (worlds.isEmpty()) {
@@ -70,7 +70,7 @@ class LogOut(script: Script) : Leaf<Script>(script, "Logging Out") {
         }
 
         Condition.sleep(Random.nextGaussian(1380, 2180, 1580, 80.0))
-        Input.tap(Constants.loginScreenWorldHopperPoint)
+        Input.tap(Constants.LOGIN_SCREEN_WORLDHOPPER_POINT)
         if (Condition.wait({ LoginScreenWorldSwitcher.isOpen() }, 50 ,200)) {
             Condition.sleep(Random.nextGaussian(570, 700, 650, 20.0))
             if (!LoginScreenWorldSwitcher.switchToWorld(newWorld)) {
@@ -100,25 +100,25 @@ class LogOut(script: Script) : Leaf<Script>(script, "Logging Out") {
 
                 Condition.sleep(25000)  // Wait for 25 sec to make sure pker no longer being there.
             }
-            else Constants.worldId = newWorld.number
+            else Constants.WORLD_ID = newWorld.number
         }
         else {
             LoggingService.info("Failed to open up the login-screen worldhopper.")
             Condition.sleep(30000)     // Wait for 30 sec to make sure pker no longer being there.
         }
 
-        Constants.escapePker = false
+        Constants.ESCAPE_PKER = false
     }
 
     private fun tryLogOut(): Boolean {
-        if (ScriptManager.getRuntime(true) >= Constants.timeUntilNextLogOut && Game.logout()) {
+        if (ScriptManager.getRuntime(true) >= Constants.TIME_UNTIL_NEXT_LOGOUT && Game.logout()) {
             if (!Condition.wait({ !Game.loggedIn() || Players.local().inCombat()
-                        || Constants.timeUntilNextLogOut > ScriptManager.getRuntime(true) }, 50, 60)) {
+                        || Constants.TIME_UNTIL_NEXT_LOGOUT > ScriptManager.getRuntime(true) }, 50, 60)) {
                 LoggingService.severe("Failed to find that we logged out.")
                 ScriptManager.stop()
                 return false
             }
-            else if (Players.local().inCombat() || Constants.timeUntilNextLogOut > ScriptManager.getRuntime(true))
+            else if (Players.local().inCombat() || Constants.TIME_UNTIL_NEXT_LOGOUT > ScriptManager.getRuntime(true))
                 return false
 
             return true

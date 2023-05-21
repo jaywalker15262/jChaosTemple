@@ -25,7 +25,7 @@ class DepositInventory(script: Script) : Leaf<Script>(script, "Depositing Invent
         }
 
         // We only do this once upon script start
-        if (Constants.depositEquipment) {
+        if (Constants.DEPOSIT_EQUIPMENT) {
             for (n in 1..10) {
                 if (Equipment.stream().isEmpty())
                     break
@@ -39,7 +39,7 @@ class DepositInventory(script: Script) : Leaf<Script>(script, "Depositing Invent
                 Condition.sleep(Random.nextGaussian(170, 250, 200, 20.0))
             }
 
-            Constants.depositEquipment = false
+            Constants.DEPOSIT_EQUIPMENT = false
         }
     }
 }
