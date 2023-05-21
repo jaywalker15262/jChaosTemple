@@ -4,6 +4,7 @@ import com.google.common.eventbus.Subscribe
 import com.jay.chaostemple.branch.IsLoggedIn
 import org.powbot.api.Color
 import org.powbot.api.event.MessageEvent
+import org.powbot.api.event.MessageType
 import org.powbot.api.rt4.*
 import org.powbot.api.rt4.walking.model.Skill
 import org.powbot.api.script.*
@@ -104,12 +105,11 @@ class jChaosTemple : TreeScript() {
 
             val playerCombatLevel = Players.local().combatLevel
             val wildyLevel = Combat.wildernessLevel()
-            Players.stream().notLocalPlayer().within(18).forEach {
-                if ((it.combatLevel + wildyLevel) >= playerCombatLevel
-                    || (it.combatLevel - wildyLevel) <= playerCombatLevel ) {
-                    Constants.ESCAPE_PKER = true
-                    return true
-                }
+            if(Players.stream().notLocalPlayer().within(18).filtered {
+                (it.combatLevel + wildyLevel) >= playerCombatLevel && (it.combatLevel - wildyLevel) <= playerCombatLevel
+            }.isNotEmpty()) {
+                Constants.ESCAPE_PKER = true
+                return true
             }
 
             return false
@@ -118,8 +118,7 @@ class jChaosTemple : TreeScript() {
 
     @Subscribe
     private fun message(messageEvent: MessageEvent) {
-        // Ensure it's a game message not a player trying to mess it up
-        if (messageEvent.sender.isNotEmpty())
+        if (messageEvent.messageType != MessageType.Game)
             return
         else if (messageEvent.message == logoutInCombatErrorMessage)
             Constants.TIME_UNTIL_NEXT_LOGOUT = ScriptManager.getRuntime(true) + 10000

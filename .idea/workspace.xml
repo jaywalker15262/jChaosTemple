@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="fed035d4-b86d-4be4-b658-43119d004291" name="Changes" comment="Using Combat.wildernessLevel() instead of checking wildy level based on y-coord.">
+    <list default="true" id="fed035d4-b86d-4be4-b658-43119d004291" name="Changes" comment="More Combat.wildernessLevel() refactoring, also we need to account for if other players combat level are too high too attack us.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/kotlin/jChaosTemple.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/jChaosTemple.kt" afterDir="false" />
     </list>
@@ -297,7 +297,13 @@
       <option name="presentableId" value="LOCAL−00032" />
       <updated>1684692982797</updated>
     </task>
-    <option name="localTasksCounter" value="33" />
+    <task id="LOCAL−00033" summary="More Combat.wildernessLevel() refactoring, also we need to account for if other players combat level are too high too attack us.">
+      <created>1684695588929</created>
+      <option name="number" value="LOCAL−00033" />
+      <option name="presentableId" value="LOCAL−00033" />
+      <updated>1684695588929</updated>
+    </task>
+    <option name="localTasksCounter" value="34" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -312,7 +318,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="We will no longer stop what we are doing if we are already in combat or cannot logout." />
     <MESSAGE value="Fixed some bugs &amp; inefficiencies with the lumby banking." />
     <MESSAGE value="Improved suiciding checking for empty inventory and added more logic and more failsafes when suiciding with Chaos Fantic." />
     <MESSAGE value="For the sake of consistency with coding style." />
@@ -337,6 +342,7 @@
     <MESSAGE value="Rename Script.kt and our class to jChaosTemple." />
     <MESSAGE value="Rename Script.kt and our class to jChaosTemple. Also missed refactoring of a few more LoggingService usages." />
     <MESSAGE value="Using Combat.wildernessLevel() instead of checking wildy level based on y-coord." />
-    <option name="LAST_COMMIT_MESSAGE" value="Using Combat.wildernessLevel() instead of checking wildy level based on y-coord." />
+    <MESSAGE value="More Combat.wildernessLevel() refactoring, also we need to account for if other players combat level are too high too attack us." />
+    <option name="LAST_COMMIT_MESSAGE" value="More Combat.wildernessLevel() refactoring, also we need to account for if other players combat level are too high too attack us." />
   </component>
 </project>
