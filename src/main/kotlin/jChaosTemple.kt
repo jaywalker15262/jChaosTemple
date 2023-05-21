@@ -83,7 +83,6 @@ class jChaosTemple : TreeScript() {
             .build()
         addPaint(p)
 
-        Variables.lastKnownPrayerXp = Skills.experience(Skill.Prayer)
         if (Equipment.stream().isNotEmpty())
             Variables.depositEquipment = true
     }

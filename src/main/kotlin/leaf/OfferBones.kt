@@ -7,7 +7,6 @@ import org.powbot.api.Random
 import org.powbot.api.rt4.*
 import org.powbot.api.rt4.walking.model.Skill
 import org.powbot.api.script.tree.Leaf
-import org.powbot.mobile.script.ScriptManager
 
 class OfferBones(script: jChaosTemple) : Leaf<jChaosTemple>(script, "Offering Bones") {
     override fun execute() {
@@ -62,7 +61,6 @@ class OfferBones(script: jChaosTemple) : Leaf<jChaosTemple>(script, "Offering Bo
                 Camera.turnTo(altar)
             else if (prayerXp != Skills.experience(Skill.Prayer) || (altar.interact("Use")
                         && Condition.wait({ prayerXp != Skills.experience(Skill.Prayer) || jChaosTemple.antiPkingCheck() }, 50, 60))) {
-                Variables.timeSinceLastXpDrop = ScriptManager.getRuntime(true) + 3000
                 break
             }
 
