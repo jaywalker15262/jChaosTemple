@@ -12,11 +12,11 @@ import org.powbot.mobile.script.ScriptManager
 
 class OfferBones(script: Script) : Leaf<Script>(script, "Offering Bones") {
     override fun execute() {
-        var bone = Inventory.stream().name(Constants.boneType).first()
+        val bone = Inventory.stream().name(Constants.boneType).first()
         if (!bone.valid())
             return
 
-        var altar = Objects.stream().within(20).name("Chaos altar").first()
+        val altar = Objects.stream().within(20).name("Chaos altar").first()
         if (!altar.valid()) {
             LoggingService.info("Failed to find the Chaos Temple altar.")
             return
@@ -54,6 +54,7 @@ class OfferBones(script: Script) : Leaf<Script>(script, "Offering Bones") {
             Condition.sleep(50)
         }
 
+        altar.bounds(-32, 32, -64, 0, -32, 32)
         val prayerXp = Skills.experience(Skill.Prayer)
         for (n in 1..5) {
             if (Script.antiPkingCheck())

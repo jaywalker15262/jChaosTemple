@@ -14,7 +14,13 @@ import org.powbot.mobile.script.ScriptManager
 
 class SetupInventory(script: Script) : Leaf<Script>(script, "Setting Up Inventory") {
     override fun execute() {
-        if (Skills.realLevel(Skill.Prayer) >= Constants.stopAtLvl) {
+        val minutes: Int = (ScriptManager.getRuntime(true) / 60000).toInt()
+        if (minutes >= Constants.stopAfterMinutes) {
+            LoggingService.info("Script stopping due to runtime goal reached.")
+            ScriptManager.stop()
+            return
+        }
+        else if (Skills.realLevel(Skill.Prayer) >= Constants.stopAtLvl) {
             LoggingService.info("Script stopping due to prayer level goal reached.")
             ScriptManager.stop()
             return

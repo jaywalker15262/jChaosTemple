@@ -29,8 +29,12 @@ import java.util.logging.Logger
 @ScriptConfiguration.List(
     [
         ScriptConfiguration(
-            "stopAtLvl", "Stop at lvl:",
+            "stopAtLvl", "Stop at lvl(values >99 or <1 means it will not stop based on lvl):",
             optionType = OptionType.INTEGER, defaultValue = "99"
+        ),
+        ScriptConfiguration(
+            "stopAfterMinutes", "Stop after X minutes(0, for the bot to not stop based on time):",
+            optionType = OptionType.INTEGER, defaultValue = "0"
         ),
         ScriptConfiguration(
             "bone", "Bones to offer:",
@@ -50,8 +54,13 @@ class Script : TreeScript() {
 
     @ValueChanged("stopAtLvl")
     fun stopAtLevelChanged(newValue: Int) {
-        if (newValue > 0)
-            Constants.stopAtLvl = newValue
+        Constants.stopAtLvl = newValue
+    }
+
+    @ValueChanged("stopAfterMinutes")
+    fun stopAfterMinutesChanged(newValue: Int) {
+        Constants.stopAfterMinutes = if (newValue > 0)
+            newValue else 0
     }
 
     @ValueChanged("bone")
