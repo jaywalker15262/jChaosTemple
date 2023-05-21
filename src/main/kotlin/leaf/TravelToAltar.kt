@@ -122,7 +122,7 @@ class TravelToAltar(script: Script) : Leaf<Script>(script, "Traveling To Altar")
 
         if (Players.local().inMotion()) {
             Condition.wait({ Players.local().distanceTo(chaosAltarPath.end()) < 8
-                    || Script.antiPkingCheck() }, 50, 25)
+                    || !Players.local().inMotion() || Script.antiPkingCheck() }, 50, 25)
         }
 
         if (Constants.escapePker || Skills.level(Skill.Hitpoints) == 0 || Constants.AREA_LUMBY.contains(Players.local()))
