@@ -3,7 +3,6 @@ package com.jay.chaostemple.leaf
 import com.jay.chaostemple.Constants
 import com.jay.chaostemple.Constants.LUMBY_BOTTOM_FLOOR_PATH
 import com.jay.chaostemple.Constants.LUMBY_TOP_FLOOR_PATH
-import com.jay.chaostemple.LoggingService
 import com.jay.chaostemple.Script
 import org.powbot.api.Condition
 import org.powbot.api.Random
@@ -36,20 +35,20 @@ class OpenBank(script: Script) : Leaf<Script>(script, "Opening Bank") {
                 if (Game.floor() == 0) {
                     val stairCase = Objects.stream().within(18).id(16671).nearest().first()
                     if (!stairCase.valid()) {
-                        LoggingService.info("Failed to find the staircase in lumby castle.")
+                        script.info("Failed to find the staircase in lumby castle.")
                         return
                     } else if (!Condition.wait({
                             stairCase.distanceTo(Players.local()).toInt() < 5
                                     || !Players.local().inMotion()
                         }, 50, 300)) {
-                        LoggingService.info("Failed to walk to the lumby castle stairs.")
+                        script.info("Failed to walk to the lumby castle stairs.")
                         return
                     }
 
                     stairCase.bounds(-26, 26, -76, 24, -26, 26)
                     for (n in 1..10) {
                         if (!stairCase.inViewport()) {
-                            LoggingService.info("Stairs are not in view.")
+                            script.info("Stairs are not in view.")
                             Camera.turnTo(stairCase)
                             Condition.wait({ stairCase.inViewport() }, 50, 50)
                         }
@@ -63,14 +62,14 @@ class OpenBank(script: Script) : Leaf<Script>(script, "Opening Bank") {
                     }
 
                     if (Game.floor() != 1) {
-                        LoggingService.info("Failed to walk up the stairs on the bottom floor.")
+                        script.info("Failed to walk up the stairs on the bottom floor.")
                         return
                     }
                 }
                 if (Game.floor() == 1) {
                     val secondStairCase = Objects.stream().within(6).id(16672).first()
                     if (!secondStairCase.valid()) {
-                        LoggingService.info("Failed to find the staircase on the first floor of the lumby castle.")
+                        script.info("Failed to find the staircase on the first floor of the lumby castle.")
                         return
                     }
 
@@ -87,7 +86,7 @@ class OpenBank(script: Script) : Leaf<Script>(script, "Opening Bank") {
                     }
 
                     if (Game.floor() != 2) {
-                        LoggingService.info("Failed to walk up the stairs on the first floor.")
+                        script.info("Failed to walk up the stairs on the first floor.")
                         return
                     }
                 }

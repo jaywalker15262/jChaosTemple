@@ -1,7 +1,6 @@
 package com.jay.chaostemple.leaf.antipk
 
 import com.jay.chaostemple.Constants
-import com.jay.chaostemple.LoggingService
 import com.jay.chaostemple.Script
 import org.powbot.api.Condition
 import org.powbot.api.Input
@@ -34,7 +33,7 @@ class LogOut(script: Script) : Leaf<Script>(script, "Logging Out") {
             Condition.sleep(Random.nextGaussian(170, 250, 200, 20.0))
             if (Game.loggedIn() && !Game.logout() && !Condition.wait({ !Game.loggedIn() || Players.local().inCombat()
                         || Constants.TIME_UNTIL_NEXT_LOGOUT > ScriptManager.getRuntime(true) }, 50, 60)) {
-                LoggingService.severe("Failed to log out to avoid getting pked.")
+                script.severe("Failed to log out to avoid getting pked.")
                 ScriptManager.stop()
                 return
             }
@@ -57,14 +56,14 @@ class LogOut(script: Script) : Leaf<Script>(script, "Logging Out") {
         }
 
         if (worlds.isEmpty()) {
-            LoggingService.info("Failed to find a list of worlds to hop to.")
+            script.info("Failed to find a list of worlds to hop to.")
             ScriptManager.stop()
             return
         }
 
         val newWorld = worlds.list().random()
         if (!newWorld.valid()) {
-            LoggingService.info("Failed to find a valid world in our list.")
+            script.info("Failed to find a valid world in our list.")
             ScriptManager.stop()
             return
         }
@@ -76,7 +75,7 @@ class LogOut(script: Script) : Leaf<Script>(script, "Logging Out") {
             if (!LoginScreenWorldSwitcher.switchToWorld(newWorld)) {
                 Condition.sleep(Random.nextGaussian(570, 700, 650, 20.0))
                 if (!LoginScreenWorldSwitcher.isOpen() || !LoginScreenWorldSwitcher.switchToWorld(newWorld)) {
-                    LoggingService.severe("Failed to select our new world(" + newWorld.number.toString() + ") to hop to in the login-screen worldhopper.")
+                    script.severe("Failed to select our new world(" + newWorld.number.toString() + ") to hop to in the login-screen worldhopper.")
                     ScriptManager.stop()
                     return
                 }
@@ -86,14 +85,14 @@ class LogOut(script: Script) : Leaf<Script>(script, "Logging Out") {
                 if (!LoginScreenWorldSwitcher.close()) {
                     Condition.sleep(Random.nextGaussian(570, 700, 650, 20.0))
                     if (!LoginScreenWorldSwitcher.close()) {
-                        LoggingService.severe("Failed to close the login-screen worldhopper.")
+                        script.severe("Failed to close the login-screen worldhopper.")
                         ScriptManager.stop()
                         return
                     }
                 }
 
                 if (!Condition.wait({ !LoginScreenWorldSwitcher.isOpen() }, 50, 100)) {
-                    LoggingService.severe("Failed to close the login-screen worldhopper.")
+                    script.severe("Failed to close the login-screen worldhopper.")
                     ScriptManager.stop()
                     return
                 }
@@ -103,7 +102,7 @@ class LogOut(script: Script) : Leaf<Script>(script, "Logging Out") {
             else Constants.WORLD_ID = newWorld.number
         }
         else {
-            LoggingService.info("Failed to open up the login-screen worldhopper.")
+            script.info("Failed to open up the login-screen worldhopper.")
             Condition.sleep(30000)     // Wait for 30 sec to make sure pker no longer being there.
         }
 
@@ -114,7 +113,7 @@ class LogOut(script: Script) : Leaf<Script>(script, "Logging Out") {
         if (ScriptManager.getRuntime(true) >= Constants.TIME_UNTIL_NEXT_LOGOUT && Game.logout()) {
             if (!Condition.wait({ !Game.loggedIn() || Players.local().inCombat()
                         || Constants.TIME_UNTIL_NEXT_LOGOUT > ScriptManager.getRuntime(true) }, 50, 60)) {
-                LoggingService.severe("Failed to find that we logged out.")
+                script.severe("Failed to find that we logged out.")
                 ScriptManager.stop()
                 return false
             }

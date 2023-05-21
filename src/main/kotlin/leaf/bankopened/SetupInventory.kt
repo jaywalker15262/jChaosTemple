@@ -1,7 +1,6 @@
 package com.jay.chaostemple.leaf.bankopened
 
 import com.jay.chaostemple.Constants
-import com.jay.chaostemple.LoggingService
 import com.jay.chaostemple.Script
 import org.powbot.api.Condition
 import org.powbot.api.Random
@@ -17,13 +16,13 @@ class SetupInventory(script: Script) : Leaf<Script>(script, "Setting Up Inventor
         if (Constants.STOP_AFTER_MINUTES > 0) {
             val minutes: Int = (ScriptManager.getRuntime(true) / 60000).toInt()
             if (minutes >= Constants.STOP_AFTER_MINUTES) {
-                LoggingService.info("Script stopping due to runtime goal reached.")
+                script.info("Script stopping due to runtime goal reached.")
                 ScriptManager.stop()
                 return
             }
         }
         if (Skills.realLevel(Skill.Prayer) >= Constants.STOP_AT_LEVEL) {
-            LoggingService.info("Script stopping due to prayer level goal reached.")
+            script.info("Script stopping due to prayer level goal reached.")
             ScriptManager.stop()
             return
         }
@@ -38,7 +37,7 @@ class SetupInventory(script: Script) : Leaf<Script>(script, "Setting Up Inventor
             }
 
             if (!bankAmulet.valid()) {
-                LoggingService.severe("Could not find any Burning amulets in the bank.")
+                script.severe("Could not find any Burning amulets in the bank.")
                 ScriptManager.stop()
                 return
             }
@@ -55,7 +54,7 @@ class SetupInventory(script: Script) : Leaf<Script>(script, "Setting Up Inventor
             }
 
             if (Inventory.stream().name(bankAmulet.name()).count().toInt() == 0) {
-                LoggingService.severe("Failed to find a Burning amulet in our inventory.")
+                script.severe("Failed to find a Burning amulet in our inventory.")
                 ScriptManager.stop()
                 return
             }
@@ -71,12 +70,12 @@ class SetupInventory(script: Script) : Leaf<Script>(script, "Setting Up Inventor
         }
 
         if (!bankBones.valid()) {
-            LoggingService.severe("Could not find any bones in the bank.")
+            script.severe("Could not find any bones in the bank.")
             ScriptManager.stop()
             return
         }
         else if (bankBones.stackSize() < 27) {
-            LoggingService.severe("Could not find enough bones in the bank for another trip.")
+            script.severe("Could not find enough bones in the bank for another trip.")
             ScriptManager.stop()
             return
         }
@@ -90,7 +89,7 @@ class SetupInventory(script: Script) : Leaf<Script>(script, "Setting Up Inventor
         }
 
         if (Inventory.stream().name(bankBones.name()).count().toInt() != 27) {
-            LoggingService.severe("Failed to find enough bones in our inventory for another trip.")
+            script.severe("Failed to find enough bones in our inventory for another trip.")
             ScriptManager.stop()
             return
         }

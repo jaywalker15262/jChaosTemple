@@ -2,7 +2,6 @@ package com.jay.chaostemple.leaf
 
 import com.jay.chaostemple.Constants
 import com.jay.chaostemple.Constants.CHAOS_ALTAR_PATH
-import com.jay.chaostemple.LoggingService
 import com.jay.chaostemple.Script
 import org.powbot.api.Condition
 import org.powbot.api.Input
@@ -42,7 +41,7 @@ class TravelToAltar(script: Script) : Leaf<Script>(script, "Traveling To Altar")
             }
 
             if (!lavaMazeChatOption.valid()) {
-                LoggingService.info("Failed to find chat options after attempting to rub the amulet.")
+                script.info("Failed to find chat options after attempting to rub the amulet.")
                 return
             }
 
@@ -65,7 +64,7 @@ class TravelToAltar(script: Script) : Leaf<Script>(script, "Traveling To Altar")
             }
 
             if (!wildernessChatOption.valid()) {
-                LoggingService.info("Failed to find the next chat option.")
+                script.info("Failed to find the next chat option.")
                 return
             }
             else for (n in 1..5) {
@@ -74,7 +73,7 @@ class TravelToAltar(script: Script) : Leaf<Script>(script, "Traveling To Altar")
                     break
             }
             if (Players.local().distanceTo(Constants.LAVA_MAZE_TILE).toInt() > 9) {
-                LoggingService.info("Failed to find that teleported to the Lava Maze.")
+                script.info("Failed to find that teleported to the Lava Maze.")
                 return
             }
         }
@@ -99,7 +98,7 @@ class TravelToAltar(script: Script) : Leaf<Script>(script, "Traveling To Altar")
             }
 
             if (!Prayer.prayerActive(Prayer.Effect.PROTECT_ITEM))
-                LoggingService.info("Failed to turn on Protect Item.")
+                script.info("Failed to turn on Protect Item.")
         }
 
         for (n in 1..3) {
@@ -112,7 +111,7 @@ class TravelToAltar(script: Script) : Leaf<Script>(script, "Traveling To Altar")
         }
 
         if (!Condition.wait({ Game.tab() == Game.Tab.LOGOUT || Script.antiPkingCheck() }, 50, 50))
-            LoggingService.severe("We were unable to open up the logout tab after starting to travel towards the altar.")
+            script.severe("We were unable to open up the logout tab after starting to travel towards the altar.")
         else if (Constants.ESCAPE_PKER)
             return
         else while (!ScriptManager.isStopping() && !Script.antiPkingCheck() && Skills.level(Skill.Hitpoints) != 0
@@ -128,7 +127,7 @@ class TravelToAltar(script: Script) : Leaf<Script>(script, "Traveling To Altar")
         if (Constants.ESCAPE_PKER || Skills.level(Skill.Hitpoints) == 0 || Constants.AREA_LUMBY.contains(Players.local()))
             return
         else if (Players.local().distanceTo(CHAOS_ALTAR_PATH.end()) > 8) {
-            LoggingService.severe("We were unable to get to the entrance to the Chaos Temple.")
+            script.severe("We were unable to get to the entrance to the Chaos Temple.")
             return
         }
 
@@ -144,7 +143,7 @@ class TravelToAltar(script: Script) : Leaf<Script>(script, "Traveling To Altar")
         }
 
         if (!altarDoor.valid()) {
-            LoggingService.info("Failed to find the doors at the Chaos Altar.")
+            script.info("Failed to find the doors at the Chaos Altar.")
             return
         }
         else if (altarDoor.id() == 1524) {
@@ -162,7 +161,7 @@ class TravelToAltar(script: Script) : Leaf<Script>(script, "Traveling To Altar")
             }
 
             if (!altarDoor.inViewport()) {
-                LoggingService.info("Failed to find the door at the Chaos Altar to be in our viewport.")
+                script.info("Failed to find the door at the Chaos Altar to be in our viewport.")
                 return
             }
 
@@ -262,7 +261,7 @@ class TravelToAltar(script: Script) : Leaf<Script>(script, "Traveling To Altar")
         }
 
         if (!Condition.wait({ Game.tab() == Game.Tab.LOGOUT || Script.antiPkingCheck() }, 50, 50))
-            LoggingService.severe("We were unable to open up the logout tab after starting to offer bones at he altar.")
+            script.severe("We were unable to open up the logout tab after starting to offer bones at he altar.")
         else if (Constants.ESCAPE_PKER)
             return
 

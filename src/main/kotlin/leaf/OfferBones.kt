@@ -1,7 +1,6 @@
 package com.jay.chaostemple.leaf
 
 import com.jay.chaostemple.Constants
-import com.jay.chaostemple.LoggingService
 import com.jay.chaostemple.Script
 import org.powbot.api.Condition
 import org.powbot.api.Random
@@ -18,7 +17,7 @@ class OfferBones(script: Script) : Leaf<Script>(script, "Offering Bones") {
 
         val altar = Objects.stream().within(20).name("Chaos altar").first()
         if (!altar.valid()) {
-            LoggingService.info("Failed to find the Chaos Temple altar.")
+            script.log.info("Failed to find the Chaos Temple altar.")
             return
         }
         // Protect item support
@@ -37,7 +36,7 @@ class OfferBones(script: Script) : Leaf<Script>(script, "Offering Bones") {
             }
 
             if (!Prayer.prayerActive(Prayer.Effect.PROTECT_ITEM))
-                LoggingService.info("Failed to turn on Protect Item.")
+                script.info("Failed to turn on Protect Item.")
         }
 
         for (n in 1..10) {
@@ -82,6 +81,6 @@ class OfferBones(script: Script) : Leaf<Script>(script, "Offering Bones") {
         }
 
         if (!Condition.wait({ Game.tab() == Game.Tab.LOGOUT || Script.antiPkingCheck() }, 50, 50))
-            LoggingService.severe("We were unable to open up the logout tab after starting to offer bones at he altar.")
+            script.severe("We were unable to open up the logout tab after starting to offer bones at he altar.")
     }
 }

@@ -17,7 +17,6 @@ import org.powbot.api.script.tree.TreeComponent
 import org.powbot.api.script.tree.TreeScript
 import org.powbot.mobile.script.ScriptManager
 import org.powbot.mobile.service.ScriptUploader
-import java.util.logging.Logger
 
 @ScriptManifest(
     name = "jChaosTemple",
@@ -92,6 +91,14 @@ class Script : TreeScript() {
             Constants.DEPOSIT_EQUIPMENT = true
     }
 
+    fun info(message: String) {
+        log.info("JayLOGS: $message")
+    }
+
+    fun severe(message: String) {
+        log.severe("JayLOGS: $message")
+    }
+
     companion object {
         fun antiPkingCheck(): Boolean {
             // Do not stop what we are doing if we are in combat, we cannot log out anyway.
@@ -121,17 +128,6 @@ class Script : TreeScript() {
             return
         else if (messageEvent.message == logoutInCombatErrorMessage)
             Constants.TIME_UNTIL_NEXT_LOGOUT = ScriptManager.getRuntime(true) + 10000
-    }
-}
-
-object LoggingService {
-    private val logger = Logger.getLogger(this.javaClass.name)
-    fun info(message: String) {
-        logger.info("JayLOGS: $message")
-    }
-
-    fun severe(message: String) {
-        logger.severe("JayLOGS: $message")
     }
 }
 
