@@ -4,11 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="fed035d4-b86d-4be4-b658-43119d004291" name="Changes" comment="Revmoing redudant loop inside LogIn() and moving vars out of Constants.kt.">
+    <list default="true" id="fed035d4-b86d-4be4-b658-43119d004291" name="Changes" comment="Replaced timeSinceLastXpDrop &amp; lastKnownPrayerXp with Production.stoppedUsing().">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/Constants.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/Constants.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/Variables.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/Variables.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/kotlin/branch/OfferingBranches.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/branch/OfferingBranches.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/leaf/OfferBones.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/leaf/OfferBones.kt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -329,7 +328,13 @@
       <option name="presentableId" value="LOCAL−00037" />
       <updated>1684700684137</updated>
     </task>
-    <option name="localTasksCounter" value="38" />
+    <task id="LOCAL−00038" summary="Replaced timeSinceLastXpDrop &amp; lastKnownPrayerXp with Production.stoppedUsing().">
+      <created>1684702563200</created>
+      <option name="number" value="LOCAL−00038" />
+      <option name="presentableId" value="LOCAL−00038" />
+      <updated>1684702563200</updated>
+    </task>
+    <option name="localTasksCounter" value="39" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -344,7 +349,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="For sake of consistency." />
     <MESSAGE value="Fixed bug for Big bones not being supported." />
     <MESSAGE value="This is a better check." />
     <MESSAGE value="Fixes a bug that causes us to not immediately offer bones upon arriving at the altar." />
@@ -369,6 +373,7 @@
     <MESSAGE value="Removing redundant for loops for closing the bank." />
     <MESSAGE value="Removing even more redundant for loops for banking and restructuring some checks &amp; waits." />
     <MESSAGE value="Revmoing redudant loop inside LogIn() and moving vars out of Constants.kt." />
-    <option name="LAST_COMMIT_MESSAGE" value="Revmoing redudant loop inside LogIn() and moving vars out of Constants.kt." />
+    <MESSAGE value="Replaced timeSinceLastXpDrop &amp; lastKnownPrayerXp with Production.stoppedUsing()." />
+    <option name="LAST_COMMIT_MESSAGE" value="Replaced timeSinceLastXpDrop &amp; lastKnownPrayerXp with Production.stoppedUsing()." />
   </component>
 </project>

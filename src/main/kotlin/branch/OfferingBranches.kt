@@ -20,6 +20,5 @@ class OfferingCheck(script: jChaosTemple) : Branch<jChaosTemple>(script, "Alread
             stoppedOffering = Production.stoppedUsing(Constants.BONE_IDS[Constants.BONE_TYPES.indexOf(Variables.boneType)], 600)
 
         return Inventory.stream().name(Variables.boneType).isNotEmpty() && !stoppedOffering
-
     }
 }
