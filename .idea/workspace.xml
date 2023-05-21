@@ -4,11 +4,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="fed035d4-b86d-4be4-b658-43119d004291" name="Changes" comment="Renaming all constants to be uppercased.">
+    <list default="true" id="fed035d4-b86d-4be4-b658-43119d004291" name="Changes" comment="Removing LoggingService, we already have access to functions from our main scriptfile through &quot;script.&quot;.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/kotlin/Script.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/Script.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/kotlin/leaf/OfferBones.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/leaf/OfferBones.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/leaf/OpenBank.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/leaf/OpenBank.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/leaf/TravelToAltar.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/leaf/TravelToAltar.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/kotlin/leaf/antipk/LogOut.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/leaf/antipk/LogOut.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/leaf/bankopened/SetupInventory.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/leaf/bankopened/SetupInventory.kt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -261,7 +264,13 @@
       <option name="presentableId" value="LOCAL−00026" />
       <updated>1684688561792</updated>
     </task>
-    <option name="localTasksCounter" value="27" />
+    <task id="LOCAL−00027" summary="Removing LoggingService, we already have access to functions from our main scriptfile through &quot;script.&quot;.">
+      <created>1684689758894</created>
+      <option name="number" value="LOCAL−00027" />
+      <option name="presentableId" value="LOCAL−00027" />
+      <updated>1684689758894</updated>
+    </task>
+    <option name="localTasksCounter" value="28" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -276,7 +285,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Support for Big bones added." />
     <MESSAGE value="Cleanup and improvement of commit which added support for Big bones." />
     <MESSAGE value="Cleanup and improvement of the commit which added support for Big bones." />
     <MESSAGE value="Improvements towards handling traveling and suiciding." />
@@ -301,6 +309,7 @@
     <MESSAGE value="Better handling of offering bones while being pked." />
     <MESSAGE value="Fixed bug from previous commit adding support for end on runtime goal reaced feature." />
     <MESSAGE value="Renaming all constants to be uppercased." />
-    <option name="LAST_COMMIT_MESSAGE" value="Renaming all constants to be uppercased." />
+    <MESSAGE value="Removing LoggingService, we already have access to functions from our main scriptfile through &quot;script.&quot;." />
+    <option name="LAST_COMMIT_MESSAGE" value="Removing LoggingService, we already have access to functions from our main scriptfile through &quot;script.&quot;." />
   </component>
 </project>

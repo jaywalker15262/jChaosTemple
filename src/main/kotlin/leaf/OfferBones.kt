@@ -17,7 +17,7 @@ class OfferBones(script: Script) : Leaf<Script>(script, "Offering Bones") {
 
         val altar = Objects.stream().within(20).name("Chaos altar").first()
         if (!altar.valid()) {
-            script.log.info("Failed to find the Chaos Temple altar.")
+            script.info("Failed to find the Chaos Temple altar.")
             return
         }
         // Protect item support
