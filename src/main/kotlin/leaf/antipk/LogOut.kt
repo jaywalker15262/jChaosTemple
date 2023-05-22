@@ -7,6 +7,7 @@ import org.powbot.api.Condition
 import org.powbot.api.Input
 import org.powbot.api.Random
 import org.powbot.api.rt4.*
+import org.powbot.api.rt4.walking.model.Skill
 import org.powbot.api.script.tree.Leaf
 import org.powbot.mobile.SettingsManager
 import org.powbot.mobile.ToggleId
@@ -16,6 +17,7 @@ class LogOut(script: jChaosTemple) : Leaf<jChaosTemple>(script, "Logging Out") {
     override fun execute() {
         // We are not in combat so let's attempt to log out instantly.
         SettingsManager.set(ToggleId.AutoLogin, false)
+        Variables.lastKnownPrayerXp = Skills.experience(Skill.Prayer)
         if (!tryLogOut()) {
             // Sleep a very briefly before attempting to press the logout button again.
             Condition.sleep(Random.nextGaussian(170, 250, 200, 20.0))
@@ -35,7 +37,6 @@ class LogOut(script: jChaosTemple) : Leaf<jChaosTemple>(script, "Logging Out") {
             return
         }
 
-        Condition.sleep(Random.nextGaussian(1380, 2180, 1580, 80.0))
         Input.tap(Constants.LOGIN_SCREEN_WORLDHOPPER_POINT)
         if (Condition.wait({ LoginScreenWorldSwitcher.isOpen() }, 50 ,200)) {
             Condition.sleep(Random.nextGaussian(570, 700, 650, 20.0))

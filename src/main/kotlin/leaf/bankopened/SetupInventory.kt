@@ -75,8 +75,8 @@ class SetupInventory(script: jChaosTemple) : Leaf<jChaosTemple>(script, "Setting
                 script.info("Failed to withdraw bones.")
                 return
             }
-            else if (Condition.wait({ Inventory.stream().name(
-                    bankBones.name()).count().toInt() != 27 }, 50, 80)) {
+            else if (!Condition.wait({ Inventory.stream().name(
+                    bankBones.name()).count().toInt() == 27 }, 50, 80)) {
                 script.info("Failed to find enough bones in our inventory for another trip.")
                 return
             }

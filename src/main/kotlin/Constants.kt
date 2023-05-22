@@ -9,7 +9,6 @@ import org.powbot.api.rt4.World
 object Constants {
     val BONE_TYPES = arrayOf("Dragon bones","Lava dragon bones","Dagannoth bones","Wyvern bones",
         "Big bones", "Superior dragon bones","Bones","Hydra bones","Babydragon bones")
-    val BONE_IDS = arrayOf(536, 11943, 6728, 6812, 532, 22124, 526, 22786, 534)
     val BURNING_AMULETS = arrayOf("Burning amulet(5)", "Burning amulet(4)", "Burning amulet(3)",
         "Burning amulet(2)", "Burning amulet(1)")
 

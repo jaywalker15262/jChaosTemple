@@ -4,11 +4,17 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="fed035d4-b86d-4be4-b658-43119d004291" name="Changes" comment="Some more failsafety when attempting to attack the Chaos Fanatic.">
+    <list default="true" id="fed035d4-b86d-4be4-b658-43119d004291" name="Changes" comment="Non-constants to not have uppercased names.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/branch/RootBranch.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/branch/RootBranch.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/Constants.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/Constants.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/Variables.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/Variables.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/branch/OfferingBranches.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/branch/OfferingBranches.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/jChaosTemple.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/jChaosTemple.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/leaf/OfferBones.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/leaf/OfferBones.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/kotlin/leaf/antipk/LogIn.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/leaf/antipk/LogIn.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/kotlin/leaf/antipk/LogOut.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/leaf/antipk/LogOut.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/leaf/bankopened/CloseBank.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/leaf/bankopened/CloseBank.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/leaf/bankopened/SetupInventory.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/leaf/bankopened/SetupInventory.kt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -377,7 +383,31 @@
       <option name="presentableId" value="LOCAL−00045" />
       <updated>1684761673924</updated>
     </task>
-    <option name="localTasksCounter" value="46" />
+    <task id="LOCAL−00046" summary="Removing a lot of unnecessary logic for logOut().">
+      <created>1684766772858</created>
+      <option name="number" value="LOCAL−00046" />
+      <option name="presentableId" value="LOCAL−00046" />
+      <updated>1684766772858</updated>
+    </task>
+    <task id="LOCAL−00047" summary="Accidental newline.">
+      <created>1684766946323</created>
+      <option name="number" value="LOCAL−00047" />
+      <option name="presentableId" value="LOCAL−00047" />
+      <updated>1684766946323</updated>
+    </task>
+    <task id="LOCAL−00048" summary="Another accidental newline.">
+      <created>1684767008825</created>
+      <option name="number" value="LOCAL−00048" />
+      <option name="presentableId" value="LOCAL−00048" />
+      <updated>1684767008825</updated>
+    </task>
+    <task id="LOCAL−00049" summary="Non-constants to not have uppercased names.">
+      <created>1684767590426</created>
+      <option name="number" value="LOCAL−00049" />
+      <option name="presentableId" value="LOCAL−00049" />
+      <updated>1684767590426</updated>
+    </task>
+    <option name="localTasksCounter" value="50" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -392,10 +422,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Protect Item, set default to off." />
-    <MESSAGE value="Improve suicide logic and handling." />
-    <MESSAGE value="Altar bounds and support for runtime limit feature." />
-    <MESSAGE value="Better handling of offering bones while being pked." />
     <MESSAGE value="Fixed bug from previous commit adding support for end on runtime goal reaced feature." />
     <MESSAGE value="Renaming all constants to be uppercased." />
     <MESSAGE value="Removing LoggingService, we already have access to functions from our main scriptfile through &quot;script.&quot;." />
@@ -417,6 +443,10 @@
     <MESSAGE value="Increase the wait a bit here as well." />
     <MESSAGE value="Simplyfying suiciding logic." />
     <MESSAGE value="Some more failsafety when attempting to attack the Chaos Fanatic." />
-    <option name="LAST_COMMIT_MESSAGE" value="Some more failsafety when attempting to attack the Chaos Fanatic." />
+    <MESSAGE value="Removing a lot of unnecessary logic for logOut()." />
+    <MESSAGE value="Accidental newline." />
+    <MESSAGE value="Another accidental newline." />
+    <MESSAGE value="Non-constants to not have uppercased names." />
+    <option name="LAST_COMMIT_MESSAGE" value="Non-constants to not have uppercased names." />
   </component>
 </project>

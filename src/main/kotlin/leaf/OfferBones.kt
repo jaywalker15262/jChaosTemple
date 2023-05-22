@@ -7,6 +7,7 @@ import org.powbot.api.Random
 import org.powbot.api.rt4.*
 import org.powbot.api.rt4.walking.model.Skill
 import org.powbot.api.script.tree.Leaf
+import org.powbot.mobile.script.ScriptManager
 
 class OfferBones(script: jChaosTemple) : Leaf<jChaosTemple>(script, "Offering Bones") {
     override fun execute() {
@@ -57,6 +58,7 @@ class OfferBones(script: jChaosTemple) : Leaf<jChaosTemple>(script, "Offering Bo
             return
         }
 
+        Variables.timeSinceLastXpDrop = ScriptManager.getRuntime(true) + 3000
         if (Variables.escapePker)
             return
         else for (n in 1..3) {
