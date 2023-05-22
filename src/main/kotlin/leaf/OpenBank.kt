@@ -68,7 +68,8 @@ class OpenBank(script: jChaosTemple) : Leaf<jChaosTemple>(script, "Opening Bank"
                             || LUMBY_TOP_FLOOR_PATH.next() != LUMBY_TOP_FLOOR_PATH.end()))
                     Condition.sleep(50)
 
-                Condition.wait({ !Players.local().inMotion() }, 50, 100)
+                Condition.wait({ Players.local().distanceTo(LUMBY_TOP_FLOOR_PATH.end()).toInt() < 4 ||
+                        !Players.local().inMotion() }, 50, 100)
             }
             else Movement.moveToBank()
 
