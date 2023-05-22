@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="fed035d4-b86d-4be4-b658-43119d004291" name="Changes" comment="Tidying up a lot of things and removing some more redundant loops." />
+    <list default="true" id="fed035d4-b86d-4be4-b658-43119d004291" name="Changes" comment="Simplyfying suiciding logic." />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -348,7 +348,25 @@
       <option name="presentableId" value="LOCAL−00041" />
       <updated>1684755466131</updated>
     </task>
-    <option name="localTasksCounter" value="42" />
+    <task id="LOCAL−00042" summary="Need to add a wait to this check.">
+      <created>1684755675896</created>
+      <option name="number" value="LOCAL−00042" />
+      <option name="presentableId" value="LOCAL−00042" />
+      <updated>1684755675896</updated>
+    </task>
+    <task id="LOCAL−00043" summary="Increase the wait a bit here as well.">
+      <created>1684755702775</created>
+      <option name="number" value="LOCAL−00043" />
+      <option name="presentableId" value="LOCAL−00043" />
+      <updated>1684755702775</updated>
+    </task>
+    <task id="LOCAL−00044" summary="Simplyfying suiciding logic.">
+      <created>1684761424603</created>
+      <option name="number" value="LOCAL−00044" />
+      <option name="presentableId" value="LOCAL−00044" />
+      <updated>1684761424603</updated>
+    </task>
+    <option name="localTasksCounter" value="45" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -363,9 +381,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Grouping and seperating some constants for readability and navigation" />
-    <MESSAGE value="Have bank closing be with the other bank stuff as a seperate leaf and not inside TravelToAltar." />
-    <MESSAGE value="Minor logic improvements." />
     <MESSAGE value="Improving banking and login/logout logic." />
     <MESSAGE value="Protect Item, set default to off." />
     <MESSAGE value="Improve suicide logic and handling." />
@@ -388,6 +403,9 @@
     <MESSAGE value="Improving handling of traveling to the suicide spot." />
     <MESSAGE value="Improving handling of worldhopping &amp; traveling to the suicide spot." />
     <MESSAGE value="Tidying up a lot of things and removing some more redundant loops." />
-    <option name="LAST_COMMIT_MESSAGE" value="Tidying up a lot of things and removing some more redundant loops." />
+    <MESSAGE value="Need to add a wait to this check." />
+    <MESSAGE value="Increase the wait a bit here as well." />
+    <MESSAGE value="Simplyfying suiciding logic." />
+    <option name="LAST_COMMIT_MESSAGE" value="Simplyfying suiciding logic." />
   </component>
 </project>

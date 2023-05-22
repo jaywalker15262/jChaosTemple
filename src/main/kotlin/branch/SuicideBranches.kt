@@ -48,7 +48,7 @@ class WorldHopCheck(script: jChaosTemple) : Branch<jChaosTemple>(script, "World-
 
     override fun validate(): Boolean {
         return !Players.local().inCombat() && ScriptManager.getRuntime(true) > Variables.timeUntilNextLogout &&
-                Npcs.stream().within(13).name("Chaos fanatic").filtered {
-            it.distanceTo(Players.local()).toInt() <= 11 && it.inViewport() }.isEmpty()
+                Npcs.stream().within(13).name("Chaos fanatic")
+                    .filtered { !it.healthBarVisible() && it.inViewport() }.isEmpty()
     }
 }
