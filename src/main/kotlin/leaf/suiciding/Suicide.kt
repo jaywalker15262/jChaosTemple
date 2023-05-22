@@ -14,7 +14,7 @@ class Suicide(script: jChaosTemple) : Leaf<jChaosTemple>(script, "Suiciding") {
                 .filtered { it.inViewport() }.first()
             if (chaosFanatic.valid() && !chaosFanatic.healthBarVisible()) {
                 chaosFanatic.bounds(-16, 16, -16, -16, -16, 16)
-                if (chaosFanatic.click())
+                if (chaosFanatic.interact("Attack") || chaosFanatic.click())
                     Condition.wait({ (Players.local().healthBarVisible() && chaosFanatic.healthBarVisible())
                             || Constants.AREA_LUMBY.contains(Players.local()) }, 50, 90)
             }
