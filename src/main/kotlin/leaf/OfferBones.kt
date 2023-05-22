@@ -34,8 +34,10 @@ class OfferBones(script: jChaosTemple) : Leaf<jChaosTemple>(script, "Offering Bo
                 script.info("Failed to turn on Protect Item.")
         }
 
-        if (!Inventory.selectedItem().valid() && !bone.interact("Use"))
+        if (!Inventory.selectedItem().valid() && !bone.interact("Use")) {
+            script.info("Failed to select the bone.")
             return
+        }
 
         // Short sleep after interaction.
         Condition.sleep(Random.nextGaussian(170, 250, 200, 20.0))
@@ -48,22 +50,25 @@ class OfferBones(script: jChaosTemple) : Leaf<jChaosTemple>(script, "Offering Bo
             Camera.turnTo(altar)
             Condition.wait({ altar.inViewport() }, 50, 50)
         }
-        if (altar.interact("Use"))
-            Condition.wait({ prayerXp != Skills.experience(Skill.Prayer) || jChaosTemple.antiPkingCheck() },
-                Condition.sleep(Random.nextGaussian(170, 250, 200, 20.0)), 15)
+        if (!altar.interact("Use") || !Condition.wait({ prayerXp != Skills.experience(Skill.Prayer)
+            || jChaosTemple.antiPkingCheck() }, Condition.sleep(Random.nextGaussian(
+                170, 250, 200, 20.0)), 15)) {
+            script.info("Failed to use the bone on the altar.")
+            return
+        }
 
         if (Variables.escapePker)
             return
         else for (n in 1..3) {
-            if (jChaosTemple.antiPkingCheck())
-                return
-            else if (Game.tab(Game.Tab.LOGOUT))
+            if (Game.tab(Game.Tab.LOGOUT))
                 break
 
             Condition.sleep(Random.nextGaussian(170, 250, 200, 20.0))
+            if (jChaosTemple.antiPkingCheck())
+                return
         }
 
-        if (!Condition.wait({ Game.tab() == Game.Tab.LOGOUT || jChaosTemple.antiPkingCheck() }, 50, 50))
+        if (!Condition.wait({ jChaosTemple.antiPkingCheck() || Game.tab() == Game.Tab.LOGOUT }, 50, 50))
             script.info("We were unable to open up the logout tab after starting to offer bones at he altar.")
     }
 }

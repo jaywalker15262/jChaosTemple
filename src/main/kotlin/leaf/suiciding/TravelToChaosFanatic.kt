@@ -2,9 +2,9 @@ package com.jay.chaostemple.leaf.suiciding
 
 import com.jay.chaostemple.Constants
 import com.jay.chaostemple.Constants.SUICIDE_PATH
+import com.jay.chaostemple.Variables
 import com.jay.chaostemple.jChaosTemple
 import org.powbot.api.Condition
-import org.powbot.api.Random
 import org.powbot.api.rt4.*
 import org.powbot.api.rt4.walking.model.Skill
 import org.powbot.api.script.tree.Leaf
@@ -26,10 +26,7 @@ class TravelToChaosFanatic(script: jChaosTemple) : Leaf<jChaosTemple>(script, "T
 
                 altarDoor.bounds(-64, -56, -160, -16, -32, 32)
                 // Short sleep between attempts of opening the door.
-                if (!altarDoor.interact("Open") && !Condition.wait({ altarDoor.valid() },
-                        Condition.sleep(Random.nextGaussian(170, 250, 200, 20.0)), 1))
-                    return
-                else if (!Condition.wait({ !altarDoor.valid() }, 50, 50))
+                if (!altarDoor.interact("Open") || !Condition.wait({ !altarDoor.valid() }, 50, 50))
                     return
             }
 
@@ -48,10 +45,8 @@ class TravelToChaosFanatic(script: jChaosTemple) : Leaf<jChaosTemple>(script, "T
 
                         altarDoor.bounds(-64, -56, -160, -16, -32, 32)
                         // Short sleep between attempts of opening the door.
-                        if (!altarDoor.interact("Open") && !Condition.wait({ altarDoor.valid() },
-                                Condition.sleep(Random.nextGaussian(170, 250, 200, 20.0)), 1))
-                            return
-                        else if (!Condition.wait({ !altarDoor.valid() }, 50, 50))
+                        if (!altarDoor.interact("Open") || !Condition.wait({
+                                !altarDoor.valid() }, 50, 50))
                             return
                     }
                 }
@@ -68,7 +63,7 @@ class TravelToChaosFanatic(script: jChaosTemple) : Leaf<jChaosTemple>(script, "T
             }
         }
         // DaxWalker-generated path
-        else if (Players.local().distanceTo(Constants.SUICIDE_TILE) > 5) {
+        else if (Players.local().distanceTo(Constants.SUICIDE_TILE).toInt() > 5) {
             val generatePath = DaxWalker.getPath(Constants.SUICIDE_TILE)
             if (generatePath.isNullOrEmpty())
                 return
@@ -82,18 +77,22 @@ class TravelToChaosFanatic(script: jChaosTemple) : Leaf<jChaosTemple>(script, "T
                 Condition.sleep(50)
         }
 
+
+        if (!Variables.SUICIDE_TILE_MATRIX.valid())
+            Variables.SUICIDE_TILE_MATRIX = Constants.ALTAR_TILE.matrix()
+
         // Screen-walking in case web-walking fails.
-        if (!Players.local().inMotion() && Players.local().distanceTo(Constants.SUICIDE_TILE) > 5
+        if (!Players.local().inMotion() && Players.local().distanceTo(Constants.SUICIDE_TILE).toInt() > 5
             && Skills.level(Skill.Hitpoints) != 0 && !Constants.AREA_LUMBY.contains(Players.local())
             && (!Players.local().inCombat() || Players.stream().interactingWithMe().isNotEmpty())
-            && Constants.SUICIDE_TILE_MATRIX.valid() && Constants.SUICIDE_TILE_MATRIX.inViewport()
-            && Constants.SUICIDE_TILE_MATRIX.interact("Walk here")) {
+            && Variables.SUICIDE_TILE_MATRIX.valid() && Variables.SUICIDE_TILE_MATRIX.inViewport()
+            && Variables.SUICIDE_TILE_MATRIX.interact("Walk here")) {
                 Condition.wait({ Players.local().inMotion() || Skills.level(Skill.Hitpoints) == 0
                         || Constants.AREA_LUMBY.contains(Players.local()) }, 50 , 50)
         }
 
         if (Skills.level(Skill.Hitpoints) != 0 && !Constants.AREA_LUMBY.contains(Players.local())
-            && !Players.local().inCombat() && Players.local().distanceTo(Constants.SUICIDE_TILE) > 5)
+            && !Players.local().inCombat() && Players.local().distanceTo(Constants.SUICIDE_TILE).toInt() > 5)
             script.severe("Failed to get to the suicide tile.")
     }
 }

@@ -4,7 +4,6 @@ import com.jay.chaostemple.Variables
 import com.jay.chaostemple.Constants
 import com.jay.chaostemple.jChaosTemple
 import org.powbot.api.Condition
-import org.powbot.api.Random
 import org.powbot.api.rt4.Bank
 import org.powbot.api.rt4.Inventory
 import org.powbot.api.rt4.Skills
@@ -43,57 +42,43 @@ class SetupInventory(script: jChaosTemple) : Leaf<jChaosTemple>(script, "Setting
                 ScriptManager.stop()
                 return
             }
-            else for (n in 1..10) {
-                if (!bankAmulet.valid() || Inventory.stream().name(bankAmulet.name()).count().toInt() != 0
-                    || (Bank.withdraw(bankAmulet, 1) && Condition.wait({
-                        Inventory.stream()
-                            .name(bankAmulet.name()).count().toInt() != 0
-                    }, 50, 50))
-                )
-                    break
-
-                Condition.sleep(Random.nextGaussian(170, 250, 200, 20.0))
+            else if (!Bank.withdraw(bankAmulet, 1)) {
+                script.info("Failed to find withdraw a Burning amulet.")
+                return
             }
-
-            if (Inventory.stream().name(bankAmulet.name()).count().toInt() == 0) {
-                script.severe("Failed to find a Burning amulet in our inventory.")
-                ScriptManager.stop()
+            else if (!Condition.wait({ Inventory.stream().name(bankAmulet.name()).count().toInt() == 0 }, 50, 50)) {
+                script.info("Failed to find a Burning amulet in our inventory.")
                 return
             }
         }
 
-        var bankBones = Bank.stream().name(Variables.boneType).first()
-        for (n in 1..10) {
-            if (bankBones.valid())
-                break
+        if (Inventory.stream().name(Variables.boneType).count().toInt() != 27) {
+            var bankBones = Bank.stream().name(Variables.boneType).first()
+            for (n in 1..10) {
+                if (bankBones.valid())
+                    break
 
-            Condition.sleep(50)
-            bankBones = Bank.stream().name(Variables.boneType).first()
-        }
+                Condition.sleep(50)
+                bankBones = Bank.stream().name(Variables.boneType).first()
+            }
 
-        if (!bankBones.valid()) {
-            script.severe("Could not find any bones in the bank.")
-            ScriptManager.stop()
-            return
-        }
-        else if (bankBones.stackSize() < 27) {
-            script.severe("Could not find enough bones in the bank for another trip.")
-            ScriptManager.stop()
-            return
-        }
-        else for (n in 1..10) {
-            if (!bankBones.valid() || Inventory.stream().name(bankBones.name()).count().toInt() != 0
-                || (Bank.withdraw(bankBones, 27) && Condition.wait({ Inventory.stream()
-                    .name(bankBones.name()).count().toInt() == 27 }, 50, 50)))
-                break
-
-            Condition.sleep(Random.nextGaussian(170, 250, 200, 20.0))
-        }
-
-        if (Inventory.stream().name(bankBones.name()).count().toInt() != 27) {
-            script.severe("Failed to find enough bones in our inventory for another trip.")
-            ScriptManager.stop()
-            return
+            if (!bankBones.valid()) {
+                script.severe("Could not find any bones in the bank.")
+                ScriptManager.stop()
+                return
+            } else if (bankBones.stackSize() < 27) {
+                script.severe("Could not find enough bones in the bank for another trip.")
+                ScriptManager.stop()
+                return
+            }
+            else if (!Bank.withdraw(bankBones, 27)) {
+                script.info("Failed to find withdraw bones.")
+                return
+            }
+            else if (Inventory.stream().name(bankBones.name()).count().toInt() != 27) {
+                script.info("Failed to find enough bones in our inventory for another trip.")
+                return
+            }
         }
     }
 }

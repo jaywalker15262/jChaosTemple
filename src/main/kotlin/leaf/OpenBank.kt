@@ -14,44 +14,33 @@ class OpenBank(script: jChaosTemple) : Leaf<jChaosTemple>(script, "Opening Bank"
     override fun execute() {
         if (Bank.inViewport()) {
             if (Bank.open())
-                Condition.wait({ Bank.opened() }, Condition.sleep(Random.nextGaussian(170, 250, 200, 20.0)), 50)
+                Condition.wait({ Bank.opened() }, Condition.sleep(Random.nextGaussian(170, 250, 200, 20.0)), 13)
         }
         else {
             if (Constants.AREA_LUMBY.contains(Players.local())) {
-                while (!ScriptManager.isStopping() && (LUMBY_BOTTOM_FLOOR_PATH.traverse()
-                            || LUMBY_BOTTOM_FLOOR_PATH.next() != LUMBY_BOTTOM_FLOOR_PATH.end()))
-                    Condition.sleep(50)
-
                 if (Game.floor() == 0) {
+                    while (!ScriptManager.isStopping() && (LUMBY_BOTTOM_FLOOR_PATH.traverse()
+                                || LUMBY_BOTTOM_FLOOR_PATH.next() != LUMBY_BOTTOM_FLOOR_PATH.end()))
+                        Condition.sleep(50)
+
                     val stairCase = Objects.stream().within(18).id(16671).nearest().first()
                     if (!stairCase.valid()) {
                         script.info("Failed to find the staircase in lumby castle.")
                         return
-                    } else if (!Condition.wait({
-                            stairCase.distanceTo(Players.local()).toInt() < 5
-                                    || !Players.local().inMotion()
-                        }, 50, 300)) {
+                    } else if (!Condition.wait({ stairCase.distanceTo(Players.local()).toInt() < 5
+                            || !Players.local().inMotion() }, 50, 300)) {
                         script.info("Failed to walk to the lumby castle stairs.")
                         return
                     }
 
                     stairCase.bounds(-26, 26, -76, 24, -26, 26)
-                    for (n in 1..10) {
-                        if (!stairCase.inViewport()) {
-                            script.info("Stairs are not in view.")
-                            Camera.turnTo(stairCase)
-                            Condition.wait({ stairCase.inViewport() }, 50, 50)
-                        }
-                        if (Players.local().floor() == 1
-                            || (stairCase.interact("Climb-up") && Condition.wait({ Game.floor() == 1 }, 50, 90))) {
-                            Condition.sleep(Random.nextGaussian(170, 250, 200, 20.0))
-                            break
-                        }
-
-                        Condition.sleep(Random.nextGaussian(170, 250, 200, 20.0))
+                    if (!stairCase.inViewport()) {
+                        script.info("Stairs are not in view.")
+                        Camera.turnTo(stairCase)
+                        Condition.wait({ stairCase.inViewport() }, 50, 50)
                     }
 
-                    if (Game.floor() != 1) {
+                    if (!stairCase.interact("Climb-up") || !Condition.wait({ Game.floor() == 1 }, 50, 90)) {
                         script.info("Failed to walk up the stairs on the bottom floor.")
                         return
                     }
@@ -64,15 +53,9 @@ class OpenBank(script: jChaosTemple) : Leaf<jChaosTemple>(script, "Opening Bank"
                     }
 
                     secondStairCase.bounds(-26, 26, -76, 24, -26, 26)
-                    for (n in 1..10) {
-                        if (Players.local().floor() == 2
-                            || (secondStairCase.interact("Climb-up", true)
-                                    && Condition.wait({ Game.floor() == 2 }, 50, 90))) {
-                            Condition.sleep(Random.nextGaussian(170, 250, 200, 20.0))
-                            break
-                        }
-
-                        Condition.sleep(Random.nextGaussian(170, 250, 200, 20.0))
+                    if (!secondStairCase.interact("Climb-up") || !Condition.wait({ Game.floor() == 2 }, 50, 90)) {
+                        script.info("Failed to walk up the stairs on the bottom floor.")
+                        return
                     }
 
                     if (Game.floor() != 2) {
@@ -86,12 +69,13 @@ class OpenBank(script: jChaosTemple) : Leaf<jChaosTemple>(script, "Opening Bank"
                     Condition.sleep(50)
 
                 Condition.wait({ !Players.local().inMotion() }, 50, 100)
-
             }
             else Movement.moveToBank()
 
-            Camera.turnTo(Bank.nearest().tile())
-            Condition.sleep(Random.nextGaussian(170, 250, 200, 20.0))
+            if (!Bank.inViewport()) {
+                Camera.turnTo(Bank.nearest().tile())
+                Condition.wait({ Bank.inViewport() }, 50, 50)
+            }
         }
     }
 }
