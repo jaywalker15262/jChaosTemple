@@ -141,14 +141,14 @@ class TravelToAltar(script: jChaosTemple) : Leaf<jChaosTemple>(script, "Travelin
                 return
         }
 
-        if (!Variables.ALTAR_TILE_MATRIX.valid()) {
-            Variables.ALTAR_TILE_MATRIX = Constants.ALTAR_TILE.matrix()
+        if (!Variables.altarTileMatrix.valid()) {
+            Variables.altarTileMatrix = Constants.ALTAR_TILE.matrix()
             return
         }
         
-        if (!Variables.ALTAR_TILE_MATRIX.inViewport()) {
-            Camera.turnTo(Variables.ALTAR_TILE_MATRIX)
-            if (Condition.wait({ Variables.ALTAR_TILE_MATRIX.inViewport() || jChaosTemple.antiPkingCheck() }, 50 ,50)) {
+        if (!Variables.altarTileMatrix.inViewport()) {
+            Camera.turnTo(Variables.altarTileMatrix)
+            if (Condition.wait({ Variables.altarTileMatrix.inViewport() || jChaosTemple.antiPkingCheck() }, 50 ,50)) {
                 if (Variables.escapePker)
                     return
             }
@@ -168,6 +168,7 @@ class TravelToAltar(script: jChaosTemple) : Leaf<jChaosTemple>(script, "Travelin
         else if (Variables.escapePker)
             return
 
-        Condition.wait({ !Players.local().inMotion() || jChaosTemple.antiPkingCheck() }, 50 ,80)
+        Condition.wait({ Players.local().distanceTo(Constants.ALTAR_TILE).toInt() < 4 ||
+                !Players.local().inMotion() || jChaosTemple.antiPkingCheck() }, 50 ,80)
     }
 }

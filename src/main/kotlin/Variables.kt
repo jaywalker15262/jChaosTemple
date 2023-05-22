@@ -9,8 +9,8 @@ object Variables {
 
     var boneType = "Dragon Bones"
 
-    var ALTAR_TILE_MATRIX = Constants.ALTAR_TILE.matrix()
-    var SUICIDE_TILE_MATRIX = Constants.SUICIDE_TILE.matrix()
+    var altarTileMatrix = Constants.ALTAR_TILE.matrix()
+    var suicideTileMatrix = Constants.SUICIDE_TILE.matrix()
 
     // antipk stuff
     var worldId = 0

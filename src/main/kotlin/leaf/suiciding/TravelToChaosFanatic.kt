@@ -78,15 +78,15 @@ class TravelToChaosFanatic(script: jChaosTemple) : Leaf<jChaosTemple>(script, "T
         }
 
 
-        if (!Variables.SUICIDE_TILE_MATRIX.valid())
-            Variables.SUICIDE_TILE_MATRIX = Constants.ALTAR_TILE.matrix()
+        if (!Variables.suicideTileMatrix.valid())
+            Variables.suicideTileMatrix = Constants.ALTAR_TILE.matrix()
 
         // Screen-walking in case web-walking fails.
         if (!Players.local().inMotion() && Players.local().distanceTo(Constants.SUICIDE_TILE).toInt() > 5
             && Skills.level(Skill.Hitpoints) != 0 && !Constants.AREA_LUMBY.contains(Players.local())
             && (!Players.local().inCombat() || Players.stream().interactingWithMe().isNotEmpty())
-            && Variables.SUICIDE_TILE_MATRIX.valid() && Variables.SUICIDE_TILE_MATRIX.inViewport()
-            && Variables.SUICIDE_TILE_MATRIX.interact("Walk here")) {
+            && Variables.suicideTileMatrix.valid() && Variables.suicideTileMatrix.inViewport()
+            && Variables.suicideTileMatrix.interact("Walk here")) {
                 Condition.wait({ Players.local().inMotion() || Skills.level(Skill.Hitpoints) == 0
                         || Constants.AREA_LUMBY.contains(Players.local()) }, 50 , 50)
         }
