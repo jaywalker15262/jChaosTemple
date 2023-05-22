@@ -11,6 +11,8 @@ import com.jay.chaostemple.leaf.suiciding.WorldHop
 import org.powbot.api.rt4.Inventory
 import org.powbot.api.rt4.Npcs
 import org.powbot.api.rt4.Players
+import org.powbot.api.rt4.Skills
+import org.powbot.api.rt4.walking.model.Skill
 import org.powbot.api.script.tree.Branch
 import org.powbot.api.script.tree.TreeComponent
 import org.powbot.mobile.script.ScriptManager
@@ -47,8 +49,8 @@ class WorldHopCheck(script: jChaosTemple) : Branch<jChaosTemple>(script, "World-
     override val failedComponent: TreeComponent<jChaosTemple> = Suicide(script)
 
     override fun validate(): Boolean {
-        return !Players.local().inCombat() && ScriptManager.getRuntime(true) > Variables.timeUntilNextLogout &&
-                Npcs.stream().within(13).name("Chaos fanatic")
-                    .filtered { !it.healthBarVisible() && it.inViewport() }.isEmpty()
+        return !Players.local().inCombat() && ScriptManager.getRuntime(true) > Variables.timeUntilNextLogout
+                && Skills.level(Skill.Hitpoints) > 0 && Npcs.stream().within(13).name("Chaos fanatic")
+                .filtered { !it.healthBarVisible() && it.inViewport() }.isEmpty() && Skills.level(Skill.Hitpoints) > 0
     }
 }
