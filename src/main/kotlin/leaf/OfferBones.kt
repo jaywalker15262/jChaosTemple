@@ -22,8 +22,9 @@ class OfferBones(script: jChaosTemple) : Leaf<jChaosTemple>(script, "Offering Bo
             script.info("Failed to find the Chaos Temple altar.")
             return
         }
+
         // Protect item support
-        else if (Variables.protectItem && Skills.realLevel(Skill.Prayer) >= 25 && Skills.level(Skill.Prayer) > 5
+        if (Variables.protectItem && Skills.realLevel(Skill.Prayer) >= 25 && Skills.level(Skill.Prayer) > 5
             && !Prayer.prayerActive(Prayer.Effect.PROTECT_ITEM)) {
             if (Prayer.prayer(Prayer.Effect.PROTECT_ITEM, true))
                 Condition.wait({ Prayer.prayerActive(Prayer.Effect.PROTECT_ITEM) || jChaosTemple.antiPkingCheck() },
@@ -31,7 +32,8 @@ class OfferBones(script: jChaosTemple) : Leaf<jChaosTemple>(script, "Offering Bo
 
             if (Variables.escapePker)
                 return
-            else if (!Prayer.prayerActive(Prayer.Effect.PROTECT_ITEM))
+
+            if (!Prayer.prayerActive(Prayer.Effect.PROTECT_ITEM))
                 script.info("Failed to turn on Protect Item.")
         }
 
@@ -61,7 +63,8 @@ class OfferBones(script: jChaosTemple) : Leaf<jChaosTemple>(script, "Offering Bo
         Variables.timeSinceLastXpDrop = ScriptManager.getRuntime(true) + 3000
         if (Variables.escapePker)
             return
-        else for (n in 1..3) {
+
+        for (n in 1..3) {
             if (Game.tab(Game.Tab.LOGOUT))
                 break
 

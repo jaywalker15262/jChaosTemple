@@ -53,7 +53,7 @@ class TravelToAltar(script: jChaosTemple) : Leaf<jChaosTemple>(script, "Travelin
                 script.info("Failed to find the next chat option.")
                 return
             }
-            else for (n in 1..5) {
+            for (n in 1..5) {
                 Input.send("1")
                 if (Condition.wait({ Players.local().distanceTo(Constants.LAVA_MAZE_TILE).toInt() < 10 }, 50, 140))
                     break
@@ -94,7 +94,8 @@ class TravelToAltar(script: jChaosTemple) : Leaf<jChaosTemple>(script, "Travelin
             script.severe("We were unable to open up the logout tab after starting to travel towards the altar.")
         else if (Variables.escapePker)
             return
-        else if (Players.local().distanceTo(CHAOS_ALTAR_PATH.end()).toInt() > 8) {
+
+        if (Players.local().distanceTo(CHAOS_ALTAR_PATH.end()).toInt() > 8) {
             while (!ScriptManager.isStopping() && !jChaosTemple.antiPkingCheck() && Skills.level(Skill.Hitpoints) != 0
                 && !Constants.AREA_LUMBY.contains(Players.local())
                 && (CHAOS_ALTAR_PATH.traverse() || CHAOS_ALTAR_PATH.next() != CHAOS_ALTAR_PATH.end()))
@@ -105,7 +106,8 @@ class TravelToAltar(script: jChaosTemple) : Leaf<jChaosTemple>(script, "Travelin
 
             if (Variables.escapePker || Skills.level(Skill.Hitpoints) == 0 || Constants.AREA_LUMBY.contains(Players.local()))
                 return
-            else if (Players.local().distanceTo(CHAOS_ALTAR_PATH.end()).toInt() > 8) {
+
+            if (Players.local().distanceTo(CHAOS_ALTAR_PATH.end()).toInt() > 8) {
                 script.severe("We were unable to get to the entrance to the Chaos Temple.")
                 return
             }
@@ -116,7 +118,8 @@ class TravelToAltar(script: jChaosTemple) : Leaf<jChaosTemple>(script, "Travelin
             script.info("Failed to find the doors at the temple.")
             return
         }
-        else if (altarDoor.id() == 1524) {
+
+        if (altarDoor.id() == 1524) {
             if (!altarDoor.inViewport()) {
                 Camera.turnTo(altarDoor)
                 if (Condition.wait({ altarDoor.inViewport() || jChaosTemple.antiPkingCheck() }, 50 ,50)) {
@@ -133,11 +136,13 @@ class TravelToAltar(script: jChaosTemple) : Leaf<jChaosTemple>(script, "Travelin
                 script.info("Failed to try and open the door.")
                 return
             }
-            else if (!Condition.wait({ !altarDoor.valid() || jChaosTemple.antiPkingCheck()  }, 50, 50)) {
+
+            if (!Condition.wait({ !altarDoor.valid() || jChaosTemple.antiPkingCheck()  }, 50, 50)) {
                 script.info("Failed to find that the door was open.")
                 return
             }
-            else if (Variables.escapePker)
+
+            if (Variables.escapePker)
                 return
         }
 
@@ -156,16 +161,19 @@ class TravelToAltar(script: jChaosTemple) : Leaf<jChaosTemple>(script, "Travelin
 
         if (Skills.level(Skill.Hitpoints) == 0 || Constants.AREA_LUMBY.contains(Players.local()))
             return
-        else if (!Movement.step(Constants.ALTAR_TILE)) {
+
+        if (!Movement.step(Constants.ALTAR_TILE)) {
             script.info("Failed to step towards the altar tile.")
             return
         }
-        else if (!Condition.wait({ Constants.AREA_ALTAR.contains(Players.local())
+
+        if (!Condition.wait({ Constants.AREA_ALTAR.contains(Players.local())
                     || jChaosTemple.antiPkingCheck() }, 50, 50)) {
             script.info("Failed to find that we are inside the temple.")
             return
         }
-        else if (Variables.escapePker)
+
+        if (Variables.escapePker)
             return
 
         Condition.wait({ Players.local().distanceTo(Constants.ALTAR_TILE).toInt() < 4 ||

@@ -27,7 +27,9 @@ class OpenBank(script: jChaosTemple) : Leaf<jChaosTemple>(script, "Opening Bank"
                     if (!stairCase.valid()) {
                         script.info("Failed to find the staircase in lumby castle.")
                         return
-                    } else if (!Condition.wait({ stairCase.distanceTo(Players.local()).toInt() < 5
+                    }
+
+                    if (!Condition.wait({ stairCase.distanceTo(Players.local()).toInt() < 5
                             || !Players.local().inMotion() }, 50, 300)) {
                         script.info("Failed to walk to the lumby castle stairs.")
                         return

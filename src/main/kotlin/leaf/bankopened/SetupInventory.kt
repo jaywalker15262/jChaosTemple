@@ -66,16 +66,20 @@ class SetupInventory(script: jChaosTemple) : Leaf<jChaosTemple>(script, "Setting
                 script.severe("Could not find any bones in the bank.")
                 ScriptManager.stop()
                 return
-            } else if (bankBones.stackSize() < 27) {
+            }
+
+            if (bankBones.stackSize() < 27) {
                 script.severe("Could not find enough bones in the bank for another trip.")
                 ScriptManager.stop()
                 return
             }
-            else if (!Bank.withdraw(bankBones, 27)) {
+
+            if (!Bank.withdraw(bankBones, 27)) {
                 script.info("Failed to withdraw bones.")
                 return
             }
-            else if (!Condition.wait({ Inventory.stream().name(
+
+            if (!Condition.wait({ Inventory.stream().name(
                     bankBones.name()).count().toInt() == 27 }, 50, 80)) {
                 script.info("Failed to find enough bones in our inventory for another trip.")
                 return

@@ -77,7 +77,8 @@ class LogOut(script: jChaosTemple) : Leaf<jChaosTemple>(script, "Logging Out") {
                 script.info("Failed to find that we logged out.")
                 return false
             }
-            else if (Players.local().inCombat() || Variables.timeUntilNextLogout > ScriptManager.getRuntime(true))
+
+            if (Players.local().inCombat() || Variables.timeUntilNextLogout > ScriptManager.getRuntime(true))
                 return false
 
             return true

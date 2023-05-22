@@ -30,7 +30,8 @@ class WorldHop(script: jChaosTemple) : Leaf<jChaosTemple>(script, "World-hopping
             script.info("Failed to attempt to hop to our new world.")
             return
         }
-        else if (!Condition.wait({ Worlds.current().number == Variables.worldId || Players.local().healthBarVisible() }, 50, 200)) {
+
+        if (!Condition.wait({ Worlds.current().number == Variables.worldId || Players.local().healthBarVisible() }, 50, 200)) {
             script.info("JayLOGS: Failed to find that we had hopped to our new world.")
             return
         }

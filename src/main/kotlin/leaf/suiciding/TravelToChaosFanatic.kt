@@ -18,7 +18,8 @@ class TravelToChaosFanatic(script: jChaosTemple) : Leaf<jChaosTemple>(script, "T
             var altarDoor = Objects.stream().within(20).id(1524, 1525).first()
             if (!altarDoor.valid())
                 return
-            else if (altarDoor.id() == 1524) {
+
+            if (altarDoor.id() == 1524) {
                 if (!altarDoor.inViewport()) {
                     Camera.turnTo(altarDoor.tile)
                     Condition.wait({ altarDoor.inViewport() }, 50, 50)
@@ -37,7 +38,8 @@ class TravelToChaosFanatic(script: jChaosTemple) : Leaf<jChaosTemple>(script, "T
                     altarDoor = Objects.stream().within(20).id(1524, 1525).first()
                     if (!altarDoor.valid())
                         return
-                    else if (altarDoor.id() == 1524) {
+
+                    if (altarDoor.id() == 1524) {
                         if (!altarDoor.inViewport()) {
                             Camera.turnTo(altarDoor.tile)
                             Condition.wait({ altarDoor.inViewport() }, 50, 50)
@@ -57,7 +59,8 @@ class TravelToChaosFanatic(script: jChaosTemple) : Leaf<jChaosTemple>(script, "T
             Condition.wait({ !Players.local().inMotion() }, 50, 50)
             if (Skills.level(Skill.Hitpoints) == 0 || Constants.AREA_LUMBY.contains(Players.local()))
                 return
-            else if (Constants.AREA_ALTAR.contains(Players.local())) {
+
+            if (Constants.AREA_ALTAR.contains(Players.local())) {
                 script.severe("Failed to exit the altar.")
                 return
             }
@@ -71,7 +74,8 @@ class TravelToChaosFanatic(script: jChaosTemple) : Leaf<jChaosTemple>(script, "T
             val escapePath = TilePath(generatePath.toTypedArray())
             if (!escapePath.valid())
                 return
-            else while (!ScriptManager.isStopping() && Skills.level(Skill.Hitpoints) != 0
+
+            while (!ScriptManager.isStopping() && Skills.level(Skill.Hitpoints) != 0
                 && !Constants.AREA_LUMBY.contains(Players.local())
                 && (escapePath.traverse() || escapePath.next() != escapePath.end()))
                 Condition.sleep(50)

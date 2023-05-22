@@ -4,17 +4,15 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="fed035d4-b86d-4be4-b658-43119d004291" name="Changes" comment="Non-constants to not have uppercased names.">
+    <list default="true" id="fed035d4-b86d-4be4-b658-43119d004291" name="Changes" comment="Do not need to use else if we have return before it.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/Constants.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/Constants.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/Variables.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/Variables.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/branch/OfferingBranches.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/branch/OfferingBranches.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/jChaosTemple.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/jChaosTemple.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/kotlin/leaf/OfferBones.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/leaf/OfferBones.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/leaf/antipk/LogIn.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/leaf/antipk/LogIn.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/leaf/OpenBank.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/leaf/OpenBank.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/leaf/TravelToAltar.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/leaf/TravelToAltar.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/kotlin/leaf/antipk/LogOut.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/leaf/antipk/LogOut.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/leaf/bankopened/CloseBank.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/leaf/bankopened/CloseBank.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/kotlin/leaf/bankopened/SetupInventory.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/leaf/bankopened/SetupInventory.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/leaf/suiciding/TravelToChaosFanatic.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/leaf/suiciding/TravelToChaosFanatic.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/leaf/suiciding/WorldHop.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/leaf/suiciding/WorldHop.kt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -112,24 +110,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1684545386724</updated>
-    </task>
-    <task id="LOCAL−00001" summary="Support for Protect Item.">
-      <created>1684573274773</created>
-      <option name="number" value="LOCAL−00001" />
-      <option name="presentableId" value="LOCAL−00001" />
-      <updated>1684573274773</updated>
-    </task>
-    <task id="LOCAL−00002" summary="Support for Big bones added.">
-      <created>1684574603162</created>
-      <option name="number" value="LOCAL−00002" />
-      <option name="presentableId" value="LOCAL−00002" />
-      <updated>1684574603162</updated>
-    </task>
-    <task id="LOCAL−00003" summary="Cleanup and improvement of commit which added support for Big bones.">
-      <created>1684576056527</created>
-      <option name="number" value="LOCAL−00003" />
-      <option name="presentableId" value="LOCAL−00003" />
-      <updated>1684576056527</updated>
     </task>
     <task id="LOCAL−00004" summary="Cleanup and improvement of the commit which added support for Big bones.">
       <created>1684576098093</created>
@@ -407,7 +387,25 @@
       <option name="presentableId" value="LOCAL−00049" />
       <updated>1684767590426</updated>
     </task>
-    <option name="localTasksCounter" value="50" />
+    <task id="LOCAL−00050" summary="Revert Production.stoppedUsing() change &amp; banking fix.">
+      <created>1684788158016</created>
+      <option name="number" value="LOCAL−00050" />
+      <option name="presentableId" value="LOCAL−00050" />
+      <updated>1684788158016</updated>
+    </task>
+    <task id="LOCAL−00051" summary="Minor improvements.">
+      <created>1684789771590</created>
+      <option name="number" value="LOCAL−00051" />
+      <option name="presentableId" value="LOCAL−00051" />
+      <updated>1684789771590</updated>
+    </task>
+    <task id="LOCAL−00052" summary="So that we do not attempt to world hop while we are dead.">
+      <created>1684790170245</created>
+      <option name="number" value="LOCAL−00052" />
+      <option name="presentableId" value="LOCAL−00052" />
+      <updated>1684790170245</updated>
+    </task>
+    <option name="localTasksCounter" value="53" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -422,11 +420,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Fixed bug from previous commit adding support for end on runtime goal reaced feature." />
-    <MESSAGE value="Renaming all constants to be uppercased." />
-    <MESSAGE value="Removing LoggingService, we already have access to functions from our main scriptfile through &quot;script.&quot;." />
-    <MESSAGE value="Small mistake on last commit." />
-    <MESSAGE value="Rename Script.kt and our class to jChaosTemple." />
     <MESSAGE value="Rename Script.kt and our class to jChaosTemple. Also missed refactoring of a few more LoggingService usages." />
     <MESSAGE value="Using Combat.wildernessLevel() instead of checking wildy level based on y-coord." />
     <MESSAGE value="More Combat.wildernessLevel() refactoring, also we need to account for if other players combat level are too high too attack us." />
@@ -447,6 +440,11 @@
     <MESSAGE value="Accidental newline." />
     <MESSAGE value="Another accidental newline." />
     <MESSAGE value="Non-constants to not have uppercased names." />
-    <option name="LAST_COMMIT_MESSAGE" value="Non-constants to not have uppercased names." />
+    <MESSAGE value="Revert Production.stoppedUsing() change." />
+    <MESSAGE value="Revert Production.stoppedUsing() change &amp; banking fix." />
+    <MESSAGE value="Minor improvements." />
+    <MESSAGE value="So that we do not attempt to world hop while we are dead." />
+    <MESSAGE value="Do not need to use else if we have return before it." />
+    <option name="LAST_COMMIT_MESSAGE" value="Do not need to use else if we have return before it." />
   </component>
 </project>
