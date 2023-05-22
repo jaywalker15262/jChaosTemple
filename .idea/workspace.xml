@@ -4,7 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="fed035d4-b86d-4be4-b658-43119d004291" name="Changes" comment="Simplyfying suiciding logic." />
+    <list default="true" id="fed035d4-b86d-4be4-b658-43119d004291" name="Changes" comment="Some more failsafety when attempting to attack the Chaos Fanatic.">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/branch/RootBranch.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/branch/RootBranch.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/leaf/antipk/LogIn.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/leaf/antipk/LogIn.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/leaf/antipk/LogOut.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/leaf/antipk/LogOut.kt" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -366,7 +371,13 @@
       <option name="presentableId" value="LOCAL−00044" />
       <updated>1684761424603</updated>
     </task>
-    <option name="localTasksCounter" value="45" />
+    <task id="LOCAL−00045" summary="Some more failsafety when attempting to attack the Chaos Fanatic.">
+      <created>1684761673924</created>
+      <option name="number" value="LOCAL−00045" />
+      <option name="presentableId" value="LOCAL−00045" />
+      <updated>1684761673924</updated>
+    </task>
+    <option name="localTasksCounter" value="46" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -381,7 +392,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Improving banking and login/logout logic." />
     <MESSAGE value="Protect Item, set default to off." />
     <MESSAGE value="Improve suicide logic and handling." />
     <MESSAGE value="Altar bounds and support for runtime limit feature." />
@@ -406,6 +416,7 @@
     <MESSAGE value="Need to add a wait to this check." />
     <MESSAGE value="Increase the wait a bit here as well." />
     <MESSAGE value="Simplyfying suiciding logic." />
-    <option name="LAST_COMMIT_MESSAGE" value="Simplyfying suiciding logic." />
+    <MESSAGE value="Some more failsafety when attempting to attack the Chaos Fanatic." />
+    <option name="LAST_COMMIT_MESSAGE" value="Some more failsafety when attempting to attack the Chaos Fanatic." />
   </component>
 </project>
