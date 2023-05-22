@@ -12,6 +12,5 @@ class LogIn(script: jChaosTemple) : Leaf<jChaosTemple>(script, "Logging In") {
             SettingsManager.set(ToggleId.AutoLogin, true)
             Variables.escapePker = false
         }
-
     }
 }
