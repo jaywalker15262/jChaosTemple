@@ -4,16 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="fed035d4-b86d-4be4-b658-43119d004291" name="Changes" comment="Improving handling of worldhopping &amp; traveling to the suicide spot.">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/Constants.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/Constants.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/Variables.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/Variables.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/leaf/OfferBones.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/leaf/OfferBones.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/leaf/OpenBank.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/leaf/OpenBank.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/leaf/TravelToAltar.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/leaf/TravelToAltar.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/leaf/bankopened/SetupInventory.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/leaf/bankopened/SetupInventory.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/leaf/suiciding/TravelToChaosFanatic.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/leaf/suiciding/TravelToChaosFanatic.kt" afterDir="false" />
-    </list>
+    <list default="true" id="fed035d4-b86d-4be4-b658-43119d004291" name="Changes" comment="Tidying up a lot of things and removing some more redundant loops." />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -351,7 +342,13 @@
       <option name="presentableId" value="LOCAL−00040" />
       <updated>1684709816249</updated>
     </task>
-    <option name="localTasksCounter" value="41" />
+    <task id="LOCAL−00041" summary="Tidying up a lot of things and removing some more redundant loops.">
+      <created>1684755466130</created>
+      <option name="number" value="LOCAL−00041" />
+      <option name="presentableId" value="LOCAL−00041" />
+      <updated>1684755466131</updated>
+    </task>
+    <option name="localTasksCounter" value="42" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -366,7 +363,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Oops, copied over the wrong one." />
     <MESSAGE value="Grouping and seperating some constants for readability and navigation" />
     <MESSAGE value="Have bank closing be with the other bank stuff as a seperate leaf and not inside TravelToAltar." />
     <MESSAGE value="Minor logic improvements." />
@@ -391,6 +387,7 @@
     <MESSAGE value="Restructuring of OfferBones(), removing a lot of unnecessary for loops." />
     <MESSAGE value="Improving handling of traveling to the suicide spot." />
     <MESSAGE value="Improving handling of worldhopping &amp; traveling to the suicide spot." />
-    <option name="LAST_COMMIT_MESSAGE" value="Improving handling of worldhopping &amp; traveling to the suicide spot." />
+    <MESSAGE value="Tidying up a lot of things and removing some more redundant loops." />
+    <option name="LAST_COMMIT_MESSAGE" value="Tidying up a lot of things and removing some more redundant loops." />
   </component>
 </project>
