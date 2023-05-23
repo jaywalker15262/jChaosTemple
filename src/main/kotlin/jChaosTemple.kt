@@ -120,7 +120,8 @@ class jChaosTemple : TreeScript() {
     private fun message(messageEvent: MessageEvent) {
         if (messageEvent.messageType != MessageType.Game)
             return
-        else if (messageEvent.message == logoutInCombatErrorMessage)
+
+        if (messageEvent.message == logoutInCombatErrorMessage)
             Variables.timeUntilNextLogout = ScriptManager.getRuntime(true) + 10000
     }
 }

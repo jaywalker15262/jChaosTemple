@@ -3,6 +3,7 @@ package com.jay.chaostemple.branch
 import com.jay.chaostemple.Constants
 import com.jay.chaostemple.Variables
 import com.jay.chaostemple.jChaosTemple
+import com.jay.chaostemple.leaf.Chill
 import com.jay.chaostemple.leaf.OfferBones
 import com.jay.chaostemple.leaf.suiciding.Suicide
 import com.jay.chaostemple.leaf.TravelToAltar
@@ -36,11 +37,20 @@ class SuicideCheckTwo(script: jChaosTemple) : Branch<jChaosTemple>(script, "Time
 }
 
 class SuicideAreaCheck(script: jChaosTemple) : Branch<jChaosTemple>(script, "At suicide area?") {
-    override val successComponent: TreeComponent<jChaosTemple> = WorldHopCheck(script)
+    override val successComponent: TreeComponent<jChaosTemple> = SuicideChillCheck(script)
     override val failedComponent: TreeComponent<jChaosTemple> = TravelToChaosFanatic(script)
 
     override fun validate(): Boolean {
         return Players.local().distanceTo(Constants.SUICIDE_TILE) < 6
+    }
+}
+
+class SuicideChillCheck(script: jChaosTemple) : Branch<jChaosTemple>(script, "Chill at suicide area?") {
+    override val successComponent: TreeComponent<jChaosTemple> = WorldHopCheck(script)
+    override val failedComponent: TreeComponent<jChaosTemple> = Chill(script)
+
+    override fun validate(): Boolean {
+        return !Players.local().inCombat() && Skills.level(Skill.Hitpoints) > 0
     }
 }
 
@@ -49,8 +59,8 @@ class WorldHopCheck(script: jChaosTemple) : Branch<jChaosTemple>(script, "World-
     override val failedComponent: TreeComponent<jChaosTemple> = Suicide(script)
 
     override fun validate(): Boolean {
-        return !Players.local().inCombat() && ScriptManager.getRuntime(true) > Variables.timeUntilNextLogout
+        return ScriptManager.getRuntime(true) > Variables.timeUntilNextLogout
                 && Skills.level(Skill.Hitpoints) > 0 && Npcs.stream().within(13).name("Chaos fanatic")
-                .filtered { !it.healthBarVisible() && it.inViewport() }.isEmpty() && Skills.level(Skill.Hitpoints) > 0
+                .filtered { !it.healthBarVisible() && it.inViewport() }.isEmpty()
     }
 }
