@@ -2,7 +2,7 @@ package com.jay.chaostemple.leaf.bankopened
 
 import com.jay.chaostemple.Variables
 import com.jay.chaostemple.Constants
-import com.jay.chaostemple.jChaosTemple
+import com.jay.chaostemple.ChaosTemple
 import org.powbot.api.Condition
 import org.powbot.api.rt4.Bank
 import org.powbot.api.rt4.Inventory
@@ -11,7 +11,7 @@ import org.powbot.api.rt4.walking.model.Skill
 import org.powbot.api.script.tree.Leaf
 import org.powbot.mobile.script.ScriptManager
 
-class SetupInventory(script: jChaosTemple) : Leaf<jChaosTemple>(script, "Setting Up Inventory") {
+class SetupInventory(script: ChaosTemple) : Leaf<ChaosTemple>(script, "Setting Up Inventory") {
     override fun execute() {
         Variables.escapePker = false
         if (Variables.stopAfterMinutes > 0) {

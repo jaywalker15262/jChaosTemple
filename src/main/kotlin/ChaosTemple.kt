@@ -45,7 +45,7 @@ import org.powbot.mobile.service.ScriptUploader
     ]
 )
 
-class jChaosTemple : TreeScript() {
+class ChaosTemple : TreeScript() {
     private val logoutInCombatErrorMessage = "You can't log out until 10 seconds after the end of combat."
 
     @ValueChanged("stopAtLvl")
@@ -94,26 +94,6 @@ class jChaosTemple : TreeScript() {
 
     fun severe(message: String) {
         log.severe("JayLOGS: $message")
-    }
-
-    companion object {
-        fun antiPkingCheck(): Boolean {
-            // Do not stop what we are doing if we are in combat, we cannot log out anyway.
-            if (Inventory.stream().name(Variables.boneType).count() < 3
-                || Players.local().inCombat() || Variables.timeUntilNextLogout > ScriptManager.getRuntime(true))
-                return false
-
-            val playerCombatLevel = Players.local().combatLevel
-            val wildyLevel = Combat.wildernessLevel()
-            if(Players.stream().notLocalPlayer().within(18).filtered {
-                (it.combatLevel + wildyLevel) >= playerCombatLevel && (it.combatLevel - wildyLevel) <= playerCombatLevel
-            }.isNotEmpty()) {
-                Variables.escapePker = true
-                return true
-            }
-
-            return false
-        }
     }
 
     @Subscribe

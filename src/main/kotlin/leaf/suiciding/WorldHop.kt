@@ -2,7 +2,7 @@ package com.jay.chaostemple.leaf.suiciding
 
 import com.jay.chaostemple.Constants
 import com.jay.chaostemple.Variables
-import com.jay.chaostemple.jChaosTemple
+import com.jay.chaostemple.ChaosTemple
 import org.powbot.api.Condition
 import org.powbot.api.Random
 import org.powbot.api.rt4.Players
@@ -10,7 +10,7 @@ import org.powbot.api.rt4.World
 import org.powbot.api.rt4.Worlds
 import org.powbot.api.script.tree.Leaf
 
-class WorldHop(script: jChaosTemple) : Leaf<jChaosTemple>(script, "World-hopping") {
+class WorldHop(script: ChaosTemple) : Leaf<ChaosTemple>(script, "World-hopping") {
     override fun execute() {
         val worlds = Worlds.stream().filtered { it.number != Variables.worldId && it.type == World.Type.MEMBERS
                 && !Constants.WORLD_SPECIALITY_FILTER.contains(it.specialty) && it.population > 0 && it.population < 990 }

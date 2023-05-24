@@ -3,14 +3,14 @@ package com.jay.chaostemple.leaf
 import com.jay.chaostemple.Constants
 import com.jay.chaostemple.Constants.LUMBY_BOTTOM_FLOOR_PATH
 import com.jay.chaostemple.Constants.LUMBY_TOP_FLOOR_PATH
-import com.jay.chaostemple.jChaosTemple
+import com.jay.chaostemple.ChaosTemple
 import org.powbot.api.Condition
 import org.powbot.api.Random
 import org.powbot.api.rt4.*
 import org.powbot.api.script.tree.Leaf
 import org.powbot.mobile.script.ScriptManager
 
-class OpenBank(script: jChaosTemple) : Leaf<jChaosTemple>(script, "Opening Bank") {
+class OpenBank(script: ChaosTemple) : Leaf<ChaosTemple>(script, "Opening Bank") {
     override fun execute() {
         if (Bank.inViewport()) {
             if (Bank.open())

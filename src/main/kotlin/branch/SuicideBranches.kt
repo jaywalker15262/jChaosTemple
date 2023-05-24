@@ -2,7 +2,7 @@ package com.jay.chaostemple.branch
 
 import com.jay.chaostemple.Constants
 import com.jay.chaostemple.Variables
-import com.jay.chaostemple.jChaosTemple
+import com.jay.chaostemple.ChaosTemple
 import com.jay.chaostemple.leaf.Chill
 import com.jay.chaostemple.leaf.OfferBones
 import com.jay.chaostemple.leaf.suiciding.Suicide
@@ -18,45 +18,45 @@ import org.powbot.api.script.tree.Branch
 import org.powbot.api.script.tree.TreeComponent
 import org.powbot.mobile.script.ScriptManager
 
-class SuicideCheck(script: jChaosTemple) : Branch<jChaosTemple>(script, "Time to suicide?") {
-    override val successComponent: TreeComponent<jChaosTemple> = SuicideAreaCheck(script)
-    override val failedComponent: TreeComponent<jChaosTemple> = OfferBones(script)
+class SuicideCheck(script: ChaosTemple) : Branch<ChaosTemple>(script, "Time to suicide?") {
+    override val successComponent: TreeComponent<ChaosTemple> = SuicideAreaCheck(script)
+    override val failedComponent: TreeComponent<ChaosTemple> = OfferBones(script)
 
     override fun validate(): Boolean {
         return Inventory.stream().name(Variables.boneType).isEmpty()
     }
 }
 
-class SuicideCheckTwo(script: jChaosTemple) : Branch<jChaosTemple>(script, "Time to suicide?") {
-    override val successComponent: TreeComponent<jChaosTemple> = SuicideAreaCheck(script)
-    override val failedComponent: TreeComponent<jChaosTemple> = TravelToAltar(script)
+class SuicideCheckTwo(script: ChaosTemple) : Branch<ChaosTemple>(script, "Time to suicide?") {
+    override val successComponent: TreeComponent<ChaosTemple> = SuicideAreaCheck(script)
+    override val failedComponent: TreeComponent<ChaosTemple> = TravelToAltar(script)
 
     override fun validate(): Boolean {
         return Inventory.stream().name(Variables.boneType).isEmpty()
     }
 }
 
-class SuicideAreaCheck(script: jChaosTemple) : Branch<jChaosTemple>(script, "At suicide area?") {
-    override val successComponent: TreeComponent<jChaosTemple> = SuicideChillCheck(script)
-    override val failedComponent: TreeComponent<jChaosTemple> = TravelToChaosFanatic(script)
+class SuicideAreaCheck(script: ChaosTemple) : Branch<ChaosTemple>(script, "At suicide area?") {
+    override val successComponent: TreeComponent<ChaosTemple> = SuicideChillCheck(script)
+    override val failedComponent: TreeComponent<ChaosTemple> = TravelToChaosFanatic(script)
 
     override fun validate(): Boolean {
         return Players.local().distanceTo(Constants.SUICIDE_TILE) < 6
     }
 }
 
-class SuicideChillCheck(script: jChaosTemple) : Branch<jChaosTemple>(script, "Chill at suicide area?") {
-    override val successComponent: TreeComponent<jChaosTemple> = WorldHopCheck(script)
-    override val failedComponent: TreeComponent<jChaosTemple> = Chill(script)
+class SuicideChillCheck(script: ChaosTemple) : Branch<ChaosTemple>(script, "Chill at suicide area?") {
+    override val successComponent: TreeComponent<ChaosTemple> = WorldHopCheck(script)
+    override val failedComponent: TreeComponent<ChaosTemple> = Chill(script)
 
     override fun validate(): Boolean {
         return !Players.local().inCombat() && Skills.level(Skill.Hitpoints) > 0
     }
 }
 
-class WorldHopCheck(script: jChaosTemple) : Branch<jChaosTemple>(script, "World-hop?") {
-    override val successComponent: TreeComponent<jChaosTemple> = WorldHop(script)
-    override val failedComponent: TreeComponent<jChaosTemple> = Suicide(script)
+class WorldHopCheck(script: ChaosTemple) : Branch<ChaosTemple>(script, "World-hop?") {
+    override val successComponent: TreeComponent<ChaosTemple> = WorldHop(script)
+    override val failedComponent: TreeComponent<ChaosTemple> = Suicide(script)
 
     override fun validate(): Boolean {
         return ScriptManager.getRuntime(true) > Variables.timeUntilNextLogout

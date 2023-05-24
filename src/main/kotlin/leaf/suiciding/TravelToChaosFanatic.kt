@@ -3,7 +3,7 @@ package com.jay.chaostemple.leaf.suiciding
 import com.jay.chaostemple.Constants
 import com.jay.chaostemple.Constants.SUICIDE_PATH
 import com.jay.chaostemple.Variables
-import com.jay.chaostemple.jChaosTemple
+import com.jay.chaostemple.ChaosTemple
 import org.powbot.api.Condition
 import org.powbot.api.rt4.*
 import org.powbot.api.rt4.walking.model.Skill
@@ -11,7 +11,7 @@ import org.powbot.api.script.tree.Leaf
 import org.powbot.dax.api.DaxWalker
 import org.powbot.mobile.script.ScriptManager
 
-class TravelToChaosFanatic(script: jChaosTemple) : Leaf<jChaosTemple>(script, "Traveling To Suicide Area") {
+class TravelToChaosFanatic(script: ChaosTemple) : Leaf<ChaosTemple>(script, "Traveling To Suicide Area") {
     override fun execute() {
         // Hardcoded path
         if (Constants.AREA_ALTAR.contains(Players.local())) {

@@ -3,7 +3,8 @@ package com.jay.chaostemple.leaf
 import com.jay.chaostemple.Constants
 import com.jay.chaostemple.Constants.CHAOS_ALTAR_PATH
 import com.jay.chaostemple.Variables
-import com.jay.chaostemple.jChaosTemple
+import com.jay.chaostemple.ChaosTemple
+import com.jay.chaostemple.helpers.CombatHelper
 import org.powbot.api.Condition
 import org.powbot.api.Input
 import org.powbot.api.Random
@@ -12,7 +13,7 @@ import org.powbot.api.rt4.walking.model.Skill
 import org.powbot.api.script.tree.Leaf
 import org.powbot.mobile.script.ScriptManager
 
-class TravelToAltar(script: jChaosTemple) : Leaf<jChaosTemple>(script, "Traveling To Altar") {
+class TravelToAltar(script: ChaosTemple) : Leaf<ChaosTemple>(script, "Traveling To Altar") {
     override fun execute() {
         if (Combat.wildernessLevel() == -1) {
             val burningAmulet = Inventory.stream().name(*Constants.BURNING_AMULETS).first()
@@ -72,7 +73,7 @@ class TravelToAltar(script: jChaosTemple) : Leaf<jChaosTemple>(script, "Travelin
         if (Variables.protectItem && Skills.realLevel(Skill.Prayer) >= 25 && Skills.level(Skill.Prayer) > 5
             && !Prayer.prayerActive(Prayer.Effect.PROTECT_ITEM)) {
             if (Prayer.prayer(Prayer.Effect.PROTECT_ITEM, true))
-                Condition.wait({ Prayer.prayerActive(Prayer.Effect.PROTECT_ITEM) || jChaosTemple.antiPkingCheck() },
+                Condition.wait({ Prayer.prayerActive(Prayer.Effect.PROTECT_ITEM) || CombatHelper.antiPkingCheck() },
                     Condition.sleep(Random.nextGaussian(170, 250, 200, 20.0)), 13)
 
             if (Variables.escapePker)
@@ -86,23 +87,23 @@ class TravelToAltar(script: jChaosTemple) : Leaf<jChaosTemple>(script, "Travelin
                 break
 
             Condition.sleep(Random.nextGaussian(170, 250, 200, 20.0))
-            if (jChaosTemple.antiPkingCheck())
+            if (CombatHelper.antiPkingCheck())
                 return
         }
 
-        if (!Condition.wait({ jChaosTemple.antiPkingCheck() || Game.tab() == Game.Tab.LOGOUT }, 50, 50))
+        if (!Condition.wait({ CombatHelper.antiPkingCheck() || Game.tab() == Game.Tab.LOGOUT }, 50, 50))
             script.severe("We were unable to open up the logout tab after starting to travel towards the altar.")
         else if (Variables.escapePker)
             return
 
         if (Players.local().distanceTo(CHAOS_ALTAR_PATH.end()).toInt() > 8) {
-            while (!ScriptManager.isStopping() && !jChaosTemple.antiPkingCheck() && Skills.level(Skill.Hitpoints) != 0
+            while (!ScriptManager.isStopping() && !CombatHelper.antiPkingCheck() && Skills.level(Skill.Hitpoints) != 0
                 && !Constants.AREA_LUMBY.contains(Players.local())
                 && (CHAOS_ALTAR_PATH.traverse() || CHAOS_ALTAR_PATH.next() != CHAOS_ALTAR_PATH.end()))
                 Condition.sleep(50)
 
             Condition.wait({ Players.local().distanceTo(CHAOS_ALTAR_PATH.end()).toInt() < 9 || !Players.local().inMotion()
-                    || jChaosTemple.antiPkingCheck() }, 50, 50)
+                    || CombatHelper.antiPkingCheck() }, 50, 50)
 
             if (Variables.escapePker || Skills.level(Skill.Hitpoints) == 0 || Constants.AREA_LUMBY.contains(Players.local()))
                 return
@@ -122,7 +123,7 @@ class TravelToAltar(script: jChaosTemple) : Leaf<jChaosTemple>(script, "Travelin
         if (altarDoor.id() == 1524) {
             if (!altarDoor.inViewport()) {
                 Camera.turnTo(altarDoor)
-                if (Condition.wait({ altarDoor.inViewport() || jChaosTemple.antiPkingCheck() }, 50 ,50)) {
+                if (Condition.wait({ altarDoor.inViewport() || CombatHelper.antiPkingCheck() }, 50 ,50)) {
                     if (Variables.escapePker)
                         return
                 }
@@ -137,7 +138,7 @@ class TravelToAltar(script: jChaosTemple) : Leaf<jChaosTemple>(script, "Travelin
                 return
             }
 
-            if (!Condition.wait({ !altarDoor.valid() || jChaosTemple.antiPkingCheck()  }, 50, 50)) {
+            if (!Condition.wait({ !altarDoor.valid() || CombatHelper.antiPkingCheck()  }, 50, 50)) {
                 script.info("Failed to find that the door was open.")
                 return
             }
@@ -153,7 +154,7 @@ class TravelToAltar(script: jChaosTemple) : Leaf<jChaosTemple>(script, "Travelin
         
         if (!Variables.altarTileMatrix.inViewport()) {
             Camera.turnTo(Variables.altarTileMatrix)
-            if (Condition.wait({ Variables.altarTileMatrix.inViewport() || jChaosTemple.antiPkingCheck() }, 50 ,50)) {
+            if (Condition.wait({ Variables.altarTileMatrix.inViewport() || CombatHelper.antiPkingCheck() }, 50 ,50)) {
                 if (Variables.escapePker)
                     return
             }
@@ -168,7 +169,7 @@ class TravelToAltar(script: jChaosTemple) : Leaf<jChaosTemple>(script, "Travelin
         }
 
         if (!Condition.wait({ Constants.AREA_ALTAR.contains(Players.local())
-                    || jChaosTemple.antiPkingCheck() }, 50, 50)) {
+                    || CombatHelper.antiPkingCheck() }, 50, 50)) {
             script.info("Failed to find that we are inside the temple.")
             return
         }
@@ -177,6 +178,6 @@ class TravelToAltar(script: jChaosTemple) : Leaf<jChaosTemple>(script, "Travelin
             return
 
         Condition.wait({ Players.local().distanceTo(Constants.ALTAR_TILE).toInt() < 4 ||
-                !Players.local().inMotion() || jChaosTemple.antiPkingCheck() }, 50 ,80)
+                !Players.local().inMotion() || CombatHelper.antiPkingCheck() }, 50 ,80)
     }
 }

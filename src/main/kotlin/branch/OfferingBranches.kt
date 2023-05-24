@@ -1,7 +1,7 @@
 package com.jay.chaostemple.branch
 
 import com.jay.chaostemple.Variables
-import com.jay.chaostemple.jChaosTemple
+import com.jay.chaostemple.ChaosTemple
 import com.jay.chaostemple.leaf.Chill
 import org.powbot.api.rt4.Inventory
 import org.powbot.api.rt4.Players
@@ -11,9 +11,9 @@ import org.powbot.api.script.tree.Branch
 import org.powbot.api.script.tree.TreeComponent
 import org.powbot.mobile.script.ScriptManager
 
-class OfferingCheck(script: jChaosTemple) : Branch<jChaosTemple>(script, "Already offering?") {
-    override val successComponent: TreeComponent<jChaosTemple> = Chill(script)
-    override val failedComponent: TreeComponent<jChaosTemple> = SuicideCheck(script)
+class OfferingCheck(script: ChaosTemple) : Branch<ChaosTemple>(script, "Already offering?") {
+    override val successComponent: TreeComponent<ChaosTemple> = Chill(script)
+    override val failedComponent: TreeComponent<ChaosTemple> = SuicideCheck(script)
 
     override fun validate(): Boolean {
         if (Variables.lastKnownPrayerXp != Skills.experience(Skill.Prayer)) {

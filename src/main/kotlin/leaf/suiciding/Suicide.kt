@@ -1,12 +1,12 @@
 package com.jay.chaostemple.leaf.suiciding
 
 import com.jay.chaostemple.Constants
-import com.jay.chaostemple.jChaosTemple
+import com.jay.chaostemple.ChaosTemple
 import org.powbot.api.Condition
 import org.powbot.api.rt4.*
 import org.powbot.api.script.tree.Leaf
 
-class Suicide(script: jChaosTemple) : Leaf<jChaosTemple>(script, "Suiciding") {
+class Suicide(script: ChaosTemple) : Leaf<ChaosTemple>(script, "Suiciding") {
     override fun execute() {
         val chaosFanatic = Npcs.stream().within(13).name("Chaos fanatic")
             .filtered { it.inViewport() }.first()

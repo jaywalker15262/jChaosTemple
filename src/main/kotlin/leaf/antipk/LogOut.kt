@@ -2,7 +2,7 @@ package com.jay.chaostemple.leaf.antipk
 
 import com.jay.chaostemple.Constants
 import com.jay.chaostemple.Variables
-import com.jay.chaostemple.jChaosTemple
+import com.jay.chaostemple.ChaosTemple
 import org.powbot.api.Condition
 import org.powbot.api.Input
 import org.powbot.api.Random
@@ -13,7 +13,7 @@ import org.powbot.mobile.SettingsManager
 import org.powbot.mobile.ToggleId
 import org.powbot.mobile.script.ScriptManager
 
-class LogOut(script: jChaosTemple) : Leaf<jChaosTemple>(script, "Logging Out") {
+class LogOut(script: ChaosTemple) : Leaf<ChaosTemple>(script, "Logging Out") {
     override fun execute() {
         // We are not in combat so let's attempt to log out instantly.
         SettingsManager.set(ToggleId.AutoLogin, false)
