@@ -4,27 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="fed035d4-b86d-4be4-b658-43119d004291" name="Changes" comment="Improving branch logic for suiciding.">
-      <change afterPath="$PROJECT_DIR$/src/main/kotlin/helpers/CombatHelper.kt" afterDir="false" />
+    <list default="true" id="fed035d4-b86d-4be4-b658-43119d004291" name="Changes" comment="Renamin our scriptfile to be uppercased and moving antiPkingCheck() to its own file.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/branch/BankOpenBranches.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/branch/BankOpenBranches.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/branch/MovementBranches.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/branch/MovementBranches.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/branch/OfferingBranches.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/branch/OfferingBranches.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/branch/RootBranch.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/branch/RootBranch.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/branch/SuicideBranches.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/branch/SuicideBranches.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/jChaosTemple.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/ChaosTemple.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/leaf/Chill.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/leaf/Chill.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/leaf/OfferBones.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/leaf/OfferBones.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/kotlin/leaf/OpenBank.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/leaf/OpenBank.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/leaf/TravelToAltar.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/leaf/TravelToAltar.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/leaf/antipk/LogIn.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/leaf/antipk/LogIn.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/leaf/antipk/LogOut.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/leaf/antipk/LogOut.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/leaf/bankopened/CloseBank.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/leaf/bankopened/CloseBank.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/leaf/bankopened/DepositInventory.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/leaf/bankopened/DepositInventory.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/leaf/bankopened/SetupInventory.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/leaf/bankopened/SetupInventory.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/leaf/suiciding/Suicide.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/leaf/suiciding/Suicide.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/leaf/suiciding/TravelToChaosFanatic.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/leaf/suiciding/TravelToChaosFanatic.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/leaf/suiciding/WorldHop.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/leaf/suiciding/WorldHop.kt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -108,11 +90,6 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <recent_temporary>
-      <list>
-        <item itemvalue="Kotlin.JChaosTempleKt" />
-      </list>
-    </recent_temporary>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -122,12 +99,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1684545386724</updated>
-    </task>
-    <task id="LOCAL−00006" summary="Improvements towards handling teleporting to the lava maze.">
-      <created>1684592164908</created>
-      <option name="number" value="LOCAL−00006" />
-      <option name="presentableId" value="LOCAL−00006" />
-      <updated>1684592164908</updated>
     </task>
     <task id="LOCAL−00007" summary="We will no longer stop what we are doing if we are already in combat or cannot logout.">
       <created>1684592984892</created>
@@ -417,7 +388,13 @@
       <option name="presentableId" value="LOCAL−00054" />
       <updated>1684841465605</updated>
     </task>
-    <option name="localTasksCounter" value="55" />
+    <task id="LOCAL−00055" summary="Renamin our scriptfile to be uppercased and moving antiPkingCheck() to its own file.">
+      <created>1684938081416</created>
+      <option name="number" value="LOCAL−00055" />
+      <option name="presentableId" value="LOCAL−00055" />
+      <updated>1684938081416</updated>
+    </task>
+    <option name="localTasksCounter" value="56" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -432,7 +409,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="More Combat.wildernessLevel() refactoring, also we need to account for if other players combat level are too high too attack us." />
     <MESSAGE value="Misc stuff." />
     <MESSAGE value="Removing redundant for loops for closing the bank." />
     <MESSAGE value="Removing even more redundant for loops for banking and restructuring some checks &amp; waits." />
@@ -457,6 +433,7 @@
     <MESSAGE value="Do not need to use else if we have return before it." />
     <MESSAGE value="Forgot one from previous commit." />
     <MESSAGE value="Improving branch logic for suiciding." />
-    <option name="LAST_COMMIT_MESSAGE" value="Improving branch logic for suiciding." />
+    <MESSAGE value="Renamin our scriptfile to be uppercased and moving antiPkingCheck() to its own file." />
+    <option name="LAST_COMMIT_MESSAGE" value="Renamin our scriptfile to be uppercased and moving antiPkingCheck() to its own file." />
   </component>
 </project>
