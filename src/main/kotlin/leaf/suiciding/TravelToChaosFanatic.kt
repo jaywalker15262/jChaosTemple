@@ -14,56 +14,31 @@ import org.powbot.mobile.script.ScriptManager
 class TravelToChaosFanatic(script: ChaosTemple) : Leaf<ChaosTemple>(script, "Traveling To Suicide Area") {
     override fun execute() {
         // Hardcoded path
-        if (Constants.AREA_ALTAR.contains(Players.local())) {
-            var altarDoor = Objects.stream().within(20).id(1524, 1525).first()
-            if (!altarDoor.valid())
+        if (Players.local().distanceTo(SUICIDE_PATH.next()).toInt() > 8) {
+            if (Constants.AREA_ALTAR.contains(Players.local())) {
+                val altarDoor = Objects.stream().within(20).id(1524, 1525).first()
+                if (!altarDoor.valid())
+                    return
+
+                if (altarDoor.id() == 1524) {
+                    if (!altarDoor.inViewport()) {
+                        Camera.turnTo(altarDoor.tile)
+                        Condition.wait({ altarDoor.inViewport() }, 50, 50)
+                    }
+
+                    altarDoor.bounds(-64, -56, -160, -16, -32, 32)
+                    // Short sleep between attempts of opening the door.
+                    if (!altarDoor.interact("Open") || !Condition.wait({ !altarDoor.valid() }, 50, 50))
+                        return
+                }
+            }
+
+            SUICIDE_PATH.traverse()
+            if (Condition.wait({ Players.local().inMotion() || Players.local().distanceTo(SUICIDE_PATH.end()) > 5 }, 50, 50))
                 return
 
-            if (altarDoor.id() == 1524) {
-                if (!altarDoor.inViewport()) {
-                    Camera.turnTo(altarDoor.tile)
-                    Condition.wait({ altarDoor.inViewport() }, 50, 50)
-                }
-
-                altarDoor.bounds(-64, -56, -160, -16, -32, 32)
-                // Short sleep between attempts of opening the door.
-                if (!altarDoor.interact("Open") || !Condition.wait({ !altarDoor.valid() }, 50, 50))
-                    return
-            }
-
-            while (!ScriptManager.isStopping() && Skills.level(Skill.Hitpoints) != 0
-                && !Constants.AREA_LUMBY.contains(Players.local())
-                && (SUICIDE_PATH.traverse() || SUICIDE_PATH.next() != SUICIDE_PATH.end())) {
-                if (Constants.AREA_ALTAR.contains(Players.local())) {
-                    altarDoor = Objects.stream().within(20).id(1524, 1525).first()
-                    if (!altarDoor.valid())
-                        return
-
-                    if (altarDoor.id() == 1524) {
-                        if (!altarDoor.inViewport()) {
-                            Camera.turnTo(altarDoor.tile)
-                            Condition.wait({ altarDoor.inViewport() }, 50, 50)
-                        }
-
-                        altarDoor.bounds(-64, -56, -160, -16, -32, 32)
-                        // Short sleep between attempts of opening the door.
-                        if (!altarDoor.interact("Open") || !Condition.wait({
-                                !altarDoor.valid() }, 50, 50))
-                            return
-                    }
-                }
-
-                Condition.sleep(50)
-            }
-
-            Condition.wait({ !Players.local().inMotion() }, 50, 50)
             if (Skills.level(Skill.Hitpoints) == 0 || Constants.AREA_LUMBY.contains(Players.local()))
                 return
-
-            if (Constants.AREA_ALTAR.contains(Players.local())) {
-                script.severe("Failed to exit the altar.")
-                return
-            }
         }
         // DaxWalker-generated path
         else if (Players.local().distanceTo(Constants.SUICIDE_TILE).toInt() > 5) {

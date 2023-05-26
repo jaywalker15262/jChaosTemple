@@ -4,9 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="fed035d4-b86d-4be4-b658-43119d004291" name="Changes" comment="Renamin our scriptfile to be uppercased and moving antiPkingCheck() to its own file.">
+    <list default="true" id="fed035d4-b86d-4be4-b658-43119d004291" name="Changes" comment="Followup on last commit.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/leaf/OpenBank.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/leaf/OpenBank.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/leaf/TravelToAltar.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/leaf/TravelToAltar.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/leaf/suiciding/TravelToChaosFanatic.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/leaf/suiciding/TravelToChaosFanatic.kt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -99,12 +100,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1684545386724</updated>
-    </task>
-    <task id="LOCAL−00007" summary="We will no longer stop what we are doing if we are already in combat or cannot logout.">
-      <created>1684592984892</created>
-      <option name="number" value="LOCAL−00007" />
-      <option name="presentableId" value="LOCAL−00007" />
-      <updated>1684592984892</updated>
     </task>
     <task id="LOCAL−00008" summary="Fixed some bugs &amp; inefficiencies with the lumby banking.">
       <created>1684601983551</created>
@@ -394,7 +389,13 @@
       <option name="presentableId" value="LOCAL−00055" />
       <updated>1684938081416</updated>
     </task>
-    <option name="localTasksCounter" value="56" />
+    <task id="LOCAL−00056" summary="Remove redundant while loop for traveling, could potentially cause infinite loops.">
+      <created>1685040081281</created>
+      <option name="number" value="LOCAL−00056" />
+      <option name="presentableId" value="LOCAL−00056" />
+      <updated>1685040081281</updated>
+    </task>
+    <option name="localTasksCounter" value="57" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -409,9 +410,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Misc stuff." />
-    <MESSAGE value="Removing redundant for loops for closing the bank." />
-    <MESSAGE value="Removing even more redundant for loops for banking and restructuring some checks &amp; waits." />
     <MESSAGE value="Revmoing redudant loop inside LogIn() and moving vars out of Constants.kt." />
     <MESSAGE value="Replaced timeSinceLastXpDrop &amp; lastKnownPrayerXp with Production.stoppedUsing()." />
     <MESSAGE value="Restructuring of OfferBones(), removing a lot of unnecessary for loops." />
@@ -434,6 +432,9 @@
     <MESSAGE value="Forgot one from previous commit." />
     <MESSAGE value="Improving branch logic for suiciding." />
     <MESSAGE value="Renamin our scriptfile to be uppercased and moving antiPkingCheck() to its own file." />
-    <option name="LAST_COMMIT_MESSAGE" value="Renamin our scriptfile to be uppercased and moving antiPkingCheck() to its own file." />
+    <MESSAGE value="Remove redundant while loop for traveling, could potentially cause infinite loops." />
+    <MESSAGE value="A bit of improvement on handling traveling." />
+    <MESSAGE value="Followup on last commit." />
+    <option name="LAST_COMMIT_MESSAGE" value="Followup on last commit." />
   </component>
 </project>

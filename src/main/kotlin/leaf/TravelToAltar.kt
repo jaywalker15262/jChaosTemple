@@ -11,7 +11,6 @@ import org.powbot.api.Random
 import org.powbot.api.rt4.*
 import org.powbot.api.rt4.walking.model.Skill
 import org.powbot.api.script.tree.Leaf
-import org.powbot.mobile.script.ScriptManager
 
 class TravelToAltar(script: ChaosTemple) : Leaf<ChaosTemple>(script, "Traveling To Altar") {
     override fun execute() {
@@ -78,7 +77,8 @@ class TravelToAltar(script: ChaosTemple) : Leaf<ChaosTemple>(script, "Traveling 
 
             if (Variables.escapePker)
                 return
-            else if (!Prayer.prayerActive(Prayer.Effect.PROTECT_ITEM))
+
+            if (!Prayer.prayerActive(Prayer.Effect.PROTECT_ITEM))
                 script.info("Failed to turn on Protect Item.")
         }
 
@@ -93,26 +93,13 @@ class TravelToAltar(script: ChaosTemple) : Leaf<ChaosTemple>(script, "Traveling 
 
         if (!Condition.wait({ CombatHelper.antiPkingCheck() || Game.tab() == Game.Tab.LOGOUT }, 50, 50))
             script.severe("We were unable to open up the logout tab after starting to travel towards the altar.")
-        else if (Variables.escapePker)
+
+        if (Variables.escapePker)
             return
 
-        if (Players.local().distanceTo(CHAOS_ALTAR_PATH.end()).toInt() > 8) {
-            while (!ScriptManager.isStopping() && !CombatHelper.antiPkingCheck() && Skills.level(Skill.Hitpoints) != 0
-                && !Constants.AREA_LUMBY.contains(Players.local())
-                && (CHAOS_ALTAR_PATH.traverse() || CHAOS_ALTAR_PATH.next() != CHAOS_ALTAR_PATH.end()))
-                Condition.sleep(50)
-
-            Condition.wait({ Players.local().distanceTo(CHAOS_ALTAR_PATH.end()).toInt() < 9 || !Players.local().inMotion()
-                    || CombatHelper.antiPkingCheck() }, 50, 50)
-
-            if (Variables.escapePker || Skills.level(Skill.Hitpoints) == 0 || Constants.AREA_LUMBY.contains(Players.local()))
-                return
-
-            if (Players.local().distanceTo(CHAOS_ALTAR_PATH.end()).toInt() > 8) {
-                script.severe("We were unable to get to the entrance to the Chaos Temple.")
-                return
-            }
-        }
+        CHAOS_ALTAR_PATH.traverse()
+        if (Players.local().distanceTo(CHAOS_ALTAR_PATH.end()).toInt() > 8)
+            return
 
         val altarDoor = Objects.stream().within(20).id(1524, 1525).first()
         if (!altarDoor.valid()) {
@@ -154,10 +141,9 @@ class TravelToAltar(script: ChaosTemple) : Leaf<ChaosTemple>(script, "Traveling 
         
         if (!Variables.altarTileMatrix.inViewport()) {
             Camera.turnTo(Variables.altarTileMatrix)
-            if (Condition.wait({ Variables.altarTileMatrix.inViewport() || CombatHelper.antiPkingCheck() }, 50 ,50)) {
-                if (Variables.escapePker)
-                    return
-            }
+            Condition.wait({ Variables.altarTileMatrix.inViewport() || CombatHelper.antiPkingCheck() }, 50 ,50)
+            if (Variables.escapePker)
+                return
         }
 
         if (Skills.level(Skill.Hitpoints) == 0 || Constants.AREA_LUMBY.contains(Players.local()))
@@ -169,7 +155,7 @@ class TravelToAltar(script: ChaosTemple) : Leaf<ChaosTemple>(script, "Traveling 
         }
 
         if (!Condition.wait({ Constants.AREA_ALTAR.contains(Players.local())
-                    || CombatHelper.antiPkingCheck() }, 50, 50)) {
+            || CombatHelper.antiPkingCheck() }, 50, 50)) {
             script.info("Failed to find that we are inside the temple.")
             return
         }
