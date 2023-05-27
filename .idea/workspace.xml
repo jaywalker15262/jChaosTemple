@@ -4,9 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="fed035d4-b86d-4be4-b658-43119d004291" name="Changes" comment="Adding support for 1-tick prayer training &amp; improving some banking logic. Also fixing bug with wilderness detection.">
+    <list default="true" id="fed035d4-b86d-4be4-b658-43119d004291" name="Changes" comment="Misc.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/ChaosTemple.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/ChaosTemple.kt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -67,15 +66,16 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "last_opened_file_path": "C:/Users/Admin/OneDrive/Skrivbord/jLogBurner",
+    "project.structure.last.edited": "Modules",
+    "project.structure.proportion": "0.0",
+    "project.structure.side.proportion": "0.0"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="MoveKotlinTopLevelDeclarationsDialog.RECENTS_KEY">
       <recent name="leaf" />
@@ -104,18 +104,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1684545386724</updated>
-    </task>
-    <task id="LOCAL−00010" summary="Improved suiciding checking for empty inventory and added more logic and more failsafes when suiciding with Chaos Fantic.">
-      <created>1684611398924</created>
-      <option name="number" value="LOCAL−00010" />
-      <option name="presentableId" value="LOCAL−00010" />
-      <updated>1684611398924</updated>
-    </task>
-    <task id="LOCAL−00011" summary="For the sake of consistency with coding style.">
-      <created>1684611533512</created>
-      <option name="number" value="LOCAL−00011" />
-      <option name="presentableId" value="LOCAL−00011" />
-      <updated>1684611533512</updated>
     </task>
     <task id="LOCAL−00012" summary="Unnecessary, to have .inViewport() here, we are already handling that in the code below and having it here can cause unwanted downtime and idling.">
       <created>1684612252305</created>
@@ -399,7 +387,19 @@
       <option name="presentableId" value="LOCAL−00058" />
       <updated>1685190588257</updated>
     </task>
-    <option name="localTasksCounter" value="59" />
+    <task id="LOCAL−00059" summary="Added notice to recommend using 1-tap mode when 1-ticking.">
+      <created>1685191341251</created>
+      <option name="number" value="LOCAL−00059" />
+      <option name="presentableId" value="LOCAL−00059" />
+      <updated>1685191341251</updated>
+    </task>
+    <task id="LOCAL−00060" summary="Misc.">
+      <created>1685217761204</created>
+      <option name="number" value="LOCAL−00060" />
+      <option name="presentableId" value="LOCAL−00060" />
+      <updated>1685217761204</updated>
+    </task>
+    <option name="localTasksCounter" value="61" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -414,8 +414,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Restructuring of OfferBones(), removing a lot of unnecessary for loops." />
-    <MESSAGE value="Improving handling of traveling to the suicide spot." />
     <MESSAGE value="Improving handling of worldhopping &amp; traveling to the suicide spot." />
     <MESSAGE value="Tidying up a lot of things and removing some more redundant loops." />
     <MESSAGE value="Need to add a wait to this check." />
@@ -439,6 +437,8 @@
     <MESSAGE value="Followup on last commit." />
     <MESSAGE value="Adjusting distance check on hardcoded path." />
     <MESSAGE value="Adding support for 1-tick prayer training &amp; improving some banking logic. Also fixing bug with wilderness detection." />
-    <option name="LAST_COMMIT_MESSAGE" value="Adding support for 1-tick prayer training &amp; improving some banking logic. Also fixing bug with wilderness detection." />
+    <MESSAGE value="Added notice to recommend using 1-tap mode when 1-ticking." />
+    <MESSAGE value="Misc." />
+    <option name="LAST_COMMIT_MESSAGE" value="Misc." />
   </component>
 </project>

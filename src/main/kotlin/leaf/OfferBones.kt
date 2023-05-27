@@ -60,8 +60,8 @@ class OfferBones(script: ChaosTemple) : Leaf<ChaosTemple>(script, "Offering Bone
         }
 
         if (!Variables.oneTicking) {
-            if (!Inventory.selectedItem().valid()) {
-                script.info("Failed to select the bone.")
+            if (!Condition.wait({ Inventory.selectedItem().valid() }, 50, 25)) {
+                script.info("Failed to find that the bone was selected.")
                 return
             }
             if (altar.interact("Use")) {

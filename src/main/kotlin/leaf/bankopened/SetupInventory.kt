@@ -27,16 +27,8 @@ class SetupInventory(script: ChaosTemple) : Leaf<ChaosTemple>(script, "Setting U
             ScriptManager.stop()
             return
         }
-        else if (Inventory.stream().name(*Constants.BURNING_AMULETS).count().toInt() == 0) {
-            var bankAmulet = Bank.stream().name(*Constants.BURNING_AMULETS).first()
-            for (n in 1..10) {
-                if (bankAmulet.valid())
-                    break
-
-                Condition.sleep(50)
-                bankAmulet = Bank.stream().name(*Constants.BURNING_AMULETS).first()
-            }
-
+        if (Inventory.stream().name(*Constants.BURNING_AMULETS).count().toInt() == 0) {
+            val bankAmulet = Bank.stream().name(*Constants.BURNING_AMULETS).first()
             if (!bankAmulet.valid()) {
                 script.severe("Could not find any Burning amulets in the bank.")
                 ScriptManager.stop()
@@ -55,15 +47,7 @@ class SetupInventory(script: ChaosTemple) : Leaf<ChaosTemple>(script, "Setting U
         }
 
         if (Inventory.stream().name(Variables.boneType).count().toInt() != 27) {
-            var bankBones = Bank.stream().name(Variables.boneType).first()
-            for (n in 1..10) {
-                if (bankBones.valid())
-                    break
-
-                Condition.sleep(50)
-                bankBones = Bank.stream().name(Variables.boneType).first()
-            }
-
+            val bankBones = Bank.stream().name(Variables.boneType).first()
             if (!bankBones.valid()) {
                 script.severe("Could not find any bones in the bank.")
                 ScriptManager.stop()
