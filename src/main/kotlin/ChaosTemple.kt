@@ -31,7 +31,7 @@ import org.powbot.mobile.service.ScriptUploader
                 "Big bones", "Superior dragon bones","Bones","Hydra bones","Babydragon bones")
         ),
         ScriptConfiguration(
-            "oneTick", "1-tick bone offering?",
+            "oneTick", "1-tick bone offering? (Recommended: 1-tap mode enabled when using this for better xp rates)",
             optionType = OptionType.BOOLEAN, defaultValue = "false"
         ),
         ScriptConfiguration(
