@@ -15,8 +15,9 @@ object Constants {
     val LAVA_MAZE_TILE = Tile(3028, 3842, 0)
     val ALTAR_TILE = Tile(2948, 3821, 0)
     val SUICIDE_TILE = Tile(2982, 3848, 0)
+    val LUMBY_STAIRS_TILE = Tile(3206, 3228, 0)
 
-    val AREA_LUMBY = Area(Tile(3203, 3227, 0), Tile(3226, 3205, 0))
+    val AREA_LUMBY = Area(Tile(3203, 3231, 0), Tile(3226, 3205, 0))
     val AREA_ALTAR = Area(Tile(2948, 3822, 0), Tile(2957, 3819, 0))
 
     val CHAOS_ALTAR_PATH = TilePath(arrayOf(Tile(3028, 3842, 0), Tile(3027, 3842, 0),

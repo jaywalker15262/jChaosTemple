@@ -42,11 +42,13 @@ class SetupInventory(script: ChaosTemple) : Leaf<ChaosTemple>(script, "Setting U
                 ScriptManager.stop()
                 return
             }
-            else if (!Bank.withdraw(bankAmulet, 1)) {
+
+            if (!Bank.withdraw(bankAmulet, 1)) {
                 script.info("Failed to find withdraw a Burning amulet.")
                 return
             }
-            else if (!Condition.wait({ Inventory.stream().name(bankAmulet.name()).count().toInt() == 0 }, 50, 80)) {
+
+            if (!Condition.wait({ Inventory.stream().name(bankAmulet.name()).count().toInt() != 0 }, 50, 80)) {
                 script.info("Failed to find a Burning amulet in our inventory.")
                 return
             }

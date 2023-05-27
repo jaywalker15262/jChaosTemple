@@ -14,7 +14,12 @@ import org.powbot.api.script.tree.Leaf
 
 class TravelToAltar(script: ChaosTemple) : Leaf<ChaosTemple>(script, "Traveling To Altar") {
     override fun execute() {
-        if (Combat.wildernessLevel() == -1) {
+        var wildyLevel = 0
+        val yCoord = Players.local().y()
+        if (yCoord > 3527)
+            wildyLevel = ((yCoord - 3528) / 8) + 2
+
+        if (wildyLevel == 0) {
             val burningAmulet = Inventory.stream().name(*Constants.BURNING_AMULETS).first()
             if (!burningAmulet.valid())
                 return

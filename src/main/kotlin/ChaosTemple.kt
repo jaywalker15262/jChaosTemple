@@ -25,18 +25,22 @@ import org.powbot.mobile.service.ScriptUploader
 @ScriptConfiguration.List(
     [
         ScriptConfiguration(
+            "bone", "Bones to offer:",
+            optionType = OptionType.STRING, defaultValue = "Dragon bones",
+            allowedValues = arrayOf("Dragon bones","Lava dragon bones","Dagannoth bones","Wyvern bones",
+                "Big bones", "Superior dragon bones","Bones","Hydra bones","Babydragon bones")
+        ),
+        ScriptConfiguration(
+            "oneTick", "1-tick bone offering?",
+            optionType = OptionType.BOOLEAN, defaultValue = "false"
+        ),
+        ScriptConfiguration(
             "stopAtLvl", "Stop at lvl(values >99 or <1 means it will not stop based on lvl):",
             optionType = OptionType.INTEGER, defaultValue = "99"
         ),
         ScriptConfiguration(
             "stopAfterMinutes", "Stop after X minutes(0, for the bot to not stop based on time):",
             optionType = OptionType.INTEGER, defaultValue = "0"
-        ),
-        ScriptConfiguration(
-            "bone", "Bones to offer:",
-            optionType = OptionType.STRING, defaultValue = "Dragon bones",
-            allowedValues = arrayOf("Dragon bones","Lava dragon bones","Dagannoth bones","Wyvern bones",
-                "Big bones", "Superior dragon bones","Bones","Hydra bones","Babydragon bones")
         ),
         ScriptConfiguration(
             "protectItem", "Use Protect Item?",
@@ -48,6 +52,17 @@ import org.powbot.mobile.service.ScriptUploader
 class ChaosTemple : TreeScript() {
     private val logoutInCombatErrorMessage = "You can't log out until 10 seconds after the end of combat."
 
+    @ValueChanged("bone")
+    fun boneTypeChanged(newValue: String) {
+        if (Constants.BONE_TYPES.contains(newValue))
+            Variables.boneType = newValue
+    }
+
+    @ValueChanged("oneTick")
+    fun oneTickChanged(newValue: Boolean) {
+        Variables.oneTicking = newValue
+    }
+
     @ValueChanged("stopAtLvl")
     fun stopAtLevelChanged(newValue: Int) {
         Variables.stopAtLvl = newValue
@@ -57,12 +72,6 @@ class ChaosTemple : TreeScript() {
     fun stopAfterMinutesChanged(newValue: Int) {
         Variables.stopAfterMinutes = if (newValue > 0)
             newValue else 0
-    }
-
-    @ValueChanged("bone")
-    fun boneTypeChanged(newValue: String) {
-        if (Constants.BONE_TYPES.contains(newValue))
-            Variables.boneType = newValue
     }
 
     @ValueChanged("protectItem")

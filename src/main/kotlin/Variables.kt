@@ -1,6 +1,7 @@
 package com.jay.chaostemple
 
 object Variables {
+    var oneTicking = false
     var stopAtLvl = 99
     var stopAfterMinutes = 0
     var lastKnownPrayerXp = 0

@@ -4,9 +4,19 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="fed035d4-b86d-4be4-b658-43119d004291" name="Changes" comment="Followup on last commit.">
+    <list default="true" id="fed035d4-b86d-4be4-b658-43119d004291" name="Changes" comment="Adjusting distance check on hardcoded path.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/ChaosTemple.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/ChaosTemple.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/Constants.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/Constants.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/Variables.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/Variables.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/branch/OfferingBranches.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/branch/OfferingBranches.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/branch/RootBranch.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/branch/RootBranch.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/helpers/CombatHelper.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/helpers/CombatHelper.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/leaf/OfferBones.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/leaf/OfferBones.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/leaf/OpenBank.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/leaf/OpenBank.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/kotlin/leaf/TravelToAltar.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/leaf/TravelToAltar.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/leaf/antipk/LogIn.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/leaf/antipk/LogIn.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/leaf/bankopened/SetupInventory.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/leaf/bankopened/SetupInventory.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/kotlin/leaf/suiciding/TravelToChaosFanatic.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/leaf/suiciding/TravelToChaosFanatic.kt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -91,6 +101,11 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Kotlin.ChaosTempleKt" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -100,12 +115,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1684545386724</updated>
-    </task>
-    <task id="LOCAL−00008" summary="Fixed some bugs &amp; inefficiencies with the lumby banking.">
-      <created>1684601983551</created>
-      <option name="number" value="LOCAL−00008" />
-      <option name="presentableId" value="LOCAL−00008" />
-      <updated>1684601983551</updated>
     </task>
     <task id="LOCAL−00009" summary="Improved suiciding checking for empty inventory and added more logic and more failsafes when suiciding with Chaos Fantic.">
       <created>1684611280254</created>
@@ -395,7 +404,13 @@
       <option name="presentableId" value="LOCAL−00056" />
       <updated>1685040081281</updated>
     </task>
-    <option name="localTasksCounter" value="57" />
+    <task id="LOCAL−00057" summary="Adjusting distance check on hardcoded path.">
+      <created>1685141496872</created>
+      <option name="number" value="LOCAL−00057" />
+      <option name="presentableId" value="LOCAL−00057" />
+      <updated>1685141496872</updated>
+    </task>
+    <option name="localTasksCounter" value="58" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -410,7 +425,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Revmoing redudant loop inside LogIn() and moving vars out of Constants.kt." />
     <MESSAGE value="Replaced timeSinceLastXpDrop &amp; lastKnownPrayerXp with Production.stoppedUsing()." />
     <MESSAGE value="Restructuring of OfferBones(), removing a lot of unnecessary for loops." />
     <MESSAGE value="Improving handling of traveling to the suicide spot." />
@@ -435,6 +449,7 @@
     <MESSAGE value="Remove redundant while loop for traveling, could potentially cause infinite loops." />
     <MESSAGE value="A bit of improvement on handling traveling." />
     <MESSAGE value="Followup on last commit." />
-    <option name="LAST_COMMIT_MESSAGE" value="Followup on last commit." />
+    <MESSAGE value="Adjusting distance check on hardcoded path." />
+    <option name="LAST_COMMIT_MESSAGE" value="Adjusting distance check on hardcoded path." />
   </component>
 </project>

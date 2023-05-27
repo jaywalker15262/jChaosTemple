@@ -26,7 +26,7 @@ class TravelToChaosFanatic(script: ChaosTemple) : Leaf<ChaosTemple>(script, "Tra
                         Condition.wait({ altarDoor.inViewport() }, 50, 50)
                     }
 
-                    altarDoor.bounds(-64, -56, -160, -16, -32, 32)
+                    altarDoor.bounds(-54, -46, -160, -16, -32, 32)
                     // Short sleep between attempts of opening the door.
                     if (!altarDoor.interact("Open") || !Condition.wait({ !altarDoor.valid() }, 50, 50))
                         return

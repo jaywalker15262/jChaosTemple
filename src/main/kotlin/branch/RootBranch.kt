@@ -4,8 +4,8 @@ import com.jay.chaostemple.ChaosTemple
 import com.jay.chaostemple.helpers.CombatHelper
 import com.jay.chaostemple.leaf.antipk.LogIn
 import com.jay.chaostemple.leaf.antipk.LogOut
-import org.powbot.api.rt4.Combat
 import org.powbot.api.rt4.Game
+import org.powbot.api.rt4.Players
 import org.powbot.api.script.tree.Branch
 import org.powbot.api.script.tree.TreeComponent
 
@@ -22,11 +22,11 @@ class IsLoggedIn(script: ChaosTemple) : Branch<ChaosTemple>(script, "Logged In?"
 }
 
 class IsInWildy(script: ChaosTemple) : Branch<ChaosTemple>(script, "In Wildy?") {
-    override val successComponent: TreeComponent<ChaosTemple> = IsBankOpened(script)
-    override val failedComponent: TreeComponent<ChaosTemple> = AntiPking(script)
+    override val successComponent: TreeComponent<ChaosTemple> = AntiPking(script)
+    override val failedComponent: TreeComponent<ChaosTemple> = IsBankOpened(script)
 
     override fun validate(): Boolean {
-        return Combat.wildernessLevel() == -1
+        return Players.local().y() >= 3523
     }
 }
 

@@ -12,7 +12,7 @@ import org.powbot.mobile.script.ScriptManager
 
 class OfferBones(script: ChaosTemple) : Leaf<ChaosTemple>(script, "Offering Bones") {
     override fun execute() {
-        val bone = Inventory.stream().name(Variables.boneType).first()
+        val bone = Inventory.stream().name(Variables.boneType).last()
         if (!bone.valid()) {
             script.info("Failed to find any bones to offer in our inventory.")
             return
@@ -38,43 +38,69 @@ class OfferBones(script: ChaosTemple) : Leaf<ChaosTemple>(script, "Offering Bone
                 script.info("Failed to turn on Protect Item.")
         }
 
-        if (!Inventory.selectedItem().valid() && !bone.interact("Use")) {
+        if (!bone.interact("Use", true)) {
             script.info("Failed to select the bone.")
             return
         }
 
+        if (CombatHelper.antiPkingCheck())
+            return
+
         // Short sleep after interaction.
-        Condition.sleep(Random.nextGaussian(170, 250, 200, 20.0))
+        if (!Variables.oneTicking)
+            Condition.sleep(Random.nextGaussian(170, 250, 200, 20.0))
+
         if (CombatHelper.antiPkingCheck())
             return
 
         altar.bounds(-32, 32, -64, 0, -32, 32)
-        val prayerXp = Skills.experience(Skill.Prayer)
         if (!altar.inViewport()) {
             Camera.turnTo(altar)
             Condition.wait({ altar.inViewport() }, 50, 50)
         }
-        if (!altar.interact("Use") || !Condition.wait({ prayerXp != Skills.experience(Skill.Prayer)
-            || CombatHelper.antiPkingCheck() }, Condition.sleep(Random.nextGaussian(
-                170, 250, 200, 20.0)), 15)) {
-            script.info("Failed to use the bone on the altar.")
-            return
+
+        if (!Variables.oneTicking) {
+            if (!Inventory.selectedItem().valid()) {
+                script.info("Failed to select the bone.")
+                return
+            }
+            if (altar.interact("Use")) {
+                script.info("Failed to use the bone on the altar.")
+                return
+            }
         }
+        else if (!altar.click())
+            script.info("Failed to use the bone on the altar.")
 
-        Variables.timeSinceLastXpDrop = ScriptManager.getRuntime(true) + 3000
-        if (Variables.escapePker)
-            return
+        if (!Variables.oneTicking) {
+            val prayerXp = Skills.experience(Skill.Prayer)
+            if (!Condition.wait({ prayerXp != Skills.experience(Skill.Prayer)
+                        || CombatHelper.antiPkingCheck() }, 50, 60)) {
+                script.info("Failed to find that bone was used on altar.")
+                return
+            }
 
-        for (n in 1..3) {
-            if (Game.tab(Game.Tab.LOGOUT))
-                break
+            Variables.timeSinceLastXpDrop = ScriptManager.getRuntime(true) + 2500
+            if (Variables.escapePker)
+                return
 
+            // We just offered a bone, wait very briefly before trying to open the logout tab.
             Condition.sleep(Random.nextGaussian(170, 250, 200, 20.0))
             if (CombatHelper.antiPkingCheck())
                 return
-        }
 
-        if (!Condition.wait({ CombatHelper.antiPkingCheck() || Game.tab() == Game.Tab.LOGOUT }, 50, 50))
-            script.info("We were unable to open up the logout tab after starting to offer bones at he altar.")
+            for (n in 1..3) {
+                if (Game.tab(Game.Tab.LOGOUT))
+                    break
+
+                Condition.sleep(Random.nextGaussian(170, 250, 200, 20.0))
+                if (CombatHelper.antiPkingCheck())
+                    return
+            }
+
+            if (!Condition.wait({ CombatHelper.antiPkingCheck() || Game.tab() == Game.Tab.LOGOUT }, 50, 50))
+                script.info("We were unable to open up the logout tab after starting to offer bones at he altar.")
+        }
+        else Variables.timeSinceLastXpDrop = ScriptManager.getRuntime(true)
     }
 }

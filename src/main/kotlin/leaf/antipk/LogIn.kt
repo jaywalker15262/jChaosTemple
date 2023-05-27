@@ -8,9 +8,8 @@ import org.powbot.mobile.ToggleId
 
 class LogIn(script: ChaosTemple) : Leaf<ChaosTemple>(script, "Logging In") {
     override fun execute() {
-        if (!SettingsManager.enabled(ToggleId.AutoLogin)) {
+        Variables.escapePker = false
+        if (!SettingsManager.enabled(ToggleId.AutoLogin))
             SettingsManager.set(ToggleId.AutoLogin, true)
-            Variables.escapePker = false
-        }
     }
 }

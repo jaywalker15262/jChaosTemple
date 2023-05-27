@@ -8,7 +8,6 @@ import org.powbot.api.Condition
 import org.powbot.api.Random
 import org.powbot.api.rt4.*
 import org.powbot.api.script.tree.Leaf
-import org.powbot.mobile.script.ScriptManager
 
 class OpenBank(script: ChaosTemple) : Leaf<ChaosTemple>(script, "Opening Bank") {
     override fun execute() {
@@ -20,19 +19,15 @@ class OpenBank(script: ChaosTemple) : Leaf<ChaosTemple>(script, "Opening Bank") 
         else {
             if (Constants.AREA_LUMBY.contains(Players.local())) {
                 if (Game.floor() == 0) {
-                    while (!ScriptManager.isStopping() && (LUMBY_BOTTOM_FLOOR_PATH.traverse()
-                                || LUMBY_BOTTOM_FLOOR_PATH.next() != LUMBY_BOTTOM_FLOOR_PATH.end()))
-                        Condition.sleep(50)
+                    LUMBY_BOTTOM_FLOOR_PATH.traverse()
+                    if (Players.local().distanceTo(Constants.LUMBY_STAIRS_TILE).toInt() > 8 ||
+                        !Condition.wait({ !Players.local().inMotion()
+                                || Players.local().distanceTo(Constants.LUMBY_STAIRS_TILE).toInt() < 4 }, 50, 50))
+                        return
 
                     val stairCase = Objects.stream().within(18).id(16671).nearest().first()
                     if (!stairCase.valid()) {
                         script.info("Failed to find the staircase in lumby castle.")
-                        return
-                    }
-
-                    if (!Condition.wait({ stairCase.distanceTo(Players.local()).toInt() < 5
-                            || !Players.local().inMotion() }, 50, 300)) {
-                        script.info("Failed to walk to the lumby castle stairs.")
                         return
                     }
 
@@ -57,19 +52,17 @@ class OpenBank(script: ChaosTemple) : Leaf<ChaosTemple>(script, "Opening Bank") 
 
                     secondStairCase.bounds(-26, 26, -76, 24, -26, 26)
                     if (!secondStairCase.interact("Climb-up") || !Condition.wait({ Game.floor() == 2 }, 50, 90)) {
-                        script.info("Failed to walk up the stairs on the bottom floor.")
-                        return
-                    }
-
-                    if (Game.floor() != 2) {
-                        script.info("Failed to walk up the stairs on the first floor.")
+                        script.info("Failed to walk up the stairs on first floor.")
                         return
                     }
                 }
-
-                LUMBY_TOP_FLOOR_PATH.traverse()
+                if (Game.floor() == 2)
+                    LUMBY_TOP_FLOOR_PATH.traverse()
             }
-            else Movement.moveToBank()
+            else {
+                script.info("Using back-up banking path.")
+                Movement.moveToBank()
+            }
 
             if (!Bank.inViewport()) {
                 Camera.turnTo(Bank.nearest().tile())
