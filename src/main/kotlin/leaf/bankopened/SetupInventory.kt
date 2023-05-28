@@ -22,11 +22,13 @@ class SetupInventory(script: ChaosTemple) : Leaf<ChaosTemple>(script, "Setting U
                 return
             }
         }
+
         if (Skills.realLevel(Skill.Prayer) >= Variables.stopAtLvl) {
             script.info("Script stopping due to prayer level goal reached.")
             ScriptManager.stop()
             return
         }
+
         if (Inventory.stream().name(*Constants.BURNING_AMULETS).count().toInt() == 0) {
             val bankAmulet = Bank.stream().name(*Constants.BURNING_AMULETS).first()
             if (!bankAmulet.valid()) {
