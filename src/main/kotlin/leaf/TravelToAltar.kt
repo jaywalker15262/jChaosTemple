@@ -43,8 +43,8 @@ class TravelToAltar(script: ChaosTemple) : Leaf<ChaosTemple>(script, "Traveling 
                 return
             }
 
-            var wildernessChatOption = Chat.stream().text("Okay, teleport to level 41 Wilderness.").first()
             Input.send("3")
+            var wildernessChatOption = Chat.stream().text("Okay, teleport to level 41 Wilderness.").first()
             for (i in 1..10) {
                 if (wildernessChatOption.valid())
                     break
