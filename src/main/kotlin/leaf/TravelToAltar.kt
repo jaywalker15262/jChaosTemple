@@ -36,7 +36,6 @@ class TravelToAltar(script: ChaosTemple) : Leaf<ChaosTemple>(script, "Traveling 
 
                 Condition.sleep(Random.nextGaussian(270, 450, 300, 30.0))
                 lavaMazeChatOption = Chat.stream().text("Lava Maze").first()
-
             }
 
             if (!lavaMazeChatOption.valid()) {
