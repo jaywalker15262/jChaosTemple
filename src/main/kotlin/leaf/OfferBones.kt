@@ -43,21 +43,15 @@ class OfferBones(script: ChaosTemple) : Leaf<ChaosTemple>(script, "Offering Bone
             return
         }
 
-        if (CombatHelper.antiPkingCheck())
-            return
-
-        // Short sleep after interaction.
-        if (!Variables.oneTicking)
-            Condition.sleep(Random.nextGaussian(170, 250, 200, 20.0))
-
-        if (CombatHelper.antiPkingCheck())
-            return
-
         altar.bounds(-32, 32, -64, 0, -32, 32)
         if (!altar.inViewport()) {
             Camera.turnTo(altar)
             Condition.wait({ altar.inViewport() }, 50, 50)
         }
+
+        // Short sleep after interaction.
+        if (!Variables.oneTicking)
+            Condition.sleep(Random.nextGaussian(170, 250, 200, 20.0))
 
         if (!Variables.oneTicking) {
             if (!Condition.wait({ Inventory.selectedItem().valid() }, 50, 25)) {
