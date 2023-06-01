@@ -118,10 +118,9 @@ class TravelToAltar(script: ChaosTemple) : Leaf<ChaosTemple>(script, "Traveling 
                     if (Variables.escapePker)
                         return
                 }
+                else if (!altarDoor.inViewport())
+                    script.info("Failed to find the door at the Chaos Altar to be in our viewport.")
             }
-
-            if (!altarDoor.inViewport())
-                script.info("Failed to find the door at the Chaos Altar to be in our viewport.")
 
             altarDoor.bounds(-64, -56, -160, -16, -32, 32)
             if (!altarDoor.interact("Open")) {
