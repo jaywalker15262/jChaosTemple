@@ -4,8 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="fed035d4-b86d-4be4-b658-43119d004291" name="Changes" comment="Spacing.">
+    <list default="true" id="fed035d4-b86d-4be4-b658-43119d004291" name="Changes" comment="Fixing bug with logging out, removing redundant antipking checks.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/ChaosTemple.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/ChaosTemple.kt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -104,24 +105,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1684545386724</updated>
-    </task>
-    <task id="LOCAL−00014" summary="Fixed bug for Big bones not being supported.">
-      <created>1684612463334</created>
-      <option name="number" value="LOCAL−00014" />
-      <option name="presentableId" value="LOCAL−00014" />
-      <updated>1684612463334</updated>
-    </task>
-    <task id="LOCAL−00015" summary="This is a better check.">
-      <created>1684613309822</created>
-      <option name="number" value="LOCAL−00015" />
-      <option name="presentableId" value="LOCAL−00015" />
-      <updated>1684613309822</updated>
-    </task>
-    <task id="LOCAL−00016" summary="Fixes a bug that causes us to not immediately offer bones upon arriving at the altar.">
-      <created>1684614055988</created>
-      <option name="number" value="LOCAL−00016" />
-      <option name="presentableId" value="LOCAL−00016" />
-      <updated>1684614055988</updated>
     </task>
     <task id="LOCAL−00017" summary="Oops, copied over the wrong one.">
       <created>1684619323759</created>
@@ -399,7 +382,25 @@
       <option name="presentableId" value="LOCAL−00062" />
       <updated>1685307089786</updated>
     </task>
-    <option name="localTasksCounter" value="63" />
+    <task id="LOCAL−00063" summary="Spacing.">
+      <created>1685532919356</created>
+      <option name="number" value="LOCAL−00063" />
+      <option name="presentableId" value="LOCAL−00063" />
+      <updated>1685532919356</updated>
+    </task>
+    <task id="LOCAL−00064" summary="misc">
+      <created>1685533018648</created>
+      <option name="number" value="LOCAL−00064" />
+      <option name="presentableId" value="LOCAL−00064" />
+      <updated>1685533018648</updated>
+    </task>
+    <task id="LOCAL−00065" summary="Fixing bug with logging out, removing redundant antipking checks.">
+      <created>1685626881104</created>
+      <option name="number" value="LOCAL−00065" />
+      <option name="presentableId" value="LOCAL−00065" />
+      <updated>1685626881105</updated>
+    </task>
+    <option name="localTasksCounter" value="66" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -414,8 +415,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Tidying up a lot of things and removing some more redundant loops." />
-    <MESSAGE value="Need to add a wait to this check." />
     <MESSAGE value="Increase the wait a bit here as well." />
     <MESSAGE value="Simplyfying suiciding logic." />
     <MESSAGE value="Some more failsafety when attempting to attack the Chaos Fanatic." />
@@ -439,6 +438,8 @@
     <MESSAGE value="Added notice to recommend using 1-tap mode when 1-ticking." />
     <MESSAGE value="Misc." />
     <MESSAGE value="Spacing." />
-    <option name="LAST_COMMIT_MESSAGE" value="Spacing." />
+    <MESSAGE value="misc" />
+    <MESSAGE value="Fixing bug with logging out, removing redundant antipking checks." />
+    <option name="LAST_COMMIT_MESSAGE" value="Fixing bug with logging out, removing redundant antipking checks." />
   </component>
 </project>
