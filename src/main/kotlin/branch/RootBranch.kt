@@ -12,7 +12,7 @@ import org.powbot.api.script.tree.TreeComponent
 /**
  *  The root node which is executed by the script
  */
-class IsLoggedIn(script: ChaosTemple) : Branch<ChaosTemple>(script, "Logged In?") {
+class IsLoggedIn(script: ChaosTemple) : Branch<ChaosTemple>(script, "Logged in?") {
     override val successComponent: TreeComponent<ChaosTemple> = IsInWildy(script)
     override val failedComponent: TreeComponent<ChaosTemple> = LogIn(script)
 
@@ -21,7 +21,7 @@ class IsLoggedIn(script: ChaosTemple) : Branch<ChaosTemple>(script, "Logged In?"
     }
 }
 
-class IsInWildy(script: ChaosTemple) : Branch<ChaosTemple>(script, "In Wildy?") {
+class IsInWildy(script: ChaosTemple) : Branch<ChaosTemple>(script, "In wildy?") {
     override val successComponent: TreeComponent<ChaosTemple> = AntiPking(script)
     override val failedComponent: TreeComponent<ChaosTemple> = IsBankOpened(script)
 
