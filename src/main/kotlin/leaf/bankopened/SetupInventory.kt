@@ -38,7 +38,7 @@ class SetupInventory(script: ChaosTemple) : Leaf<ChaosTemple>(script, "Setting U
             }
 
             if (!Bank.withdraw(bankAmulet, 1)) {
-                script.info("Failed to find withdraw a Burning amulet.")
+                script.info("Failed to withdraw a Burning amulet.")
                 return
             }
 
