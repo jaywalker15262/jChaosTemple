@@ -105,18 +105,6 @@
       <option name="presentableId" value="Default" />
       <updated>1684545386724</updated>
     </task>
-    <task id="LOCAL−00019" summary="Have bank closing be with the other bank stuff as a seperate leaf and not inside TravelToAltar.">
-      <created>1684623779226</created>
-      <option name="number" value="LOCAL−00019" />
-      <option name="presentableId" value="LOCAL−00019" />
-      <updated>1684623779226</updated>
-    </task>
-    <task id="LOCAL−00020" summary="Minor logic improvements.">
-      <created>1684624144241</created>
-      <option name="number" value="LOCAL−00020" />
-      <option name="presentableId" value="LOCAL−00020" />
-      <updated>1684624144241</updated>
-    </task>
     <task id="LOCAL−00021" summary="Improving banking and login/logout logic.">
       <created>1684636985056</created>
       <option name="number" value="LOCAL−00021" />
@@ -399,7 +387,19 @@
       <option name="presentableId" value="LOCAL−00067" />
       <updated>1685646087923</updated>
     </task>
-    <option name="localTasksCounter" value="68" />
+    <task id="LOCAL−00068" summary="Misc">
+      <created>1685738006766</created>
+      <option name="number" value="LOCAL−00068" />
+      <option name="presentableId" value="LOCAL−00068" />
+      <updated>1685738006766</updated>
+    </task>
+    <task id="LOCAL−00069" summary="Misc">
+      <created>1685797718943</created>
+      <option name="number" value="LOCAL−00069" />
+      <option name="presentableId" value="LOCAL−00069" />
+      <updated>1685797718944</updated>
+    </task>
+    <option name="localTasksCounter" value="70" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">

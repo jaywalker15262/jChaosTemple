@@ -11,8 +11,8 @@ import org.powbot.api.script.tree.Leaf
 
 class OpenBank(script: ChaosTemple) : Leaf<ChaosTemple>(script, "Opening Bank") {
     override fun execute() {
-        if (Bank.inViewport() && (Players.local().distanceTo(Constants.LUMBY_STAIRS_TILE).toInt() < 4
-                    || !Players.local().inMotion())) {
+        if (Bank.inViewport() && (Players.local().distanceTo(Constants.LUMBY_STAIRS_TILE).toInt() > 40
+                    || Players.local().distanceTo(Constants.LUMBY_STAIRS_TILE).toInt() < 4 || !Players.local().inMotion())) {
             if (Bank.open())
                 Condition.wait({ Bank.opened() }, Condition.sleep(Random.nextGaussian(170, 250, 200, 20.0)), 13)
         }
