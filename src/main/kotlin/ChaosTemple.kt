@@ -84,6 +84,12 @@ class ChaosTemple : TreeScript() {
     }
 
     override fun onStart() {
+        // We cannot use superior dragon bones below lvl 70 prayer.
+        if (Variables.boneType == "Superior dragon bones" && Skills.level(Skill.Prayer) < 70) {
+            ScriptManager.stop()
+            return
+        }
+
         val p: Paint = PaintBuilder.newBuilder()
             .addString("Last Leaf:") { lastLeaf.name }
             .addString("Stop At Level: ") { Variables.stopAtLvl.toString() }
@@ -91,12 +97,6 @@ class ChaosTemple : TreeScript() {
             .backgroundColor(Color.argb(255, 59,127,77))
             .build()
         addPaint(p)
-
-        // We cannot use superior dragon bones below lvl 70 prayer.
-        if (Variables.boneType == "Superior dragon bones" && Skills.level(Skill.Prayer) < 70) {
-            ScriptManager.stop()
-            return
-        }
 
         Variables.lastKnownPrayerXp = Skills.experience(Skill.Prayer)
         if (Equipment.stream().isNotEmpty())
@@ -122,5 +122,5 @@ class ChaosTemple : TreeScript() {
 }
 
 fun main(args: Array<String>) {
-    ScriptUploader().uploadAndStart("jChaosTemple", "", "127.0.0.1:5565", true, false)
+    ScriptUploader().uploadAndStart("jChaosTemple", "", "127.0.0.1:5595", true, false)
 }
