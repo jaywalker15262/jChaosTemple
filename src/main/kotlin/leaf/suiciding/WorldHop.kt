@@ -32,7 +32,7 @@ class WorldHop(script: ChaosTemple) : Leaf<ChaosTemple>(script, "World-hopping")
         }
 
         if (!Condition.wait({ Worlds.current().number == Variables.worldId || Players.local().healthBarVisible() }, 50, 200)) {
-            script.info("JayLOGS: Failed to find that we had hopped to our new world.")
+            script.info("Failed to find that we had hopped to our new world.")
             return
         }
 

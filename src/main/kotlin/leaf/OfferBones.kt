@@ -43,7 +43,7 @@ class OfferBones(script: ChaosTemple) : Leaf<ChaosTemple>(script, "Offering Bone
             return
         }
 
-        altar.bounds(-32, 32, -64, 0, -32, 32)
+        altar.bounds(-44, -16, -64, 0, -32, 32)
         if (!altar.inViewport()) {
             Camera.turnTo(altar)
             Condition.wait({ altar.inViewport() }, 50, 50)
