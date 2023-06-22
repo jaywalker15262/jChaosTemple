@@ -101,6 +101,8 @@ class ChaosTemple : TreeScript() {
         Variables.lastKnownPrayerXp = Skills.experience(Skill.Prayer)
         if (Equipment.stream().isNotEmpty())
             Variables.depositEquipment = true
+
+        Variables.worldId = Worlds.current().number
     }
 
     fun info(message: String) {
