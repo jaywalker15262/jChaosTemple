@@ -12,17 +12,19 @@ import org.powbot.api.script.tree.Leaf
 class OpenBank(script: ChaosTemple) : Leaf<ChaosTemple>(script, "Opening Bank") {
     override fun execute() {
         if (Bank.inViewport() && (Players.local().distanceTo(Constants.LUMBY_STAIRS_TILE).toInt() > 40
-                    || Players.local().distanceTo(Constants.LUMBY_STAIRS_TILE).toInt() < 4 || !Players.local().inMotion())) {
+                    || Players.local().distanceTo(Constants.LUMBY_STAIRS_TILE).toInt() < 4
+                    || !Players.local().inMotion())) {
             if (Bank.open())
-                Condition.wait({ Bank.opened() }, Condition.sleep(Random.nextGaussian(170, 250, 200, 20.0)), 13)
+                Condition.wait({ Bank.opened() },
+                    Condition.sleep(Random.nextGaussian(170, 250, 200, 20.0)), 13)
         }
         else {
             if (Constants.AREA_LUMBY.contains(Players.local())) {
                 if (Game.floor() == 0) {
                     LUMBY_BOTTOM_FLOOR_PATH.traverse()
                     if (Players.local().distanceTo(Constants.LUMBY_STAIRS_TILE).toInt() > 8 ||
-                        !Condition.wait({ !Players.local().inMotion()
-                                || Players.local().distanceTo(Constants.LUMBY_STAIRS_TILE).toInt() < 4 }, 50, 50))
+                        !Condition.wait({ !Players.local().inMotion() || Players.local()
+                            .distanceTo(Constants.LUMBY_STAIRS_TILE).toInt() < 4 }, 50, 50))
                         return
 
                     val stairCase = Objects.stream().within(18).id(16671).nearest().first()
@@ -38,7 +40,8 @@ class OpenBank(script: ChaosTemple) : Leaf<ChaosTemple>(script, "Opening Bank") 
                         Condition.wait({ stairCase.inViewport() }, 50, 50)
                     }
 
-                    if (!stairCase.interact("Climb-up") || !Condition.wait({ Game.floor() == 1 }, 50, 90)) {
+                    if (!stairCase.interact("Climb-up")
+                        || !Condition.wait({ Game.floor() == 1 }, 50, 90)) {
                         script.info("Failed to walk up the stairs on the bottom floor.")
                         return
                     }
@@ -51,7 +54,8 @@ class OpenBank(script: ChaosTemple) : Leaf<ChaosTemple>(script, "Opening Bank") 
                     }
 
                     secondStairCase.bounds(-26, 26, -76, 24, -26, 26)
-                    if (!secondStairCase.interact("Climb-up") || !Condition.wait({ Game.floor() == 2 }, 50, 90)) {
+                    if (!secondStairCase.interact("Climb-up")
+                        || !Condition.wait({ Game.floor() == 2 }, 50, 90)) {
                         script.info("Failed to walk up the stairs on first floor.")
                         return
                     }
