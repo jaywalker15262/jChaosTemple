@@ -3,6 +3,7 @@ package com.jay.chaostemple.leaf.antipk
 import com.jay.chaostemple.Constants
 import com.jay.chaostemple.Variables
 import com.jay.chaostemple.ChaosTemple
+import com.jay.chaostemple.helpers.WorldHopper.switchToWorldExtended
 import org.powbot.api.Condition
 import org.powbot.api.Input
 import org.powbot.api.Random
@@ -37,37 +38,31 @@ class LogOut(script: ChaosTemple) : Leaf<ChaosTemple>(script, "Logging Out") {
             return
         }
 
-        Input.tap(Constants.LOGIN_SCREEN_WORLDHOPPER_POINT)
-        if (Condition.wait({ LoginScreenWorldSwitcher.isOpen() }, 50 ,200)) {
+        if (!LoginScreenWorldSwitcher.switchToWorldExtended(newWorld)) {
             Condition.sleep(Random.nextGaussian(570, 700, 650, 20.0))
-            if (!LoginScreenWorldSwitcher.switchToWorld(newWorld)) {
-                Condition.sleep(Random.nextGaussian(570, 700, 650, 20.0))
-                if (!LoginScreenWorldSwitcher.isOpen() || !LoginScreenWorldSwitcher.switchToWorld(newWorld)) {
-                    script.info("Failed to select our new world(" + newWorld.number.toString() + ") to hop to in the login-screen worldhopper.")
-                    return
-                }
-            }
-
-            if (!Condition.wait({ !LoginScreenWorldSwitcher.isOpen() }, 50, 100)) {
-                if (!LoginScreenWorldSwitcher.close()) {
-                    script.info("Failed to close the login-screen worldhopper.")
-                    return
-                }
+            if (!LoginScreenWorldSwitcher.switchToWorldExtended(newWorld)) {
+                script.info("Failed to select our new world(" + newWorld.number.toString()
+                        + ") to hop to in the login-screen worldhopper.")
 
                 if (!Condition.wait({ !LoginScreenWorldSwitcher.isOpen() }, 50, 100)) {
-                    script.info("Failed to close the login-screen worldhopper.")
-                    return
-                }
+                    if (!LoginScreenWorldSwitcher.close()) {
+                        script.info("Failed to close the login-screen worldhopper.")
+                        return
+                    }
 
-                // Wait for 3(+5 from the condition wait) sec to make sure pker no longer being there.
-                Condition.sleep(3000)
+                    if (!Condition.wait({ !LoginScreenWorldSwitcher.isOpen() }, 50, 100)) {
+                        script.info("Failed to close the login-screen worldhopper.")
+                        return
+                    }
+
+                    // Wait for 3(+5 from the condition wait) sec to make sure pker no longer being there.
+                    Condition.sleep(3000)
+                }
+                else Condition.sleep(8000)     // Wait for 8 sec to make sure pker no longer being there.
             }
             else Variables.worldId = newWorld.number
         }
-        else {
-            script.info("Failed to open up the login-screen worldhopper.")
-            Condition.sleep(8000)     // Wait for 8 sec to make sure pker no longer being there.
-        }
+        else Variables.worldId = newWorld.number
     }
 
     private fun tryLogOut(): Boolean {

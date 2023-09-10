@@ -4,8 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="fed035d4-b86d-4be4-b658-43119d004291" name="Changes" comment="Misc">
+    <list default="true" id="fed035d4-b86d-4be4-b658-43119d004291" name="Changes" comment="Update login.kt">
+      <change afterPath="$PROJECT_DIR$/src/main/kotlin/helpers/WorldHopper.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/ChaosTemple.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/ChaosTemple.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/leaf/antipk/LogOut.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/leaf/antipk/LogOut.kt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -71,9 +74,9 @@
     &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;last_opened_file_path&quot;: &quot;C:/Users/Admin/OneDrive/Skrivbord/jLogBurner&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Problems&quot;,
     &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;
+    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;
   }
 }</component>
   <component name="RecentsManager">
@@ -97,6 +100,13 @@
     </recent_temporary>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="StandaloneScriptsStorage">
+    <option name="files">
+      <set>
+        <option value="$PROJECT_DIR$/build.gradle.kts" />
+      </set>
+    </option>
+  </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
       <changelist id="fed035d4-b86d-4be4-b658-43119d004291" name="Changes" comment="" />
@@ -104,42 +114,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1684545386724</updated>
-    </task>
-    <task id="LOCAL−00021" summary="Improving banking and login/logout logic.">
-      <created>1684636985056</created>
-      <option name="number" value="LOCAL−00021" />
-      <option name="presentableId" value="LOCAL−00021" />
-      <updated>1684636985056</updated>
-    </task>
-    <task id="LOCAL−00022" summary="Protect Item, set default to off.">
-      <created>1684663015874</created>
-      <option name="number" value="LOCAL−00022" />
-      <option name="presentableId" value="LOCAL−00022" />
-      <updated>1684663015874</updated>
-    </task>
-    <task id="LOCAL−00023" summary="Altar bounds and support for runtime limit feature.">
-      <created>1684680815753</created>
-      <option name="number" value="LOCAL−00023" />
-      <option name="presentableId" value="LOCAL−00023" />
-      <updated>1684680815753</updated>
-    </task>
-    <task id="LOCAL−00024" summary="Better handling of offering bones while being pked.">
-      <created>1684681465923</created>
-      <option name="number" value="LOCAL−00024" />
-      <option name="presentableId" value="LOCAL−00024" />
-      <updated>1684681465923</updated>
-    </task>
-    <task id="LOCAL−00025" summary="Fixed bug from previous commit adding support for end on runtime goal reaced feature.">
-      <created>1684681645370</created>
-      <option name="number" value="LOCAL−00025" />
-      <option name="presentableId" value="LOCAL−00025" />
-      <updated>1684681645370</updated>
-    </task>
-    <task id="LOCAL−00026" summary="Renaming all constants to be uppercased.">
-      <created>1684688561792</created>
-      <option name="number" value="LOCAL−00026" />
-      <option name="presentableId" value="LOCAL−00026" />
-      <updated>1684688561792</updated>
     </task>
     <task id="LOCAL−00027" summary="Removing LoggingService, we already have access to functions from our main scriptfile through &quot;script.&quot;.">
       <created>1684689758894</created>
@@ -399,7 +373,43 @@
       <option name="presentableId" value="LOCAL−00069" />
       <updated>1685797718944</updated>
     </task>
-    <option name="localTasksCounter" value="70" />
+    <task id="LOCAL−00070" summary="Fix bug for using banks other than lumby">
+      <created>1685816703276</created>
+      <option name="number" value="LOCAL−00070" />
+      <option name="presentableId" value="LOCAL−00070" />
+      <updated>1685816703276</updated>
+    </task>
+    <task id="LOCAL−00071" summary="Typo">
+      <created>1685817747116</created>
+      <option name="number" value="LOCAL−00071" />
+      <option name="presentableId" value="LOCAL−00071" />
+      <updated>1685817747116</updated>
+    </task>
+    <task id="LOCAL−00072" summary="Updating altar bounds for better one-ticking support.">
+      <created>1686831792502</created>
+      <option name="number" value="LOCAL−00072" />
+      <option name="presentableId" value="LOCAL−00072" />
+      <updated>1686831792502</updated>
+    </task>
+    <task id="LOCAL−00073" summary="More updates.">
+      <created>1687466480492</created>
+      <option name="number" value="LOCAL−00073" />
+      <option name="presentableId" value="LOCAL−00073" />
+      <updated>1687466480492</updated>
+    </task>
+    <task id="LOCAL−00074" summary="Get our current world on start">
+      <created>1687467348722</created>
+      <option name="number" value="LOCAL−00074" />
+      <option name="presentableId" value="LOCAL−00074" />
+      <updated>1687467348722</updated>
+    </task>
+    <task id="LOCAL−00075" summary="Update login.kt">
+      <created>1688558110422</created>
+      <option name="number" value="LOCAL−00075" />
+      <option name="presentableId" value="LOCAL−00075" />
+      <updated>1688558110422</updated>
+    </task>
+    <option name="localTasksCounter" value="76" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -414,12 +424,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Some more failsafety when attempting to attack the Chaos Fanatic." />
-    <MESSAGE value="Removing a lot of unnecessary logic for logOut()." />
-    <MESSAGE value="Accidental newline." />
-    <MESSAGE value="Another accidental newline." />
-    <MESSAGE value="Non-constants to not have uppercased names." />
-    <MESSAGE value="Revert Production.stoppedUsing() change." />
     <MESSAGE value="Revert Production.stoppedUsing() change &amp; banking fix." />
     <MESSAGE value="Minor improvements." />
     <MESSAGE value="So that we do not attempt to world hop while we are dead." />
@@ -439,6 +443,12 @@
     <MESSAGE value="Fixing bug with logging out, removing redundant antipking checks." />
     <MESSAGE value="End script if we are below lvl 70 and user selected to use superior dragon boens." />
     <MESSAGE value="Misc" />
-    <option name="LAST_COMMIT_MESSAGE" value="Misc" />
+    <MESSAGE value="Fix bug for using banks other than lumby" />
+    <MESSAGE value="Typo" />
+    <MESSAGE value="Updating altar bounds for better one-ticking support." />
+    <MESSAGE value="More updates." />
+    <MESSAGE value="Get our current world on start" />
+    <MESSAGE value="Update login.kt" />
+    <option name="LAST_COMMIT_MESSAGE" value="Update login.kt" />
   </component>
 </project>
