@@ -5,7 +5,6 @@ import com.jay.chaostemple.Variables
 import com.jay.chaostemple.ChaosTemple
 import com.jay.chaostemple.helpers.WorldHopper.switchToWorldExtended
 import org.powbot.api.Condition
-import org.powbot.api.Input
 import org.powbot.api.Random
 import org.powbot.api.rt4.*
 import org.powbot.api.rt4.walking.model.Skill
