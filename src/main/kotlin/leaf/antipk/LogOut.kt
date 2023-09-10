@@ -24,8 +24,9 @@ class LogOut(script: ChaosTemple) : Leaf<ChaosTemple>(script, "Logging Out") {
             return
         }
 
-        val worlds = Worlds.stream().filtered { it.number < 400 && it.number != Variables.worldId && it.type == World.Type.MEMBERS
-                && !Constants.WORLD_SPECIALITY_FILTER.contains(it.specialty) && it.population > 0 && it.population < 990 }
+        val worlds = Worlds.stream().filtered { it.number < 469 && it.number != Variables.worldId
+                && it.type == World.Type.MEMBERS && !Constants.WORLD_SPECIALITY_FILTER.contains(it.specialty)
+                && it.population > 0 && it.population < 990 }
         if (worlds.isEmpty()) {
             script.info("Failed to find a list of worlds to hop to.")
             return
