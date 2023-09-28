@@ -4,18 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="fed035d4-b86d-4be4-b658-43119d004291" name="Changes" comment="Support more worlds">
-      <change afterPath="$PROJECT_DIR$/src/main/kotlin/helpers/ItemHelper.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/kotlin/leaf/Unnote.kt" afterDir="false" />
+    <list default="true" id="fed035d4-b86d-4be4-b658-43119d004291" name="Changes" comment="misc">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/kotlin/ChaosTemple.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/ChaosTemple.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/Variables.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/Variables.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/branch/BankOpenBranches.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/branch/BankOpenBranches.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/branch/MovementBranches.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/branch/MovementBranches.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/branch/OfferingBranches.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/branch/OfferingBranches.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/leaf/antipk/LogOut.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/leaf/antipk/LogOut.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/leaf/bankopened/SetupInventory.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/leaf/bankopened/SetupInventory.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/leaf/suiciding/WorldHop.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/leaf/suiciding/WorldHop.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/helpers/WorldHopper.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/helpers/WorldHopper.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/leaf/Unnote.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/leaf/Unnote.kt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -94,9 +87,10 @@
     </key>
   </component>
   <component name="RunManager">
-    <configuration name="ChaosTempleKt" type="JetRunConfigurationType" temporary="true" nameIsGenerated="true">
+    <configuration name="ChaosTempleKt" type="JetRunConfigurationType" singleton="false" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.jay.chaostemple.ChaosTempleKt" />
       <module name="jChaosTemple.main" />
+      <shortenClasspath name="NONE" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -122,18 +116,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1684545386724</updated>
-    </task>
-    <task id="LOCAL−00030" summary="Rename Script.kt and our class to jChaosTemple. Also missed refactoring of a few more LoggingService usages.">
-      <created>1684690325687</created>
-      <option name="number" value="LOCAL−00030" />
-      <option name="presentableId" value="LOCAL−00030" />
-      <updated>1684690325687</updated>
-    </task>
-    <task id="LOCAL−00031" summary="Rename Script.kt and our class to jChaosTemple. Also missed refactoring of a few more LoggingService usages.">
-      <created>1684690388098</created>
-      <option name="number" value="LOCAL−00031" />
-      <option name="presentableId" value="LOCAL−00031" />
-      <updated>1684690388098</updated>
     </task>
     <task id="LOCAL−00032" summary="Using Combat.wildernessLevel() instead of checking wildy level based on y-coord.">
       <created>1684692982797</created>
@@ -417,7 +399,19 @@
       <option name="presentableId" value="LOCAL−00078" />
       <updated>1694362874174</updated>
     </task>
-    <option name="localTasksCounter" value="79" />
+    <task id="LOCAL−00079" summary="Support for noted bones.">
+      <created>1695928795078</created>
+      <option name="number" value="LOCAL−00079" />
+      <option name="presentableId" value="LOCAL−00079" />
+      <updated>1695928795078</updated>
+    </task>
+    <task id="LOCAL−00080" summary="misc">
+      <created>1695928818905</created>
+      <option name="number" value="LOCAL−00080" />
+      <option name="presentableId" value="LOCAL−00080" />
+      <updated>1695928818906</updated>
+    </task>
+    <option name="localTasksCounter" value="81" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -432,7 +426,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Minor improvements." />
     <MESSAGE value="So that we do not attempt to world hop while we are dead." />
     <MESSAGE value="Do not need to use else if we have return before it." />
     <MESSAGE value="Forgot one from previous commit." />
@@ -455,8 +448,9 @@
     <MESSAGE value="More updates." />
     <MESSAGE value="Get our current world on start" />
     <MESSAGE value="Update login.kt" />
-    <MESSAGE value="misc" />
     <MESSAGE value="Support more worlds" />
-    <option name="LAST_COMMIT_MESSAGE" value="Support more worlds" />
+    <MESSAGE value="Support for noted bones." />
+    <MESSAGE value="misc" />
+    <option name="LAST_COMMIT_MESSAGE" value="misc" />
   </component>
 </project>

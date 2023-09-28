@@ -64,25 +64,6 @@ object WorldHopper {
         return (START_WORLD_NUMBER until START_WORLD_NUMBER + sequence.size).filter { it !in sequence }
     }
 
-    private fun adjustCoordinates(missingWorlds: List<Int>): List<Pair<Int, Int>> {
-        val adjustedCoordinates = COORDINATES
-        var referenceCoordinates = COORDINATES
-        for (index in COORDINATES.indices) {
-            val worldNumber = index + START_WORLD_NUMBER
-            if (worldNumber in missingWorlds) {
-                // Adjust coordinates for subsequent worlds
-                for (subsequentIndex in (index + 1) until COORDINATES.size)
-                    adjustedCoordinates[subsequentIndex] = Pair(referenceCoordinates[subsequentIndex - 1].first,
-                        referenceCoordinates[subsequentIndex - 1].second)
-
-                // Update this as well
-                referenceCoordinates = adjustedCoordinates
-            }
-        }
-
-        return adjustedCoordinates
-    }
-
     private fun LoginScreenWorldSwitcher.open(): Boolean {
         if (isOpen())
             return true
@@ -108,7 +89,7 @@ object WorldHopper {
             return false
         }
 
-        val pair = adjustCoordinates(missingWorlds)[world.number - START_WORLD_NUMBER]
+        val pair = COORDINATES[worldNumbers.indexOf(world.number)]
 
         // Calculate random offsets between 0 and 2 pixels for both X and Y
         val random = Random
