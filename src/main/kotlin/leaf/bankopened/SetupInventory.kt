@@ -37,6 +37,13 @@ class SetupInventory(script: ChaosTemple) : Leaf<ChaosTemple>(script, "Setting U
                 return
             }
 
+            // Support for noted bones.
+            if (Variables.notedMode && Bank.withdrawModeNoted() && (!Bank.withdrawModeNoted(false)
+                        || !Condition.wait({ !Bank.withdrawModeNoted() }, 50, 80))) {
+                script.info("Failed to turn off withdraw-noted-mode.")
+                return
+            }
+
             if (!Bank.withdraw(bankAmulet, 1)) {
                 script.info("Failed to withdraw a Burning amulet.")
                 return
@@ -48,7 +55,7 @@ class SetupInventory(script: ChaosTemple) : Leaf<ChaosTemple>(script, "Setting U
             }
         }
 
-        if (Inventory.stream().name(Variables.boneType).count().toInt() != 27) {
+        if (Inventory.stream().name(Variables.boneType).count().toInt() != Variables.boneCount + 1) {
             val bankBones = Bank.stream().name(Variables.boneType).first()
             if (!bankBones.valid()) {
                 script.severe("Could not find any bones in the bank.")
@@ -56,19 +63,78 @@ class SetupInventory(script: ChaosTemple) : Leaf<ChaosTemple>(script, "Setting U
                 return
             }
 
-            if (bankBones.stackSize() < 27) {
+            // Support for noted bones.
+            val invCoins = Inventory.stream().name("Coins").first()
+            var invCoinAmount = 0
+            if (invCoins.valid())
+                invCoinAmount = invCoins.stackSize()
+
+            if (Variables.notedMode && (invCoinAmount < (Variables.notedAmount * 50)
+                        || Inventory.stream().name(bankBones.name())
+                    .firstOrNull { it.stackSize() == Variables.notedAmount } != null)) {
+                if (bankBones.stackSize() < Variables.notedAmount + 25) {
+                    script.severe("Could not find enough bones in the bank for another trip.")
+                    ScriptManager.stop()
+                    return
+                }
+
+                if (invCoinAmount < (Variables.notedAmount * 50)) {
+                    val coins = Bank.stream().name("Coins").first()
+                    if (!coins.valid() || coins.stackSize() < ((Variables.notedAmount * 50) - invCoinAmount)) {
+                        script.severe("Could not find enough money in the bank for our noted bones.")
+                        ScriptManager.stop()
+                        return
+                    }
+
+                    if (!Bank.withdraw(coins, (Variables.notedAmount * 50) - invCoinAmount)) {
+                        script.info("Failed to withdraw coins.")
+                        return
+                    }
+
+                    if (!Condition.wait({ Inventory.stream().name(coins.name()).first()
+                        .stackSize() == ((Variables.notedAmount * 50) - invCoinAmount) }, 50, 80)) {
+                        script.info("Failed to find enough coins in our inventory for another trip.")
+                        return
+                    }
+                }
+
+                if (!Bank.withdrawModeNoted() && (!Bank.withdrawModeNoted(true)
+                            || !Condition.wait({ Bank.withdrawModeNoted() }, 50, 80))) {
+                    script.info("Failed to turn on withdraw-noted-mode.")
+                    return
+                }
+
+                if (!Bank.withdraw(bankBones, Variables.notedAmount)) {
+                    script.info("Failed to withdraw bones.")
+                    return
+                }
+
+                if (!Condition.wait({ Inventory.stream().name(bankBones.name())
+                    .firstOrNull { it.stackSize() == Variables.notedAmount } != null }, 50, 80)) {
+                    script.info("Failed to find enough noted bones in our inventory for another trip.")
+                    return
+                }
+            }
+            else if (bankBones.stackSize() < 27) {
                 script.severe("Could not find enough bones in the bank for another trip.")
                 ScriptManager.stop()
                 return
             }
 
-            if (!Bank.withdraw(bankBones, 27)) {
+            // Support for noted bones.
+            if (Variables.notedMode && Bank.withdrawModeNoted() && (!Bank.withdrawModeNoted(false)
+                        || !Condition.wait({ !Bank.withdrawModeNoted() }, 50, 80))) {
+                script.info("Failed to turn off withdraw-noted-mode.")
+                return
+            }
+
+            if (!Bank.withdraw(bankBones, Variables.boneCount)) {
                 script.info("Failed to withdraw bones.")
                 return
             }
 
             if (!Condition.wait({ Inventory.stream().name(
-                    bankBones.name()).count().toInt() == 27 }, 50, 80)) {
+                    bankBones.name()).count().toInt() == Variables.boneCount + 1 }, 50, 80)) {
                 script.info("Failed to find enough bones in our inventory for another trip.")
                 return
             }

@@ -18,8 +18,11 @@ class HaveInventory(script: ChaosTemple) : Branch<ChaosTemple>(script, "Have pro
     override val failedComponent: TreeComponent<ChaosTemple> = OpenBank(script)
 
     override fun validate(): Boolean {
-        return !Variables.depositEquipment && Inventory.stream().name(Variables.boneType).count().toInt() == 27 &&
-                Inventory.stream().name(*Constants.BURNING_AMULETS).count().toInt() == 1
+        return !Variables.depositEquipment && ((Variables.notedMode && Inventory.stream().name(Variables.boneType)
+            .firstOrNull { it.stackSize() == Variables.notedAmount } != null
+            && Inventory.stream().name(Variables.boneType).count().toInt() == 26)
+            || !Variables.notedMode && Inventory.stream().name(Variables.boneType).count().toInt() == 27)
+            && Inventory.stream().name(*Constants.BURNING_AMULETS).count().toInt() == 1
     }
 }
 
@@ -28,8 +31,11 @@ class HaveInventoryTwo(script: ChaosTemple) : Branch<ChaosTemple>(script, "Have 
     override val failedComponent: TreeComponent<ChaosTemple> = IsInventoryEmpty(script)
 
     override fun validate(): Boolean {
-        return !Variables.depositEquipment && Inventory.stream().name(Variables.boneType).count().toInt() == 27 &&
-                Inventory.stream().name(*Constants.BURNING_AMULETS).count().toInt() == 1
+        return !Variables.depositEquipment && ((Variables.notedMode && Inventory.stream().name(Variables.boneType)
+                    .firstOrNull { it.stackSize() == Variables.notedAmount } != null
+                && Inventory.stream().name(Variables.boneType).count().toInt() == 26)
+                || !Variables.notedMode && Inventory.stream().name(Variables.boneType).count().toInt() == 27)
+                && Inventory.stream().name(*Constants.BURNING_AMULETS).count().toInt() == 1
     }
 }
 

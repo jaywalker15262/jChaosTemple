@@ -12,6 +12,8 @@ class AtAltar(script: ChaosTemple) : Branch<ChaosTemple>(script, "At the altar?"
     override val failedComponent: TreeComponent<ChaosTemple> = SuicideCheckTwo(script)
 
     override fun validate(): Boolean {
-        return Constants.AREA_ALTAR.contains(Players.local()) && Inventory.stream().name(Variables.boneType).isNotEmpty()
+        val bones = Inventory.stream().name(Variables.boneType)
+        return (Constants.AREA_ALTAR.contains(Players.local()) && bones.isNotEmpty())
+                || (Variables.notedMode && bones.count().toInt() == 1 && bones.firstOrNull { it.noted() } != null)
     }
 }

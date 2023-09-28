@@ -38,6 +38,8 @@ class LogOut(script: ChaosTemple) : Leaf<ChaosTemple>(script, "Logging Out") {
             return
         }
 
+        script.info("World selected: $newWorld")
+
         if (!LoginScreenWorldSwitcher.switchToWorldExtended(newWorld)) {
             Condition.sleep(Random.nextGaussian(570, 700, 650, 20.0))
             if (!LoginScreenWorldSwitcher.switchToWorldExtended(newWorld)) {

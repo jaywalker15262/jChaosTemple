@@ -3,6 +3,7 @@ package com.jay.chaostemple
 import com.google.common.eventbus.Subscribe
 import com.jay.chaostemple.branch.IsLoggedIn
 import org.powbot.api.Color
+import org.powbot.api.Condition
 import org.powbot.api.event.MessageEvent
 import org.powbot.api.event.MessageType
 import org.powbot.api.rt4.*
@@ -14,6 +15,7 @@ import org.powbot.api.script.tree.TreeComponent
 import org.powbot.api.script.tree.TreeScript
 import org.powbot.mobile.script.ScriptManager
 import org.powbot.mobile.service.ScriptUploader
+import java.beans.Visibility
 
 @ScriptManifest(
     name = "jChaosTemple",
@@ -32,7 +34,15 @@ import org.powbot.mobile.service.ScriptUploader
         ),
         ScriptConfiguration(
             "oneTick", "1-tick bone offering? (Recommended: 1-tap mode enabled when using this for better xp rates)",
-            optionType = OptionType.BOOLEAN, defaultValue = "false"
+            optionType = OptionType.BOOLEAN, defaultValue = "true"
+        ),
+        ScriptConfiguration(
+            "notedMode", "Bring noted bones?",
+            optionType = OptionType.BOOLEAN, defaultValue = "true"
+        ),
+        ScriptConfiguration(
+            "notedAmount", "Amount of noted bones to bring?",
+            optionType = OptionType.INTEGER, defaultValue = "100", visible = true
         ),
         ScriptConfiguration(
             "stopAtLvl", "Stop at lvl(values >99 or <1 means it will not stop based on lvl):",
@@ -63,6 +73,19 @@ class ChaosTemple : TreeScript() {
         Variables.oneTicking = newValue
     }
 
+    @ValueChanged("notedMode")
+    fun notedModeChanged(newValue: Boolean) {
+        Variables.notedMode = newValue
+        updateVisibility("notedAmount", newValue)
+    }
+
+    @ValueChanged("notedAmount")
+    fun notedAmountChanged(newValue: Int) {
+        if (newValue < 1)
+            Variables.notedMode = false
+        else Variables.notedAmount = newValue
+    }
+
     @ValueChanged("stopAtLvl")
     fun stopAtLevelChanged(newValue: Int) {
         Variables.stopAtLvl = newValue
@@ -84,6 +107,7 @@ class ChaosTemple : TreeScript() {
     }
 
     override fun onStart() {
+        Condition.sleep(1000)
         // We cannot use superior dragon bones below lvl 70 prayer.
         if (Variables.boneType == "Superior dragon bones" && Skills.level(Skill.Prayer) < 70) {
             ScriptManager.stop()
@@ -101,6 +125,9 @@ class ChaosTemple : TreeScript() {
         Variables.lastKnownPrayerXp = Skills.experience(Skill.Prayer)
         if (Equipment.stream().isNotEmpty())
             Variables.depositEquipment = true
+
+        if (Variables.notedMode)
+            Variables.boneCount = 25
 
         Variables.worldId = Worlds.current().number
     }
@@ -124,5 +151,5 @@ class ChaosTemple : TreeScript() {
 }
 
 fun main(args: Array<String>) {
-    ScriptUploader().uploadAndStart("jChaosTemple", "", "127.0.0.1:5655", true, false)
+    ScriptUploader().uploadAndStart("jChaosTemple", "", "127.0.0.1:62553", true, false)
 }
