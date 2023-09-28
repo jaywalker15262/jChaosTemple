@@ -26,10 +26,14 @@ class Unnote(script: ChaosTemple) : Leaf<ChaosTemple>(script, "Unnoting bones") 
 
                 altarDoor.bounds(-54, -46, -160, -16, -32, 32)
                 // Short sleep between attempts of opening the door.
-                if (!altarDoor.interact("Open") || !Condition.wait({ !altarDoor.valid() }, 50, 50))
+                if (!altarDoor.interact("Open") || !Condition.wait({ !altarDoor.valid()
+                            || CombatHelper.antiPkingCheck() }, 50, 50))
                     return
             }
         }
+
+        if (Variables.escapePker)
+            return
 
         val elderChaosDruid = Npcs.stream().within(15).name("Elder Chaos druid").first()
         if (!elderChaosDruid.valid()) {
