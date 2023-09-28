@@ -15,7 +15,6 @@ import org.powbot.api.script.tree.TreeComponent
 import org.powbot.api.script.tree.TreeScript
 import org.powbot.mobile.script.ScriptManager
 import org.powbot.mobile.service.ScriptUploader
-import java.beans.Visibility
 
 @ScriptManifest(
     name = "jChaosTemple",
