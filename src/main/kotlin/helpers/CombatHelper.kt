@@ -8,7 +8,9 @@ import org.powbot.mobile.script.ScriptManager
 object CombatHelper{
     fun antiPkingCheck(): Boolean {
         // Do not stop what we are doing if we are in combat, we cannot log out anyway.
-        if (Inventory.stream().name(Variables.boneType).count() < 3
+        if ((!Variables.notedMode && Inventory.stream().name(Variables.boneType).count() < 3)
+            || (Variables.notedMode && Inventory.stream().name(Variables.boneType).firstOrNull { it.noted() } == null
+                    && Inventory.stream().name(Variables.boneType).count() < 3)
             || Players.local().inCombat() || Variables.timeUntilNextLogout > ScriptManager.getRuntime(true))
             return false
 
