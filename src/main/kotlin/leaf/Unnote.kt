@@ -53,7 +53,13 @@ class Unnote(script: ChaosTemple) : Leaf<ChaosTemple>(script, "Unnoting bones") 
             return
         }
 
-        val unnotingAmt = if (bonesStackSize > 25) 25 else bonesStackSize
+        val emptyInvCount = Inventory.emptySlotCount()
+        if (emptyInvCount < 10 || emptyInvCount > 26) {
+            script.info("Failed to find the correct amount of empty inventory slots.")
+            return
+        }
+
+        val unnotingAmt = if (bonesStackSize > 25) emptyInvCount else bonesStackSize
         var coins = Inventory.stream().name("Coins").first()
         if (!coins.valid()) {
             script.info("Failed to find any coins to unnote our bones.")
