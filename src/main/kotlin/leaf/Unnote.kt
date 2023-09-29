@@ -73,7 +73,7 @@ class Unnote(script: ChaosTemple) : Leaf<ChaosTemple>(script, "Unnoting bones") 
 
         if (!bones.useOnExtended(elderChaosDruid, useMenu = true, useMenu2 =true)
             || !Condition.wait({ Chat.chatting() || CombatHelper.antiPkingCheck() },
-                50, 80)) {
+                50, 120)) {
             script.info("Failed to find that we are chatting after using the bones on the Elder Chaos druid.")
             return
         }
