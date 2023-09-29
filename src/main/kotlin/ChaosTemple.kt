@@ -150,5 +150,5 @@ class ChaosTemple : TreeScript() {
 }
 
 fun main(args: Array<String>) {
-    ScriptUploader().uploadAndStart("jChaosTemple", "", "127.0.0.1:62553", true, false)
+    ScriptUploader().uploadAndStart("jChaosTemple", "", "127.0.0.1:60064", true, false)
 }
