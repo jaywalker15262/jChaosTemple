@@ -87,7 +87,7 @@ class Unnote(script: ChaosTemple) : Leaf<ChaosTemple>(script, "Unnoting bones") 
         if (Variables.escapePker)
             return
 
-        val cost = if (unnotingAmt < 25) 50 * unnotingAmt else 1250
+        val cost = 50 * unnotingAmt
         if (!Chat.continueChat("Exchange All: $cost coins")) {
             script.info("Failed to complete the conversation after talking to the Elder Chaos druid.")
             return
