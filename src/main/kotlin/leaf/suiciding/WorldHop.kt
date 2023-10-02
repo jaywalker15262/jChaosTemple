@@ -25,6 +25,7 @@ class WorldHop(script: ChaosTemple) : Leaf<ChaosTemple>(script, "World-hopping")
             return
         }
 
+        Variables.worldId = newWorld.number
         if (!newWorld.hop() && !Condition.wait({ Worlds.current().number == newWorld.number }, 50, 10)) {
             script.info("Failed to attempt to hop to our new world.")
             return
@@ -36,7 +37,6 @@ class WorldHop(script: ChaosTemple) : Leaf<ChaosTemple>(script, "World-hopping")
         }
 
         // Wait a little right after hopping.
-        Variables.worldId = newWorld.number
         Condition.sleep(Random.nextGaussian(570, 700, 650, 20.0))
     }
 }

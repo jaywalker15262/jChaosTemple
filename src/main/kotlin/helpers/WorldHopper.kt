@@ -10,7 +10,6 @@ import kotlin.math.roundToInt
 
 object WorldHopper {
     private val worldHopperLogger = Logger.getLogger(this.javaClass.simpleName)     // remove if added to api.
-    private val START_WORLD_NUMBER = 301
     private val DIMENSIONS = Game.dimensions()
     private val CURRENT_RESOLUTION = DIMENSIONS.width.toDouble() to DIMENSIONS.height.toDouble()
     private val ORIGINAL_RESOLUTION = Pair(910.0, 512.0)
@@ -60,10 +59,6 @@ object WorldHopper {
         return Point((coordinate.x * xRatio).roundToInt(), (coordinate.y * yRatio).roundToInt())
     }
 
-    private fun findMissingWorlds(sequence: List<Int>): List<Int> {
-        return (START_WORLD_NUMBER until START_WORLD_NUMBER + sequence.size).filter { it !in sequence }
-    }
-
     private fun LoginScreenWorldSwitcher.open(): Boolean {
         if (isOpen())
             return true
@@ -79,13 +74,20 @@ object WorldHopper {
             return false
 
         val worldNumbers = mutableListOf<Int>()
-        Worlds.stream().forEach { worldNumbers.add(it.id()) }
-        val missingWorlds = findMissingWorlds(worldNumbers)
-        val lastWorldNumber = START_WORLD_NUMBER + COORDINATES.size - 1 + missingWorlds.size
-        if (world.number > lastWorldNumber) {
+        Worlds.stream().forEach {
+            if (worldNumbers.size < COORDINATES.size)
+                worldNumbers.add(it.id())
+            else return@forEach }
+        if (worldNumbers.isEmpty()) {
             // This should just be changed to Logger.info() if ever added to the API, we cannot do that from here,
             // hence worldHopperLogger was created which otherwise would be redundant.
-            worldHopperLogger.info("World number is higher than the highest visible world number on screen.")
+            worldHopperLogger.info("We were unable to find any worlds.")
+            return false
+        }
+
+        if (!worldNumbers.contains(world.number)) {
+            // Same with this here.
+            worldHopperLogger.info("We were unable to find this world amongst the available worlds.")
             return false
         }
 
