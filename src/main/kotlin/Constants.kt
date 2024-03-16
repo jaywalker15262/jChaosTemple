@@ -1,7 +1,6 @@
 package com.jay.chaostemple
 
 import org.powbot.api.Area
-import org.powbot.api.Point
 import org.powbot.api.Tile
 import org.powbot.api.rt4.TilePath
 import org.powbot.api.rt4.World
@@ -78,7 +77,6 @@ object Constants {
         Tile(3207, 3219, 2), Tile(3208, 3219, 2), Tile(3208, 3220, 2)))
 
     // antipk stuff
-    val LOGIN_SCREEN_WORLDHOPPER_POINT = Point(150, 460)
     val WORLD_SPECIALITY_FILTER = arrayOf(World.Specialty.BOUNTY_HUNTER, World.Specialty.TARGET_WORLD,
         World.Specialty.FRESH_START, World.Specialty.HIGH_RISK, World.Specialty.BETA, World.Specialty.DEAD_MAN,
         World.Specialty.LEAGUE, World.Specialty.PVP_ARENA, World.Specialty.SKILL_REQUIREMENT,
