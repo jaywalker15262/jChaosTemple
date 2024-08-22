@@ -17,7 +17,7 @@ class DepositInventory(script: ChaosTemple) : Leaf<ChaosTemple>(script, "Deposit
         // We only do this once upon script start
         if (Variables.depositEquipment && (Equipment.stream().isEmpty() || (Bank.depositEquipment()
             && Condition.wait({ Equipment.stream().isEmpty() },
-                Condition.sleep(Random.nextGaussian(170, 250, 200, 20.0)), 13))))
+                Condition.sleep(Random.nextGaussian(170, 250, 200, 50.0)), 13))))
             Variables.depositEquipment = false
     }
 }
