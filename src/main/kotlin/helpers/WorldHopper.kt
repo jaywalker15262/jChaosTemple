@@ -101,7 +101,7 @@ object WorldHopper {
         if (!Input.tap(adjustedX, adjustedY))
             return false
 
-        Condition.sleep(Random.nextGaussian(170, 350, 200, 20.0))
+        Condition.sleep(Random.nextGaussian(170, 350, 200, 150.0))
         return Input.tap(adjustedX, adjustedY)
     }
 }
