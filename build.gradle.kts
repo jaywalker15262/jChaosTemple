@@ -13,11 +13,11 @@ repositories {
 }
 
 dependencies {
-    implementation("org.powbot:client-sdk:1.+")
-    implementation("org.powbot:client-sdk-loader:1.+")
+    implementation("org.powbot:client-sdk:[1.+,1.0.99-SNAPSHOT)")
+    implementation("org.powbot:client-sdk-loader:[1.+,1.0.99-SNAPSHOT)")
     implementation("com.google.guava:guava:32.0.0-android") // for @Subscribe
 }
 
 kotlin {
-    jvmToolchain(8)
+    jvmToolchain(11)
 }
