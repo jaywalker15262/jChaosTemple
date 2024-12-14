@@ -10,7 +10,7 @@ object Variables {
     var notedAmount = 100
     var timeSinceLastXpDrop: Long = 0
 
-    var protectItem = true
+    var protectItem = false
     var depositEquipment = false
 
     var boneType = "Dragon bones"
